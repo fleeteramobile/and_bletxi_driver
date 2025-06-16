@@ -1,0 +1,1343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/noti_font"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:keepScreenOn="true"
+    android:orientation="vertical"
+    app:ignore="NamespaceTypo">
+
+    <include
+        layout="@layout/simple_menu_header"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <include
+            layout="@layout/map_lay_noti"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/decline_btn"
+                android:layout_width="130dp"
+
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+
+                android:padding="30dp"
+                app:cardBackgroundColor="#ffffff"
+                card_view:cardCornerRadius="18dp"
+                card_view:cardElevation="2dp"
+
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+
+                        android:src="@drawable/ic_fleetera_close" />
+
+                    <TextView
+                        android:id="@+id/decline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+style="@style/edittext_style"
+                        android:layout_alignParentTop="true"
+android:textColor="#686868"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/decline"
+                        android:textAllCaps="false"
+                       />
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/draw_curve_rect_white"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_10"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/trip_payment_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text="@string/cash"
+                    android:textColor="@color/pickup_green" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/total_est_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
+                        android:text="@string/total_estimation"
+                        android:textColor="@color/button_accept"
+                        android:textSize="@dimen/dp_20"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/total_estimate_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:gravity="left|center_vertical"
+                        android:textColor="@color/pickup_green"
+                        android:textSize="@dimen/dp_20"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
+                        android:text="@string/Estimated"
+                        android:textColor="@color/button_accept"
+                        android:textSize="@dimen/dp_16" />
+
+                    <TextView
+                        android:id="@+id/trip_estimate_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:gravity="left|center_vertical"
+                        android:textColor="@color/pickup_green"
+                        android:textSize="@dimen/dp_16" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
+                        android:text="@string/incentive_amount"
+                        android:textColor="@color/button_accept"
+                        android:textSize="@dimen/dp_16" />
+
+                    <TextView
+                        android:id="@+id/incentive_amount_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:gravity="left|center_vertical"
+                        android:textColor="@color/pickup_green"
+                        android:textSize="@dimen/dp_16" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="left|center_vertical"
+                        android:text="@string/extra_incentive"
+                        android:textColor="@color/button_accept"
+                        android:textSize="@dimen/dp_16" />
+
+                    <TextView
+                        android:id="@+id/extra_incentiveAmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:gravity="left|center_vertical"
+                        android:textColor="@color/pickup_green"
+                        android:textSize="@dimen/dp_16" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/trip_types"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_margin="@dimen/dp_5"
+                    android:gravity="center|center_vertical"
+                    android:text="Trip Type : Onmyway"
+                    android:textColor="@color/button_accept"
+                    android:textSize="@dimen/sp_14"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+        <com.onewaytripcalltaxi.driver.utils.CircleOverlayView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+
+        <FrameLayout
+            android:id="@+id/donut_progress_lay"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="100dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:id="@+id/donut_progress"
+                android:layout_width="114dp"
+                android:layout_height="114dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="visible"
+                custom:donut_background_color="@android:color/transparent"
+                custom:donut_finished_color="@color/app_theme_color"
+                custom:donut_finished_stroke_width="5dp"
+                custom:donut_show_text="false"
+
+                custom:donut_unfinished_color="@color/transparent"
+                custom:donut_unfinished_stroke_width="5dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                custom:srcCompat="@drawable/ic_fleetera_triprequest_noti" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/draw_curve_rect_white_bottom"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_10">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+
+                            android:src="@drawable/ic_fleetera_pickup_noti"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:src="@drawable/ic_line"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:src="@drawable/ic_fleetera_noti_drop"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="3"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
+                            android:maxLines="2"
+                            style="@style/edittext_style"
+                            android:textColor="#848484"
+                            android:text="PICKUP"
+                            />
+
+                        <TextView
+                            android:id="@+id/pickup_loc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text=""
+                            style="@style/edittext_style"
+                            android:textSize="16dp"
+                            android:textColor="#3E3E3E"
+                           />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+android:layout_marginTop="15dp"
+                            android:layout_marginRight="25dp"
+                            android:background="@drawable/draw_curve_rect_new"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:paddingStart="8dp"
+                                android:src="@drawable/ic_fleetera_eta"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/eta_Txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                android:paddingLeft="5dp"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingRight="5dp"
+                                android:text=""
+                                android:textSize="12dp"
+                                style="@style/edittext_style"
+                                android:textColor="@color/app_theme_color"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginRight="20dp"
+                            android:maxLines="2"
+                            android:text="DESTINATION"
+                            style="@style/edittext_style"
+                            android:textColor="#848484" />
+
+                        <TextView
+                            android:id="@+id/drop_loc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:maxLines="1"
+                            android:text=""
+
+
+                            android:textSize="18dp"
+                            android:textColor="#3E3E3E"
+                           />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="#e5e5e5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="visible"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="Name"
+                    android:textSize="13dp"
+                    android:textColor="#848484"
+                 style="@style/edittext_style"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/passenger_name_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="center"
+
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingRight="5dp"
+                    android:text=""
+                    style="@style/edittext_style"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+         android:layout_marginTop="5dp"
+                android:background="#e5e5e5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Pickup Time"
+                    android:textColor="#848484"
+                   style="@style/edittext_style"
+                    android:textSize="13dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+
+                    android:id="@+id/pickup_time_txt"
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingRight="5dp"
+                    android:text=""
+                    android:textSize="17dp"
+                    style="@style/edittext_style"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/typelbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/type"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/model_name_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="@dimen/dp_5"
+                        android:paddingRight="5dp"
+                        android:text="Eco"
+                        android:textColor="@color/new_blue_color"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/estlbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/estimated_km"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/estimate_distanceTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="@dimen/dp_5"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/new_blue_color"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/stopslbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/stops"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/stopsTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="@dimen/dp_5"
+                        android:paddingRight="5dp"
+                        android:text="0"
+                        android:textColor="@color/new_blue_color"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/etalbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/eta"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:gravity="top"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/noteslbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="left|top"
+                    android:text="@string/notes_val"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notesTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="left|top"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/pic_noteslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pickupTime_layout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/pickup_landmark"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/pick_notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/drop_noteslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pic_noteslayout"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/drop_landmark"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/drop_notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/accept_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:padding="5dp"
+                    android:stateListAnimator="@null"
+                    android:elevation="10dp"
+                    android:background="@drawable/ic_fleetera_button_shadow"
+                    android:orientation="horizontal">
+
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/body_iv"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/inter_bold"
+                        android:gravity="center"
+
+                        android:textAllCaps="true"
+                        android:padding="10dp"
+                        android:text="@string/accept"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+
+                        />
+                </LinearLayout>
+                \
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_weight=".80"
+                    android:visibility="visible"
+                    app:indeterminateAnimationType=""
+                    custom:indicatorColor="@array/progress_colors" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_weight=".15"
+                    android:visibility="visible"
+                    app:indeterminateAnimationType=""
+                    custom:indicatorColor="@array/progress_colors" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_weight=".05"
+                    android:visibility="visible"
+                    app:indeterminateAnimationType=""
+                    custom:indicatorColor="@array/progress_colors" />
+
+            </LinearLayout>
+
+
+            <ProgressBar
+                android:id="@+id/simpleProgressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="4dp"
+                android:layout_alignParentBottom="true"
+                android:max="100"
+                android:min="0"
+                android:progressDrawable="@drawable/custom_progress"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/draw_curve_rect_white_bottom"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/pass_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="top|center_vertical"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:id="@+id/pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timer"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/picklocation"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/droplayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pic"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/droploc"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+                android:id="@+id/pd_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timer"
+                android:layout_marginLeft="15dp"
+                android:background="@color/transparent" />
+
+            <LinearLayout
+                android:id="@+id/model_layout"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pd_view"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/request_for"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/req_model"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/model_name_txt1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pickupTime_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/model_layout"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pickup_time"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/triptypelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/drop_noteslayout"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/triptype"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/trip_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/estimatelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/triptypelay"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Estimated"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/trip_estimate_amount1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymenttypelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/estimatelay"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/payment_type"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/trip_payment_type1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/incentive_distance_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/paymenttypelay"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/incentive_distance"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/incentive_distance_txt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/incentive_amount_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/incentive_distance_lay"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/incentive_amount"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/incentive_amount_txt1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/noteslayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/estimatelay"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Notes"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/Colon"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/timer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/donut_progress_lay"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/rmnTimeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="@string/accept_time"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/minTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/sec_bg"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="@string/seconds"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/min"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/Colon"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/secTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:padding="3dp"
+                            android:text="@string/seconds"
+                            android:textColor="@color/black"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/sec"
+                            android:textColor="@color/black"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

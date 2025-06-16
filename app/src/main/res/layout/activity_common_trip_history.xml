@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/tool_bar_lay"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/white">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/back_trip_details"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="29dp"
+            app:cardElevation="5dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/callText"
+                style="@style/enterTxt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_fleetera_back"
+                android:textAllCaps="false"
+
+
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+    <!-- TabLayout for the tab headers -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/design_default_color_primary"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@android:color/black"
+        app:tabTextColor="@android:color/darker_gray" />
+
+    <!-- ViewPager2 for swiping between fragments -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

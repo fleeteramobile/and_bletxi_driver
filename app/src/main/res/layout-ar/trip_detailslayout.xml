@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_tripdetails"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/ic_header_new"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/slideImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/backbtn"
+            android:padding="10dp"
+            android:textColor="@drawable/text_color_black_to_white"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/trip_details"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/linebottom_light"
+        android:visibility="visible" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/appbg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/driver_lay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                            android:layout_width="80dip"
+                            android:layout_height="80dip"
+                            android:layout_centerInParent="true"
+                            android:padding="5dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/loadingimage" />
+
+                        <TextView
+                            android:id="@+id/drivernameTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="3dp"
+                            android:textColor="@color/block"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/taxinoTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignLeft="@+id/drivernameTxt"
+                            android:layout_below="@+id/drivernameTxt"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/textviewcolor_dark"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/driver_lay"
+                        android:layout_centerVertical="false"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/textviewcolor_dark"
+                        android:visibility="gone" />
+                </RelativeLayout>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@color/white"
+                android:layout_gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80dp"
+                    android:layout_gravity="bottom"
+
+                    android:background="@drawable/bg1">
+
+                </RelativeLayout>
+
+                <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                    android:id="@+id/driverImg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/loadingimage" />
+
+
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f7f5f6"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_passname"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/passnameTxt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_picktime"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/time"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f7f5f6"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_pickloc"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/place"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_droptime"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/droptimeTxt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f7f5f6"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_droploc"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/droplocTxt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_distance"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/distanceTxt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f7f5f6"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/t_tripduration"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/duartionTxt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/amount"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/amount"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f7f5f6"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/payment"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/payment"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="@string/trip_id"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text=":"
+                            android:textColor="@color/textviewcolor_dark" />
+
+                        <TextView
+                            android:id="@+id/jobref"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/draw_decline"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="Book a taxi"
+                android:textColor="@color/block"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/profile_img" />
+
+        <TextView
+            android:id="@+id/txtdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/profile_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@id/txtdate"
+            android:layout_toRightOf="@id/imgprofile"
+            android:src="@drawable/profile_img" />
+    </RelativeLayout>
+
+
+</LinearLayout>

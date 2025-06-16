@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lay_model_home"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_corner_bg"
+    android:rotation="-360"
+    android:visibility="gone"
+    android:rotationX="-360"
+    android:rotationY="-360"
+    app:cardCornerRadius="@dimen/dp_10"
+    app:cardElevation="@dimen/dp_5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/warngin_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="#FFD54F"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Low balance! Recharge to get trip"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/lay_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/warngin_lay"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:background="@color/white">
+
+
+                <TextView
+                    android:id="@+id/btn_shift_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="45dp"
+                    android:background="@drawable/shiftbg"
+                    android:gravity="center"
+                    android:maxWidth="120dp"
+                    android:minWidth="70dp"
+                    android:minHeight="30dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:text="online"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_emergency_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="45dp"
+                    android:background="@drawable/emergency_contact_btn"
+                    android:gravity="center"
+                    android:maxWidth="150dp"
+                    android:minWidth="70dp"
+                    android:minHeight="30dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:text="@string/emergency"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/hsv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lay_btn"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/home_lay"
+                    android:layout_width="@dimen/pad_100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/home_iv"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_home_unfocus" />
+
+
+                    <TextView
+                        android:id="@+id/home_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="top|center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/home"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/earnings_lay"
+                    android:layout_width="@dimen/pad_100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:id="@+id/badge_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/earnings_iv"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/ic_earnings_unfocus" />
+
+                        <TextView
+                            android:id="@+id/badge_notification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignRight="@id/earnings_iv"
+                            android:background="@android:drawable/ic_notification_overlay"
+                            android:text="  "
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+
+                    <TextView
+
+                        android:id="@+id/earnings_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="top|center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/earnings"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/profile_lay"
+                    android:layout_width="@dimen/pad_100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/profile_iv"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_profile_unfocus" />
+
+
+                    <TextView
+
+                        android:id="@+id/profile_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="top|center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/profile"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/track_now_lay"
+                    android:layout_width="@dimen/pad_100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/track_now_iv"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_tracking_unfocus" />
+
+
+                    <TextView
+
+                        android:id="@+id/track_now_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="top|center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/track_now"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/inbox_lay"
+                    android:layout_width="@dimen/pad_100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/inbox_iv"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        app:srcCompat="@drawable/ic_inbox" />
+
+
+                    <TextView
+
+                        android:id="@+id/inbox_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="top|center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/inbox"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/onmyway_lay"
+                    android:layout_width="@dimen/pad_100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+                    <ImageView
+                        android:id="@+id/onmyway_iv"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        app:srcCompat="@drawable/ic_onmyway_offline" />
+
+
+                    <TextView
+
+                        android:id="@+id/onmyway_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:gravity="top|center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:singleLine="true"
+                        android:text="@string/onmyway"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/streetpick_lay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <ImageView
+                        android:id="@+id/streetpick_iv"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_street_pickup_unfocus" />
+
+
+                    <TextView
+
+                        android:id="@+id/streetPick_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_weight="1"
+                        android:ellipsize="marquee"
+                        android:gravity="top|center_horizontal"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:paddingRight="4dp"
+                        android:text="@string/street_pickup"
+                        android:textColor="@color/blue_color"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/hsv"
+            android:background="#bfbfbf"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:id="@+id/full_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/pad_5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/message_Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:padding="@dimen/pad_5dp"
+            android:text="message"
+            android:textColor="@color/block"
+            android:textSize="14sp"
+            android:maxLines="2"
+            android:minLines="2"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/time_Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:drawablePadding="@dimen/dp_5"
+            android:gravity="center"
+            android:padding="@dimen/pad_5dp"
+            android:text="12.12"
+            android:textColor="@color/button_reject"
+            android:textSize="12sp"
+            android:visibility="visible"
+            android:layout_gravity="end"/>
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

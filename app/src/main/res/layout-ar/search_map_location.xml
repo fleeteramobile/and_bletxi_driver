@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/select_drop_location"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/ic_header_new">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginRight="?attr/actionBarSize"
+            app:srcCompat="@drawable/back"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/header_titleTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            app:srcCompat="@drawable/headicon"
+            android:textColor="@color/header_text"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+    <include layout="@layout/map_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/mapppin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
+            app:srcCompat="@drawable/ic_map_marker" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_below="@+id/header_bar"
+        android:id="@+id/tapped_location1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/border_bg"
+        android:gravity="left"
+        android:padding="10dp"
+        android:drawablePadding="10dp"
+        android:text="@string/tap_drop"
+        android:textSize="12sp"
+        android:visibility="gone"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchlay"
+        android:layout_below="@+id/header_bar"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        android:visibility="visible"
+       >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:id="@+id/pickupp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tapped_location"
+                        style="@style/enterTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:gravity="center|left"
+                        android:hint="@string/location"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:padding="5dp"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|right"
+                    android:background="@color/white"
+                    android:gravity="right"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/pick_search_img"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/quantum_ic_search_grey600_24"
+                        android:visibility="visible"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/butt_onboard"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/button_accept"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:text="Confirm"
+        android:textAllCaps="false"
+        android:textColor="@drawable/text_color_black_to_white" />
+</RelativeLayout>

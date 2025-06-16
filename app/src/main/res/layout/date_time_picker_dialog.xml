@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/inner_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/draw_forget_popup_bg"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/header"
+            android:layout_alignParentTop="true"
+
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/f_textview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/select_date_time"
+                android:textColor="@color/textviewcolor_dark"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_below="@+id/f_textview"
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/light_white" />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/footer"
+            android:layout_alignParentBottom="true"
+
+            android:orientation="vertical" >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/butConfirmTime"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/button_accept"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/submit"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/footer"
+            android:layout_below="@id/header"
+            android:layout_marginTop="05dp">
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TimePicker
+                    android:id="@+id/timePicker1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="05dp"
+                    android:paddingRight="05dp" />
+
+                <DatePicker
+                    android:id="@+id/datePicker1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:calendarViewShown="false"
+                    android:layout_marginTop="05dp"
+                    android:paddingLeft="05dp"
+                    android:paddingRight="05dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

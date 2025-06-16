@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+
+
+    android:id="@+id/earn_lay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+   android:layout_margin="10dp"
+
+    app:cardBackgroundColor="@color/white"
+app:cardCornerRadius="10dp"
+  app:cardElevation="5dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
+
+    <LinearLayout
+
+        android:id="@+id/main_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+android:layout_margin="5dp"
+        android:padding="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_trip_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+
+            android:id="@+id/txt_date"
+            style="@style/edittext_style"
+            android:layout_height="wrap_content"
+
+            android:layout_width="match_parent"
+            android:text=""
+            android:textColor="#A5A5A5"
+
+            />
+
+        <TextView
+
+            android:id="@+id/txt_paymentBy"
+            style="@style/edittext_style"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text=""
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+
+                    style="@style/edittext_style"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Total Amount"
+                    android:gravity="center"
+                    android:textColor="#666666"
+
+                    />
+                <TextView
+                    android:id="@+id/txt_amount"
+                    style="@style/edittext_style"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text=""
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
+
+                <TextView
+
+                    style="@style/edittext_style"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Status"
+                    android:gravity="center"
+                    android:textColor="#666666"
+
+                    />
+                <TextView
+                    android:id="@+id/status_txt"
+                    style="@style/edittext_style"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text=""
+                    android:textColor="#018947"
+                    android:layout_marginTop="5dp"
+android:textStyle="bold"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+
+            android:id="@+id/txt_status"
+
+            style="@style/edittext_style"
+
+            android:layout_height="wrap_content"
+
+            android:layout_width="match_parent"
+
+            android:text="sal;las;as;sla;sal;f"
+
+            />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+
+
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/inner_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="20dp"
+    android:background="@color/transparent"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/reason_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/edt_accesskey"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/transparent"
+                android:hint="enter your accesskey"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor" />
+
+
+            <EditText
+                android:id="@+id/edt_url"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/transparent"
+                android:hint="enter your url"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor" />
+
+            <EditText
+                android:id="@+id/edt_domain"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/transparent"
+                android:hint="enter your domain"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor" />
+            <EditText
+                android:id="@+id/edt_company_key"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="05dp"
+                android:background="@color/transparent"
+                android:hint="enter your company key"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="FNpfuspyEAzhjfoh2ONpWK0rsnClVL6OCaasqDQtWdI="
+                android:textColor="@color/black"
+                android:textColorHint="@color/hintcolor" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/linebottom_light" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_ok"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="01dp"
+                android:layout_marginLeft="03dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/button_accept" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

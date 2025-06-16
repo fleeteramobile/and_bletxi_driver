@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/quantum_grey100"
+    android:orientation="vertical"
+    android:id="@+id/storeAndSecureParentLay"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/headerLay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_18"
+            android:text="@string/see_how_we_use_your_data"
+            android:textColor="@color/black_new" />
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            app:srcCompat="@drawable/back"
+            android:padding="@dimen/dp_5"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_10"
+            android:visibility="visible" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey_color_new"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginBottom="@dimen/dp_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvUseData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_new"
+                    android:textStyle="bold"
+                    android:text="@string/see_how_we_use_your_data"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_color_text"
+                    android:text="@string/how_do_we_use_your_data_description"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textSize="14sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/grey_color_new"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPrivacyPolicy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_new"
+                    android:textStyle="bold"
+                    android:text="@string/brief_privacy_policy"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_color_text"
+                    android:text="@string/brief_privacy_policy_description"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textSize="14sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/grey_color_new"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvCollectData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black_new"
+                        android:text="@string/what_do_we_collect"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:textSize="16sp"/>
+                    <ImageView
+                        android:id="@+id/collect_information_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="6"
+                        app:srcCompat="@drawable/plus_icon"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/collect_information_desc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_color_text"
+                    android:text="@string/what_do_we_collect_desctiption"
+                    android:maxLines="2"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textSize="14sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/grey_color_new"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvUseItFor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black_new"
+                        android:text="@string/what_do_we_use_it_for"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:textSize="16sp"/>
+                    <ImageView
+                        android:id="@+id/information_usage_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="6"
+                        app:srcCompat="@drawable/plus_icon"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/information_usage_desc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_color_text"
+                    android:text="@string/what_do_we_use_it_fo_descr"
+                    android:maxLines="2"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textSize="14sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/grey_color_new"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvProtectYourData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black_new"
+                        android:text="@string/how_do_we_protect_your_data"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:textSize="16sp"/>
+                    <ImageView
+                        android:id="@+id/protect_information_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="6"
+                        app:srcCompat="@drawable/plus_icon"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/protect_information_desc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_color_text"
+                    android:text="@string/how_do_we_protect_your_data_desc"
+                    android:maxLines="2"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textSize="14sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/grey_color_new"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvRights"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black_new"
+                        android:text="@string/know_your_rights"
+                        android:layout_gravity="start"
+                        android:gravity="start"
+                        android:textStyle="bold"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:textSize="16sp"/>
+                    <ImageView
+                        android:id="@+id/know_information_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="6"
+                        app:srcCompat="@drawable/plus_icon"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/know_information_desc_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey_color_text"
+                    android:text="@string/know_your_rights_desc"
+                    android:maxLines="2"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textSize="14sp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/grey_color_new"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</LinearLayout>

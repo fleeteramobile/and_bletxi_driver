@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/inner_content"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/reason_bg"
+        android:gravity="center"
+
+        android:orientation="vertical">
+
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"
+            android:background="@color/linebottom_light" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.onewaytripcalltaxi.driver.Login.countrycode.CountryCodePicker
+                    android:id="@+id/ccp"
+                    app:defaultNameCode="IN"
+                    app:hideNameCode="true"
+                    app:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/acc_signin" />
+
+                <EditText
+                    android:id="@+id/forgotmail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/mobileno"
+                    android:maxLength="16"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/edittextcolor"
+                    android:textColorHint="@color/hintcolor" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/linebottom_light" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="05dp"
+                android:paddingRight="05dp"
+                android:weightSum="2">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cancelbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="08dp"
+                    android:textSize="15sp"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black" />
+
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="40dp"
+                    android:background="@color/linebottom_light" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/okbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:padding="08dp"
+                    android:textSize="15sp"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/button_accept" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

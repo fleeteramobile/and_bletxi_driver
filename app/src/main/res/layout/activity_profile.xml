@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".profile.ProfileActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/MyCardView"
+                android:layout_width="match_parent"
+                android:layout_height="325dp"
+                android:background="@drawable/draw_earnings_heading"
+                app:cardBackgroundColor="@color/app_theme_color">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_margin="20dp"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            app:cardCornerRadius="29dp"
+                            android:layout_gravity="center"
+                            app:cardElevation="5dp"
+                            android:id="@+id/back_trip_details"
+                            app:cardBackgroundColor="@color/black"
+                            >
+
+                            <ImageView
+                                android:id="@+id/callText"
+                                style="@style/enterTxt"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_fleetera_back"
+                                android:textAllCaps="false"
+
+
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            style="@style/edittext_style_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:text="Profile"
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/white"
+                            android:textSize="18dp"
+
+                            android:textStyle="bold" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            app:cardCornerRadius="29dp"
+                            android:id="@+id/logout"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="center"
+                            app:cardElevation="5dp"
+                            app:cardBackgroundColor="@color/black"
+                            >
+
+                            <ImageView
+                                style="@style/enterTxt"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/logout_new"
+                                android:textAllCaps="false"
+
+
+                                android:textSize="14sp" />
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                            android:id="@+id/profile_img"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+
+
+
+                          />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/user_name"
+                                style="@style/edittext_style_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/transparent"
+                                android:text=""
+
+                                android:textColor="@color/white"
+                                android:textSize="18dp"
+
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/edit_img"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="5dp"
+                                android:scaleType="centerCrop"
+
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_margin="20dp"
+
+
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_fleetera_call"
+                        android:layout_gravity="top"
+
+                        android:visibility="visible" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            style="@style/edittext_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Mobile"
+
+                            android:textColor="@color/black"
+
+
+                            />
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            style="@style/edittext_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/mobile_number"
+                            android:text=""
+
+                            android:textColor="@color/black"
+
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:layout_marginRight="10dp"
+                    android:background="#D5DDE0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_fleetera_email"
+                        android:layout_gravity="top"
+
+                        android:visibility="visible" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            style="@style/edittext_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Email"
+
+                            android:textColor="@color/black"
+
+
+                            />
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            style="@style/edittext_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/email_id"
+                            android:text=""
+
+                            android:textColor="@color/black"
+
+
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+
+                    android:layout_marginRight="10dp"
+                    android:background="#D5DDE0" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:stateListAnimator="@null"
+        android:elevation="10dp"
+        android:background="@drawable/ic_fleetera_button_shadow"
+        android:orientation="horizontal">
+
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/body_iv"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+
+            android:textAllCaps="true"
+            android:padding="10dp"
+            android:text="Edit Profile"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+</RelativeLayout>

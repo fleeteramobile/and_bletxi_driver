@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="56dp"
+    android:background="@drawable/ic_header_new"
+    android:gravity="center_vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/doneBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/green_to_white"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:text="@string/submit"
+            android:textColor="@drawable/text_color_black_to_white" />
+
+        <TextView
+            android:id="@+id/signup_title"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textSize="14sp"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</LinearLayout>

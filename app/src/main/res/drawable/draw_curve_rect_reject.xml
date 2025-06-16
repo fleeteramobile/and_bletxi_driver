@@ -1,0 +1,25 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the line -->
+    <item
+        android:bottom=".5dp"
+        android:left=".5dp"
+        android:right=".5dp"
+        android:top=".5dp">
+          <shape>
+              <solid android:color="@color/white" />
+              <corners
+                  android:topLeftRadius="10dp"
+                  android:topRightRadius="10dp"
+                  android:bottomRightRadius="10dp"
+                  android:bottomLeftRadius="10dp"/>
+
+              <gradient
+                  android:endColor="@color/decline_clr"
+                  android:startColor="@color/decline_clr"
+                  android:type="linear" />
+          </shape>
+
+    </item>
+    <!-- This is the main color -->
+
+</layer-list>

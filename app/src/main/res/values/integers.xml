@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="promoMaxLength">10</integer>
+    <integer name="anim_duration_long_medium">1250</integer>
+
+</resources>

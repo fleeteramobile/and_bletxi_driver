@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="27dp"
+    android:height="27dp"
+    android:viewportWidth="27"
+    android:viewportHeight="27">
+  <path
+      android:pathData="M0,0h27v27h-27z"
+      android:fillColor="#F5F5F5"/>
+  <group>
+    <clip-path
+        android:pathData="M-307,-783h393v852h-393z"/>
+    <path
+        android:pathData="M-307,-783h393v852h-393z"
+        android:fillColor="#ffffff"/>
+    <group>
+      <clip-path
+          android:pathData="M-307,-783h393v852h-393z"/>
+      <path
+          android:pathData="M-307,-783h393v852h-393z"
+          android:fillColor="#ffffff"/>
+    </group>
+    <path
+        android:pathData="M-29,-1C-29,-9.284 -22.284,-16 -14,-16H47C55.284,-16 62,-9.284 62,-1V29C62,37.284 55.284,44 47,44H-14C-22.284,44 -29,37.284 -29,29V-1Z"
+        android:fillColor="#ffffff"
+        android:fillType="evenOdd"/>
+    <path
+        android:pathData="M24.75,25.594H2.25C1.789,25.594 1.406,25.211 1.406,24.75C1.406,24.289 1.789,23.906 2.25,23.906H24.75C25.211,23.906 25.594,24.289 25.594,24.75C25.594,25.211 25.211,25.594 24.75,25.594Z"
+        android:fillColor="@color/app_theme_color"/>
+    <path
+        android:pathData="M4.163,24.75H2.475L2.531,11.216C2.531,10.26 2.97,9.371 3.724,8.786L11.599,2.655C12.713,1.788 14.276,1.788 15.401,2.655L23.276,8.775C24.019,9.36 24.469,10.271 24.469,11.216V24.75H22.781V11.227C22.781,10.8 22.579,10.383 22.241,10.113L14.366,3.993C13.86,3.6 13.151,3.6 12.634,3.993L4.759,10.125C4.421,10.383 4.219,10.8 4.219,11.227L4.163,24.75Z"
+        android:fillColor="@color/app_theme_color"/>
+    <path
+        android:pathData="M19.125,25.594H7.875C7.414,25.594 7.031,25.211 7.031,24.75V14.063C7.031,12.667 8.167,11.531 9.563,11.531H17.438C18.833,11.531 19.969,12.667 19.969,14.063V24.75C19.969,25.211 19.586,25.594 19.125,25.594ZM8.719,23.906H18.281V14.063C18.281,13.601 17.899,13.219 17.438,13.219H9.563C9.101,13.219 8.719,13.601 8.719,14.063V23.906Z"
+        android:fillColor="@color/app_theme_color"/>
+  </group>
+</vector>

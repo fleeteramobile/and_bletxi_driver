@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slide_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_header_new"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:textColor="@color/link_color"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/onmyway"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:foreground="@drawable/background_shadow"
+        android:visibility="visible"></FrameLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollview_main"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:visibility="visible"
+        android:layout_marginBottom="@dimen/dp_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/addmyway_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/sp_20"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_15"
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingRight="@dimen/dp_15"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:text="@string/add_onmyway"
+                    android:textAllCaps="false"
+                    android:textColor="@drawable/text_color_black_to_white"
+                    android:textSize="14sp" />
+
+                <RadioGroup
+                    android:id="@+id/rb_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="@dimen/dp_5">
+
+                    <RadioButton
+                        android:id="@+id/rb_def"
+                        style="@android:style/Widget.CompoundButton.CheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/def"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                       android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_cus"
+                        style="@android:style/Widget.CompoundButton.CheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/custom"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="@dimen/dp_10"/>
+
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:layout_weight="1.5"
+                        android:text="@string/pickup_range"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/pickup_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/editext_bg_selector"
+
+                        android:hint="@string/enter_pickup_range"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/dp_5"
+                        android:maxLength="4"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/title_text_color"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:layout_weight="1.5"
+                        android:text="@string/stop_range"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/stops_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/editext_bg_selector"
+
+                        android:hint="@string/enter_stop_range"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/dp_5"
+                        android:maxLength="4"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/title_text_color"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:layout_weight="1.5"
+                        android:text="@string/drop_range"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/drop_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/editext_bg_selector"
+
+                        android:hint="@string/enter_drop_range"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/dp_5"
+                        android:maxLength="4"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/title_text_color"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="10dp"
+                        android:text="@string/allow_stop_points"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/stops_switch"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:checked="false"
+                        android:textOff=""
+                        android:textOn=""
+                        app:theme="@style/Color1SwitchStyle" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/btn_setting"
+                    android:layout_width="250dp"
+                    android:layout_height="@dimen/tool_bar_bottom"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/sp_20"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textColor="@drawable/text_color_black_to_white"
+                    android:textSize="16sp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/status_Txt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="10dp"
+                        android:text="@string/status"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/status_switch"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:checked="false"
+                        android:textOff=""
+                        android:textOn=""
+                        app:theme="@style/Color1SwitchStyle" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/route1_Txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="@drawable/editext_bg_selector_grey"
+                android:drawableRight="@drawable/right_arrow"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text|textCapSentences"
+                android:padding="@dimen/dp_10"
+                android:singleLine="true"
+                android:text="Route 1"
+                android:textColor="@color/black"
+                android:textColorHint="@color/title_text_color"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/route2_Txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="@drawable/editext_bg_selector_grey"
+                android:drawableRight="@drawable/right_arrow"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text|textCapSentences"
+                android:padding="@dimen/dp_10"
+                android:singleLine="true"
+                android:text="Route 2"
+                android:textColor="@color/black"
+                android:textColorHint="@color/title_text_color"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/route3_Txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="@drawable/editext_bg_selector_grey"
+                android:drawableRight="@drawable/right_arrow"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text|textCapSentences"
+                android:padding="@dimen/dp_10"
+                android:singleLine="true"
+                android:text="Route 3"
+                android:textColor="@color/black"
+                android:textColorHint="@color/title_text_color"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

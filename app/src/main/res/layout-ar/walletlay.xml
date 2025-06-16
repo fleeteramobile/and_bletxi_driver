@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootContain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/header_bgcolor"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/giff"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <include
+
+        layout="@layout/include_headler"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/addmoneyBut"
+        android:layout_below="@+id/loading"
+        android:background="@color/header_bgcolor"
+
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_gravity="center"
+                android:background="@color/header_bgcolor"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="160dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/bg1"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/walletbalTxt"
+                        style="@style/enterTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="45sp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/linebottom_light" />
+
+                    <TextView
+                        style="@style/enterTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@drawable/about"
+                        android:drawablePadding="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/walletmsg"
+                        android:textColor="@color/textviewcolor_light" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/walletPageIcon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="50dp"
+                    app:srcCompat="@drawable/wallet2" />
+
+
+                <!--
+                     <TextView
+                    android:id="@+id/editTxt"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/profileimg_bottom"
+                    android:gravity="center"
+                    android:text="@string/edit" />
+                -->
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top"
+                android:layout_marginTop="10dp"
+android:background="@color/header_bgcolor"
+                android:orientation="vertical"
+                android:padding="1dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/taxi__button_height"
+                    android:layout_below="@+id/body_lay"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/transparent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:background="@color/linebottom_light" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/taxi__button_height"
+                        android:layout_below="@+id/body_lay"
+                        android:layout_gravity="center"
+                        android:background="@color/header_bgcolor"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/recharge_money"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </FrameLayout>
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        >
+
+                        <TextView
+                            android:id="@+id/monoption1"
+                            style="@style/enterTxt"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+
+                            android:padding="10dp"
+                            android:background="@drawable/draw_edittext_bg"
+                            android:gravity="center"
+
+                            android:text="100"
+                            android:textColor="@color/textviewcolor_dark" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        >
+                    <TextView
+                        android:id="@+id/monoption2"
+                        style="@style/enterTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@drawable/draw_edittext_bg"
+                        android:gravity="center"
+                        android:text="200"
+                        android:textColor="@color/textviewcolor_dark" />
+</LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        >
+                    <TextView
+                        android:id="@+id/monoption3"
+                        style="@style/enterTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@drawable/draw_edittext_bg"
+                        android:gravity="center"
+                        android:text="300"
+                        android:textColor="@color/textviewcolor_dark" />
+                        </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/draw_edittext_bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/cur_sym"
+                        style="@style/enterTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingLeft="10dp"
+                        android:text="" />
+
+                    <EditText
+                        android:id="@+id/addmoneyEdt"
+                        style="@style/enterTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/hintcolor"
+                        android:textColor="@color/header_text"
+                        android:background="@color/transparent"
+                        android:gravity="center_vertical"
+                        android:hint="Enter the amount between $100-$2000"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:imeOptions="actionDone"
+                        android:padding="10dp"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/procodeTxt"
+                    style="@style/enterTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/have_promocode"
+                    android:textColor="@color/button_accept" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addmoneyBut"
+        style="@style/enterTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@color/button_accept"
+        android:gravity="center"
+        android:text="@string/addmoney"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="visible" />
+</RelativeLayout>

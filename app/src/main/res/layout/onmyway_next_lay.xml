@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slide_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_header_new"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:textColor="@color/link_color"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/onmyway"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:foreground="@drawable/background_shadow"
+        android:visibility="visible"></FrameLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollview_second"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/route1_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/title"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/editext_bg_selector"
+                    android:hint="@string/enter_title"
+                    android:inputType="text|textCapSentences"
+                    android:padding="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/title_text_color"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/start_location"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edt_start_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/editext_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/enter_start_loc"
+                    android:inputType="text|textCapSentences"
+                    android:padding="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/title_text_color"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/start_time"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edt_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/editext_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/enter_start_time"
+                    android:inputType="text|textCapSentences"
+                    android:padding="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/title_text_color"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/end_location"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edt_end_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/editext_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/enter_end_loc"
+                    android:inputType="text|textCapSentences"
+                    android:padding="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/title_text_color"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/end_time"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edt_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:background="@drawable/editext_bg_selector"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/enter_end_time"
+                    android:inputType="text|textCapSentences"
+                    android:padding="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/title_text_color"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:text="@string/week_days"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/id_weekdays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/route_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/sp_20"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_15"
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingRight="@dimen/dp_15"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:text="@string/config_route"
+                    android:textAllCaps="false"
+                    android:textColor="@drawable/text_color_black_to_white"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="250dp"
+                    android:layout_height="@dimen/tool_bar_bottom"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/sp_20"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textColor="@drawable/text_color_black_to_white"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

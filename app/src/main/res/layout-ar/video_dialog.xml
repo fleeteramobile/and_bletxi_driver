@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/slide_lay"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/dp_10">
+
+
+        <VideoView
+            android:id="@+id/vdVw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_above="@+id/okbtn"
+           />
+
+        <TextView
+            android:id="@+id/okbtn"
+            android:layout_width="250dp"
+            android:layout_height="@dimen/tool_bar_bottom"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/radius_btn_background"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Skip"
+            android:textAllCaps="false"
+            android:textColor="@drawable/text_color_black_to_white"
+            android:textSize="18sp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

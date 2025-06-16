@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/signinlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/appbg"
+    android:focusableInTouchMode="false"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/slide_lay"
+        android:foreground="@drawable/background_shadow"
+        android:visibility="visible">
+        <!-- YOUR STUFF HERE -->
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@color/appbg">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp_2"
+            android:background="@color/appbg">
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                />
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/lay"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/imageview"
+                android:background="@drawable/draw_curve_rect">
+
+
+                <TextView
+                    android:id="@+id/sign_txt"
+                    android:gravity="center"
+                    android:text="Sign In"
+                    android:textColor="@color/block"
+                    android:textSize="22dp"
+                    android:layout_marginTop="@dimen/dp_40"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+                <EditText
+                    android:id="@+id/phoneEdt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="120dp"
+                    android:background="@drawable/login_border_edittext"
+                    android:drawableLeft="@drawable/mobileno"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/phone"
+                    android:inputType="number"
+                    android:maxLength="13"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/textviewcolor_dark"
+                    android:textColorHint="@color/hintcolor" />
+
+                <View
+                    android:id="@+id/viewborder"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/phoneEdt"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/bordercolor" />
+
+                <RelativeLayout
+                    android:id="@+id/passwordlay"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewborder"
+                    android:background="#DFEFE9">
+
+
+                    <TextView
+                        android:id="@+id/hidePwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/appbg"
+                        android:padding="9dp"
+                        android:text="@string/show"
+                        android:textColor="@color/block"
+                        android:visibility="gone" />
+
+
+                    <EditText
+                        android:id="@+id/passwordEdt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_toLeftOf="@+id/hidePwd"
+                        android:background="@drawable/login_border_edittext"
+                        android:drawableLeft="@drawable/password"
+                        android:drawablePadding="5dp"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:maxLength="32"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/textviewcolor_dark"
+
+                        android:textColorHint="@color/hintcolor" />
+                </RelativeLayout>
+
+
+                <View
+                    android:id="@+id/viewborderdown"
+                    android:layout_below="@+id/passwordlay"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:visibility="gone"
+                    android:background="@color/bordercolor" />
+
+
+
+                <TextView
+                    android:layout_below="@+id/viewborderdown"
+                    android:id="@+id/signup_web"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginEnd="100dp"
+                    android:text="@string/signup"
+                    android:background="@drawable/radius_btn_background"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/doneBtn1"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/signup_web"
+                    android:background="@drawable/radius_btn_background"
+                    android:gravity="center"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginEnd="100dp"
+                    android:visibility="visible"
+                    android:padding="10dp"
+                    android:text="@string/s_signin"
+                    android:textColor="@drawable/text_color_black_to_white" />
+
+
+                <TextView
+                    android:id="@+id/forgotpswdTxt"
+                    android:text="@string/forget_password"
+                    android:gravity="center"
+                    android:textColor="@color/button_reject"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/doneBtn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/t_c_web_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:text="@string/terms_condition"
+                android:textColorHint="@color/hintcolor" />
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

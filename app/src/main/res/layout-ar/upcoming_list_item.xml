@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/normalLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:id="@+id/book_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/map_image"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                        android:id="@+id/driver_image"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:src="@drawable/loadingimage" />
+
+                    <TextView
+                        android:id="@+id/trip_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/can_track"
+                        android:layout_toRightOf="@+id/driver_image"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/black"
+                        tools:text="sunn" />
+
+                    <TextView
+                        android:id="@+id/trip_driver_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/trip_time"
+                        android:layout_toRightOf="@+id/driver_image"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/trip_history_text_grey"
+                        tools:text="tatatatat" />
+
+                    <FrameLayout
+                        android:id="@+id/can_track"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/trip_track"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:background="@drawable/rect_red"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="5dp"
+                            android:paddingBottom="5dp"
+                            android:text="@string/track_now"
+                            android:textColor="@color/button_accept"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/trip_cancel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="8dp"
+                            android:background="@drawable/cancelbg"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="5dp"
+                            android:text="@string/cancel"
+                            android:textColor="@color/black"
+                            android:visibility="visible" />
+                    </FrameLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookLaterLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5">
+
+            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                android:id="@+id/passengerImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/loadingimage"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toStartOf="@id/passengerPhoneTxt"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/passengerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:text="@string/pickup_passenger"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+                android:id="@+id/pd_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/passengerName" />
+
+            <TextView
+                android:id="@+id/pickupTimeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:text="@string/pickup_time"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/pd_view" />
+
+            <TextView
+                android:id="@+id/updateTimeTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:drawableStart="@drawable/ic_access_time"
+                android:text="@string/pickup_time"
+                android:textStyle="bold"
+                card_view:layout_constraintEnd_toStartOf="@+id/updateDisTxt"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/pickupTimeTxt" />
+
+
+            <TextView
+                android:id="@+id/updateDisTxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:drawableStart="@drawable/distance_icon"
+                android:drawablePadding="@dimen/dp_5"
+                android:gravity="center"
+                android:text="@string/t_distance"
+                android:textStyle="bold"
+                card_view:layout_constraintBaseline_toBaselineOf="@+id/updateTimeTxt"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/updateTimeTxt" />
+
+            <TextView
+                android:id="@+id/passengerPhoneTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="@string/passenger_phone"
+                android:visibility="gone"
+                card_view:layout_constraintStart_toEndOf="@id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/updateTimeTxt" />
+
+
+            <TextView
+                android:id="@+id/passengerCallTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:background="@drawable/cancelbg"
+                android:gravity="center"
+                android:padding="@dimen/dp_5"
+                android:text="@string/passenger_phone"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/updateTimeTxt" />
+
+
+            <TextView
+                android:id="@+id/cancelTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@drawable/rect_red"
+                android:gravity="center"
+                android:padding="@dimen/dp_5"
+                android:text="@string/cancel"
+                card_view:layout_constraintBaseline_toBaselineOf="@id/passengerCallTxt"
+                card_view:layout_constraintEnd_toStartOf="@+id/startTripTxt"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerCallTxt" />
+
+            <TextView
+                android:id="@+id/startTripTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@drawable/cancelbg"
+                android:gravity="center"
+                android:padding="@dimen/dp_5"
+                android:text="@string/start_trip"
+                card_view:layout_constraintBaseline_toBaselineOf="@id/passengerCallTxt"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/cancelTxt" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

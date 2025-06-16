@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/terms_contain"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/slide_lay"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_header_new"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/slideImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/back"
+            android:drawablePadding="5dp"
+            android:padding="5dp"
+            android:textColor="@color/button_accept"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/headerTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/terms_condition2"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:foreground="@drawable/background_shadow"
+        android:visibility="visible">
+        <!-- YOUR STUFF HERE -->
+    </FrameLayout>
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

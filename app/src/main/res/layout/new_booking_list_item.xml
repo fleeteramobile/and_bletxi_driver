@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookLaterLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5">
+
+            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                android:id="@+id/passengerImg"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/loadingimage"
+                android:visibility="gone"
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/passengerName"
+                style="@style/edittext_style_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:text="@string/pickup_passenger"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+
+            <LinearLayout
+                android:id="@+id/pd_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+
+                android:orientation="vertical"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/passengerName"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+
+                            android:src="@drawable/ic_fleetera_pick_point"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:src="@drawable/ic_fleetera_line"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:src="@drawable/ic_fleetera_drop"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/pickup_location"
+                            style="@style/edittext_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="10:50" />
+
+
+                        <TextView
+                            android:id="@+id/drop_location"
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="35dp"
+                            android:maxLines="2"
+                            android:text="10:50" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/pickupTimeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:text="@string/pickup_time"
+                android:textStyle="bold"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/pd_view" />
+
+            <TextView
+                android:id="@+id/updateTimeTxt_new"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="@string/pickup_time"
+                android:textStyle="bold"
+                card_view:layout_constraintEnd_toStartOf="@+id/updateDisTxt"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
+                card_view:layout_constraintTop_toBottomOf="@+id/pickupTimeTxt" />
+
+
+            <TextView
+                android:id="@+id/updateDisTxt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:drawablePadding="@dimen/dp_5"
+                android:gravity="center"
+                android:text="@string/t_distance"
+                android:textStyle="bold"
+                card_view:layout_constraintBaseline_toBaselineOf="@+id/updateTimeTxt_new"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/updateTimeTxt_new" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/updateTimeTxt_new">
+
+
+                <LinearLayout
+                    android:id="@+id/startTripTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_fleetera_button_shadow"
+                    android:elevation="10dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:stateListAnimator="@null">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/butt_onboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/body_iv"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/inter_bold"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/accept"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

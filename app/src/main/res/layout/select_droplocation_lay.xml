@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/select_drop_location"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/header_bgcolor">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginRight="?attr/actionBarSize"
+            app:srcCompat="@drawable/back"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/header_titleTxt"
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            app:srcCompat="@drawable/headicon"
+            android:textColor="@color/header_text" />
+
+    </RelativeLayout>
+    <include layout="@layout/map_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_bar"/>
+    <TextView
+        android:layout_below="@+id/header_bar"
+        android:id="@+id/tapped_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/border_bg"
+        android:gravity="left"
+        android:padding="10dp"
+        android:drawablePadding="10dp"
+        android:text="@string/tap_drop"
+        android:textSize="12sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/butt_onboard"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/button_accept"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:text="@string/arvd_destination"
+        android:textAllCaps="false"
+        android:textColor="@drawable/text_color_black_to_white" />
+</RelativeLayout>

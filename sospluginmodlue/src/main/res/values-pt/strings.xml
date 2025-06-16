@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sos_short_desc">Vamos tornar as viagens mais seguras ...</string>
+    <string name="sos_long_desc">Alerte seus entes queridos em caso de emergência. Adicione-os aos seus contatos de emergência.</string>
+    <string name="sos_more_info">Você pode adicionar até 3 contatos</string>
+    <string name="add_contacts">Adicionar contatos</string>
+    <string name="already_added">Contato já presente. Por favor, tente adicionar outro contato.</string>
+    <string name="contact_limit_reached">Você pode adicionar até 3 contatos. Remova qualquer contato para adicionar outro.</string>
+    <string name="server_error">Tente novamente</string>
+    <string name="please_try_again">Por favor, tente novamente</string>
+    <string name="emergency">Emergência</string>
+    <string name="contact_min_alert">Por favor, selecione um número de contato válido</string>
+    <string name="sos_contact">Permissão de contatos de leitura é necessária para escolher contato de emergência</string>
+    <string name="str_loc">Precisa de actualizar a sua localização actual para o nosso servidor, a fim de verificar a disponibilidade do nosso motorista mais próximo e acompanhar a localização durante a viagem.</string>
+    <string name="alert_delete_contact">Tem certeza de que deseja excluir este contato da sua lista de emergência?</string>
+    <string name="emergency_contact">Contatos de emergência</string>
+
+    <string name="ok">Está bem</string>
+    <string name="cancel">Cancelar</string>
+</resources>
