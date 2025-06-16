@@ -1,7 +1,7 @@
 {
   "project_info": {
     "project_number": "297943794955",
-    "project_id": "com.onewaytripcalltaxidriver",
+    "project_id": "com.bluetaxidriver",
     "storage_bucket": "com.onewaytripcalltaxidriver.firebasestorage.app"
   },
   "client": [
@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297943794955:android:b1e0b96506505e4d668e0e",
         "android_client_info": {
-          "package_name": "com.onewaytripcalltaxidriver"
+          "package_name": "com.bluetaxidriver"
         }
       },
       "oauth_client": [],
@@ -28,7 +28,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297943794955:android:20010dbd84fa59f6668e0e",
         "android_client_info": {
-          "package_name": "com.onewaytripcalltaxidriver"
+          "package_name": "com.bluetaxidriver"
         }
       },
       "oauth_client": [],

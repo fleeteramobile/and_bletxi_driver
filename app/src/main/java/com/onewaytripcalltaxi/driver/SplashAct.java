@@ -24,6 +24,7 @@ import androidx.annotation.RequiresApi;
 import com.onewaytripcalltaxi.driver.data.CommonData;
 import com.onewaytripcalltaxi.driver.data.apiData.ApiRequestData;
 import com.onewaytripcalltaxi.driver.data.apiData.CompanyDomainResponse;
+import com.onewaytripcalltaxi.driver.homescreen.HomeScreenActivity;
 import com.onewaytripcalltaxi.driver.interfaces.APIResult;
 import com.onewaytripcalltaxi.driver.permission.DevicePermissionActivity;
 import com.onewaytripcalltaxi.driver.service.APIService_Retrofit_JSON_NoProgress;
@@ -239,7 +240,8 @@ public class SplashAct extends MainActivity {
         {
             String alertSchedule = getIntent().getStringExtra("alert_schedule");
             if (alertSchedule != null && alertSchedule.equals("1")) {
-                Intent i = new Intent(SplashAct.this, MyStatus.class);
+                Intent i = new Intent(SplashAct.this, HomeScreenActivity.class);
+              //  Intent i = new Intent(SplashAct.this, MyStatus.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 i.putExtra("alert_message", getIntent().getStringExtra("alert_message"));
                 i.putExtra("alert_schedule", "1");
@@ -513,7 +515,8 @@ public class SplashAct extends MainActivity {
             finish();
         } else {
             if (SessionSave.getSession("trip_id", SplashAct.this).equals("")) {
-                i = new Intent(SplashAct.this, MyStatus.class);
+               // i = new Intent(SplashAct.this, MyStatus.class);
+                i = new Intent(SplashAct.this, HomeScreenActivity.class);
                 startActivity(i);
                 finish();
             } else {
@@ -1074,7 +1077,8 @@ public class SplashAct extends MainActivity {
                             finish();
                         } else {
                             if (SessionSave.getSession("trip_id", SplashAct.this).equals("")) {
-                                i = new Intent(SplashAct.this, MyStatus.class);
+                              //  i = new Intent(SplashAct.this, MyStatus.class);
+                                i = new Intent(SplashAct.this, HomeScreenActivity.class);
                                 startActivity(i);
                                 finish();
                             } else {
@@ -1145,7 +1149,8 @@ public class SplashAct extends MainActivity {
                         finish();
                     } else {
                         if (SessionSave.getSession("trip_id", SplashAct.this).equals("")) {
-                            i = new Intent(SplashAct.this, MyStatus.class);
+                       //     i = new Intent(SplashAct.this, MyStatus.class);
+                            i = new Intent(SplashAct.this, HomeScreenActivity.class);
                             startActivity(i);
                             finish();
                         } else if (SessionSave.getSession(CommonData.IS_STREET_PICKUP, SplashAct.this, false)) {
@@ -1378,7 +1383,8 @@ public class SplashAct extends MainActivity {
                                     finish();
                                 } else {
                                     if (SessionSave.getSession("trip_id", SplashAct.this).equals("")) {
-                                        i = new Intent(SplashAct.this, MyStatus.class);
+                                       //i = new Intent(SplashAct.this, MyStatus.class);
+                                        i = new Intent(SplashAct.this, HomeScreenActivity.class);
                                         startActivity(i);
                                         finish();
                                     } else {
