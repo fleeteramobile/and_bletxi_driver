@@ -177,6 +177,7 @@ public class MyStatus extends MainActivity   {
         public void onReceive(Context context, Intent intent) {
             boolean show_alert = intent.getBooleanExtra("show_alert", false);
             if (show_alert) {
+
                 showRedAlert(NC.getString(R.string.low_gps_alert_message));
             } else {
                 hideRedAlert();
