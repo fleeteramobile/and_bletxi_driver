@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.onewaytripcalltaxi.driver.Login.LoginActivity;
 import com.onewaytripcalltaxi.driver.data.CommonData;
+import com.onewaytripcalltaxi.driver.homescreen.HomeScreenActivity;
 import com.onewaytripcalltaxi.driver.interfaces.APIResult;
 import com.onewaytripcalltaxi.driver.interfaces.ClickInterface;
 import com.onewaytripcalltaxi.driver.service.APIService_Retrofit_JSON;
@@ -682,7 +683,8 @@ e.printStackTrace();
                 if (mDialog != null && UserLoginAct.this != null)
                     mDialog.dismiss();
             } else {
-                final Intent i = new Intent(UserLoginAct.this, MyStatus.class);
+                final Intent i = new Intent(UserLoginAct.this, HomeScreenActivity.class);
+               // final Intent i = new Intent(UserLoginAct.this, MyStatus.class);
                 SessionSave.saveSession("need_animation", true, UserLoginAct.this);
                 SessionSave.saveSession(CommonData.SHIFT_OUT, false, UserLoginAct.this);
                 SessionSave.saveSession(CommonData.LOGOUT, false, UserLoginAct.this);
@@ -694,7 +696,8 @@ e.printStackTrace();
                     mDialog.dismiss();
             }
         } else {
-            final Intent i = new Intent(UserLoginAct.this, MyStatus.class);
+           // final Intent i = new Intent(UserLoginAct.this, MyStatus.class);
+            final Intent i = new Intent(UserLoginAct.this, HomeScreenActivity.class);
             SessionSave.saveSession(CommonData.SHIFT_OUT, false, UserLoginAct.this);
             SessionSave.saveSession(CommonData.LOGOUT, false, UserLoginAct.this);
             SessionSave.saveSession("need_animation", true, UserLoginAct.this);

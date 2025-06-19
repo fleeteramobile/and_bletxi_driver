@@ -21,7 +21,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.mayan.sospluginmodlue.service.SOSService;
 import com.onewaytripcalltaxi.driver.R;
 import com.onewaytripcalltaxi.driver.SplashAct;
 import com.onewaytripcalltaxi.driver.data.CommonData;
@@ -247,7 +246,7 @@ public class NetworkStatus extends BroadcastReceiver {
         if (!SessionSave.getSession("Id", context).equals("")) {
             SessionSave.saveSession("sos_id", SessionSave.getSession("Id", context), context);
             SessionSave.saveSession("user_type", "d", context);
-            context.startService(new Intent(context, SOSService.class));
+           // context.startService(new Intent(context, SOSService.class));
         }
     }
 

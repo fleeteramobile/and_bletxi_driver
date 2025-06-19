@@ -124,7 +124,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.maps.android.PolyUtil;
-import com.mayan.sospluginmodlue.service.SOSService;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -1913,8 +1912,8 @@ Boolean enable_os_waiting_fare = false;
         if (booking_Type.equals("2") || booking_Type.equals("3")) {
             showodometer();
         } else {
-            loadServices();
-          //  completeTripApi();
+            //loadServices();
+            completeTripApi();
         }
 
 
@@ -2432,9 +2431,9 @@ Boolean enable_os_waiting_fare = false;
     private void startSOSService() {
         SessionSave.saveSession("sos_id", SessionSave.getSession("Id", OngoingAct.this), OngoingAct.this);
         SessionSave.saveSession("user_type", "d", OngoingAct.this);
-        startService(new Intent(OngoingAct.this, SOSService.class));
+      //  startService(new Intent(OngoingAct.this, SOSService.class));
     }
-
+//
     private ArrayList<StopData> parseStop(String path) {
         ArrayList<StopData> stopDataArrayList = new ArrayList<>();
         stopListData = new ArrayList<>();
@@ -2960,13 +2959,8 @@ Boolean enable_os_waiting_fare = false;
                 j.put("driver_app_version", curVersion);
                 j.put("new_distance", localDistance);
                 j.put("stops", new JSONArray(new Gson().toJson(stopLists)));
-                if (servicesJsonArray.length()!=0)
-                {
-                    j.put("service_charge", servicesJsonArray);
 
 
-                }
-                j.put("stops", new JSONArray(new Gson().toJson(stopLists)));
 
 
                 if (booking_Type.equals("2") || booking_Type.equals("3")) {
@@ -4499,8 +4493,8 @@ Boolean enable_os_waiting_fare = false;
             @Override
             public void onClick(View arg0) {
                 mDialog.dismiss();
-                loadServices();
-                //completeTripApi();
+               // loadServices();
+                completeTripApi();
             }
         });
 

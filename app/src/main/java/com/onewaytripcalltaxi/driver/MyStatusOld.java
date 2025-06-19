@@ -78,7 +78,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.mayan.sospluginmodlue.service.SOSService;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -1339,7 +1338,7 @@ public class MyStatusOld extends MainActivity   {
         SessionSave.saveSession("user_type", "d", MyStatusOld.this);
 
 
-        startService(new Intent(MyStatusOld.this, SOSService.class));
+      //  startService(new Intent(MyStatusOld.this, SOSService.class));
     }
 
     @Override

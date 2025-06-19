@@ -54,6 +54,9 @@
         tools:replace="android:allowBackup,icon,theme,label"
         tools:targetApi="m">
         <activity
+            android:name=".tripnotification.TripNotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".homescreen.HomeScreenActivity"
             android:exported="false" />
         <activity

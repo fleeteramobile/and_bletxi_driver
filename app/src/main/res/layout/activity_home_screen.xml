@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="left">
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -10,54 +17,61 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="16dp"  tools:context=".MainActivity">
+        android:paddingBottom="16dp"
+        tools:context=".MainActivity">
+
+
+        <ImageView
+            android:id="@+id/menuIcon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/circle_blue_background"
+            android:padding="12dp"
+            android:src="@drawable/ic_menu_white"
+            app:layout_constraintStart_toStartOf="parent"  app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profileImageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/auto"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/settingsIcon"
+            android:layout_marginEnd="5dp"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/circularImageViewStyle" />
 
         <ImageView
             android:id="@+id/settingsIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/circle_blue_background"
             android:padding="12dp"
             android:src="@drawable/ic_notifications"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" /> <ImageView
-        android:id="@+id/notificationIcon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/circle_blue_background"
-        android:padding="12dp"
-        android:src="@drawable/ic_notifications"
-        app:layout_constraintEnd_toStartOf="@+id/settingsIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white" /> <TextView
-        android:id="@+id/dashboardTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Dashboard"
-        android:textColor="#2196F3"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/dashboardTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Dashboard"
+            android:textColor="#2196F3"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
 
         <View
             android:id="@+id/separatorLine1"
@@ -137,7 +151,8 @@
                 android:layout_height="20dp"
                 android:layout_marginStart="2dp"
                 android:src="@drawable/ic_star_filed"
-                app:tint="#FFC107" /> </LinearLayout>
+                app:tint="#FFC107" />
+        </LinearLayout>
 
         <View
             android:id="@+id/separatorLine2"
@@ -244,7 +259,6 @@
                     android:text="08 hrs 45 mins"
                     android:textColor="@android:color/black"
                     android:textSize="20sp"
-
                     style="@style/edittext_style_bold" />
 
             </LinearLayout>
@@ -268,7 +282,6 @@
             app:cornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/earningCard"
-
             app:layout_constraintTop_toBottomOf="@+id/hourSpendCard"
             app:icon="@drawable/ic_schdule_time"
             app:iconGravity="end"
@@ -332,7 +345,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="21"
-                    android:textColor="#4CAF50" android:textSize="24sp"
+                    android:textColor="#4CAF50"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -362,7 +376,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="04"
-                    android:textColor="#F44336" android:textSize="24sp"
+                    android:textColor="#F44336"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -374,6 +389,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/bookingHeatMapTitle"
             android:layout_width="wrap_content"
@@ -396,11 +412,24 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_white_background"
-            android:padding="2dp" app:layout_constraintEnd_toEndOf="parent"
+            android:padding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bookingHeatMapTitle"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:itemTextColor="@color/nav_item_text_color"
+        app:itemIconTint="@color/nav_item_icon_tint"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

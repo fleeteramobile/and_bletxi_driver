@@ -33,6 +33,8 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.onewaytripcalltaxi.driver.homescreen.HomeScreenActivity;
+import com.onewaytripcalltaxi.driver.tripnotification.TripNotificationActivity;
 import com.onewaytripcalltaxi.driver.utils.ElevationHelper;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -1255,6 +1257,7 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
 
 
                         NotificationAct.LatlongValue(Pickup_lat, Pickup_long, currentLatitude, currentLongtitude);
+                       // TripNotificationActivity.LatlongValue(Pickup_lat, Pickup_long, currentLatitude, currentLongtitude);
                     }
                 }
                 /*int time_out = json.getJSONObject("trip_details").getInt("notification_time");
@@ -1285,12 +1288,21 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
                 },time_out*1000);
 */
 
+//                Intent intent = new Intent();
+//                intent.putExtra("message", json.toString());
+//                intent.setAction(Intent.ACTION_MAIN);
+//                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                ComponentName cn = new ComponentName(LocationUpdate.this, NotificationAct.class);
+//                intent.setComponent(cn);
+//                startActivity(intent);
+
                 Intent intent = new Intent();
                 intent.putExtra("message", json.toString());
                 intent.setAction(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                ComponentName cn = new ComponentName(LocationUpdate.this, NotificationAct.class);
+                ComponentName cn = new ComponentName(LocationUpdate.this, TripNotificationActivity.class);
                 intent.setComponent(cn);
                 startActivity(intent);
 
@@ -1306,7 +1318,8 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
                             LocationUpdate.ClearSessionwithTrip(LocationUpdate.this);
 //                            stopService(new Intent(LocationUpdate.this, WaitingTimerRun.class));
 
-                            generateNotifications(LocationUpdate.this, jsons.getString("message"), MyStatus.class, true, Notification_ID);
+                            generateNotifications(LocationUpdate.this, jsons.getString("message"), HomeScreenActivity.class, true, Notification_ID);
+                          //  generateNotifications(LocationUpdate.this, jsons.getString("message"), MyStatus.class, true, Notification_ID);
                             cancelmsg = jsons.getString("message");
                             mMyStatus.setStatus("F");
                             SessionSave.saveSession("status", "F", LocationUpdate.this);
@@ -1336,7 +1349,8 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
                             cancelIntent.addCategory(Intent.CATEGORY_LAUNCHER);
                             cancelIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             // ComponentName cn = new ComponentName(getApplicationContext(), CanceltripAct.class);
-                            ComponentName cn = new ComponentName(getApplicationContext(), MyStatus.class);
+                            ComponentName cn = new ComponentName(getApplicationContext(), HomeScreenActivity.class);
+                          //  ComponentName cn = new ComponentName(getApplicationContext(), MyStatus.class);
                             cancelIntent.setComponent(cn);
                             startActivity(cancelIntent);
                         } catch (JSONException e) {
@@ -1419,7 +1433,8 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 // ComponentName cn = new ComponentName(LocationUpdate.this, CanceltripAct.class);
-                ComponentName cn = new ComponentName(LocationUpdate.this, MyStatus.class);
+                ComponentName cn = new ComponentName(LocationUpdate.this, HomeScreenActivity.class);
+                //ComponentName cn = new ComponentName(LocationUpdate.this, MyStatus.class);
 
                 intent.setComponent(cn);
                 startActivity(intent);
@@ -1443,7 +1458,8 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
     }
 
     private void notificationforTrip() {
-        PendingIntent activityPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MyStatus.class), 0);
+        PendingIntent activityPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, HomeScreenActivity.class), 0);
+       // PendingIntent activityPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, MyStatus.class), 0);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         String NOTIFICATION_CHANNEL_ID = "my_channel_id_01";
         int notifyId = 10;

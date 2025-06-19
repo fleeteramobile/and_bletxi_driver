@@ -40,7 +40,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.DrawableImageViewTarget;
 import com.onewaytripcalltaxi.driver.fleetdetails.FleetDetailsActivity;
-import com.mayan.sospluginmodlue.SOSActivity;
 import com.onewaytripcalltaxi.driver.utils.FourDigitCardFormatWatcher;
 import com.squareup.picasso.Picasso;
 import com.onewaytripcalltaxi.driver.data.CommonData;
@@ -312,7 +311,7 @@ CardView back_trip_details;
                 SessionSave.saveSession("sos_id", SessionSave.getSession("Id", MeAct.this), MeAct.this);
                 SessionSave.saveSession("user_type", "d", MeAct.this);
 
-                startActivity(new Intent(MeAct.this, SOSActivity.class));
+              //  startActivity(new Intent(MeAct.this, SOSActivity.class));
             }
         });
 

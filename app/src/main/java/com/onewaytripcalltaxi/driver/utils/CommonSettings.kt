@@ -12,8 +12,8 @@ class CommonSettings {
          const val forclient = false
          const val companyMainDomain = "ardhas"
 
-        const val demo_url: String = "https://devonewaytriptaxi.fleetera.io/driverapi201/index/"
-        const val demo_key: String = "devonewaytriptaxi"
+        const val demo_url: String = "https://devbluetaxi.fleetera.io/driverapi201/index/"
+        const val demo_key: String = "devbluetaxi"
 
         const val uat_url: String = "https://uatonewaytriptaxi.fleetera.io/driverapi201/index/"
         const val uat_key: String = "uatonewaytriptaxi"

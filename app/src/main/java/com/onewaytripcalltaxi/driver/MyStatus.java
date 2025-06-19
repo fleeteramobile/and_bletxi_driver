@@ -3,6 +3,7 @@ package com.onewaytripcalltaxi.driver;
 import static com.onewaytripcalltaxi.driver.service.FirebaseService.BOOKLATER_NOTIFICATION_ID;
 
 import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.NotificationManager;
@@ -66,7 +67,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.mayan.sospluginmodlue.service.SOSService;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -1041,9 +1041,10 @@ public class MyStatus extends MainActivity   {
         SessionSave.saveSession("user_type", "d", MyStatus.this);
 
 
-        startService(new Intent(MyStatus.this, SOSService.class));
+      //  startService(new Intent(MyStatus.this, SOSService.class));
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
