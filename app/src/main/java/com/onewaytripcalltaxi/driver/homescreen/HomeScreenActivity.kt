@@ -36,6 +36,7 @@ import com.onewaytripcalltaxi.driver.service.APIService_Retrofit_JSON_NoProgress
 import com.onewaytripcalltaxi.driver.service.FirebaseService
 import com.onewaytripcalltaxi.driver.service.LocationUpdate
 import com.onewaytripcalltaxi.driver.service.NonActivity
+import com.onewaytripcalltaxi.driver.tripinprogress.TripInprogressActivity
 import com.onewaytripcalltaxi.driver.triplist.CommonTripHistory
 import com.onewaytripcalltaxi.driver.tripnotification.TripNotificationActivity
 import com.onewaytripcalltaxi.driver.utils.CToast
@@ -89,7 +90,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface, NavigationView.O
 
 
         earningCard.setOnClickListener {
-            startActivity(Intent(this, TripNotificationActivity::class.java))
+            startActivity(Intent(this, TripInprogressActivity::class.java))
         }
 
         Glide.with(this)

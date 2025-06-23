@@ -54,6 +54,9 @@
         tools:replace="android:allowBackup,icon,theme,label"
         tools:targetApi="m">
         <activity
+            android:name=".tripinprogress.TripInprogressActivity"
+            android:exported="false" />
+        <activity
             android:name=".tripnotification.TripNotificationActivity"
             android:exported="false" />
         <activity

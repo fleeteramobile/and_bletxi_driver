@@ -1,18 +1,29 @@
 package com.onewaytripcalltaxi.driver.tripnotification // Make sure this matches your actual package name
 
 // import com.google.android.gms.maps.MapView // This import is not needed, as you're using SupportMapFragment
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationCallback
@@ -22,8 +33,16 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.Circle
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
+import com.google.maps.android.PolyUtil
 import com.onewaytripcalltaxi.driver.MainActivity
 import com.onewaytripcalltaxi.driver.OngoingAct
 import com.onewaytripcalltaxi.driver.R
@@ -40,9 +59,14 @@ import com.onewaytripcalltaxi.driver.utils.NC
 import com.onewaytripcalltaxi.driver.utils.NetworkStatus
 import com.onewaytripcalltaxi.driver.utils.SessionSave
 import com.onewaytripcalltaxi.driver.utils.Systems
-import kotlinx.android.synthetic.main.notification_lay.estimate_distanceTxt
+import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
     // UI elements
@@ -58,6 +82,7 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var requestTimerProgressBar: ProgressBar // The line progress bar
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
+    private var polyline: Polyline? = null // For drawing the route
 
     // Google Map instance
     private var googleMap: GoogleMap? = null
@@ -107,6 +132,19 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
     private var current_lattitude: Double? = null
     private var current_longitude: Double? = null
 
+    private lateinit var directionsApiService: DirectionsApiService
+    private var animatedPolyline: Polyline? = null // New: for the animation itself
+
+    private var originPulseCircle: Circle? = null
+    private var destinationPulseCircle: Circle? = null
+    private var pulseAnimatorSet: AnimatorSet? = null
+
+    private var polylineDrawingHandler: Handler? = null
+    private var polylineDrawingRunnable: Runnable? = null
+    private var polylineIndex = 0 // Also needs to be a class member for state persistence
+    private var animatedCarMarker: Marker? = null // Add this line
+    private var mPlayer: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trip_notification)
@@ -118,6 +156,25 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
         CommonData.current_act = "NotificationAct"
         CommonData.current_trip_accept = 1
         message = bun!!.getString("message")
+
+        // Initialize Retrofit for Directions API
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY // Log network requests/responses
+        }
+        val httpClient = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://maps.googleapis.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(httpClient) // Add the client with logging
+            .build()
+        directionsApiService = retrofit.create(DirectionsApiService::class.java)
+
+
 
 
         // 1. Initialize the Map Fragment
@@ -150,6 +207,7 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
         loadUI()
 
         startProgressAnimation()
+        tone_play()
         // Set OnClickListener for the Accept button
         acceptButton.setOnClickListener {
             // Stop the progress animation when the user interacts
@@ -167,7 +225,7 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
         closeButton.setOnClickListener {
             callDeclineAPi()
             stopProgressAnimation()
-
+            tone_stop()
         }
 
 
@@ -319,12 +377,12 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
                 // Your original logic for pickup_notes and drop_notes if needed
 
                 pickup = bookingDetails.optString("pickupplace", "")
-//                pickup_lat_json = bookingDetails.optDouble("pickup_latitude", 0.0)
-//                pickup_lng_json = bookingDetails.optDouble("pickup_longitude", 0.0)
+                pickup_lat = bookingDetails.optDouble("pickup_latitude", 0.0)
+                pickup_lng = bookingDetails.optDouble("pickup_longitude", 0.0)
 
                 val dropLocation = bookingDetails.optString("dropplace", "")
-//                drop_lattitude_json = bookingDetails.optDouble("drop_latitude", 0.0)
-//                drop_longitude_json = bookingDetails.optDouble("drop_longitude", 0.0)
+                drop_lattitude = bookingDetails.optDouble("drop_latitude", 0.0)
+                drop_longitude = bookingDetails.optDouble("drop_longitude", 0.0)
 
 
                 val pickupplace = bookingDetails.optString("pickupplace", "")
@@ -391,6 +449,7 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     private fun startProgressAnimation() {
         if (time_out <= 0) {
+            tone_stop()
             Log.w(
                 "TripNotification",
                 "notification_time is 0 or less, progress animation will not run."
@@ -468,6 +527,20 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun stopProgressAnimation() {
         progressHandler?.removeCallbacks(progressRunnable!!)
         requestTimerProgressBar.visibility = View.GONE
+        tone_stop()
+    }
+    fun drawableToBitmap(context: Context, drawableResId: Int): Bitmap? {
+        val drawable = ContextCompat.getDrawable(context, drawableResId) ?: return null
+        // You can adjust the size here if your vector drawable is too small/large by default
+        val bitmap = Bitmap.createBitmap(
+            drawable.intrinsicWidth,
+            drawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+        return bitmap
     }
 
 
@@ -477,36 +550,317 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
+        googleMap?.clear() // Clear any existing polylines or markers
 
-        // Example: Add a marker in Coimbatore and move the camera
-        val coimbatore = LatLng(11.0045, 76.9616) // Approximate coordinates for Coimbatore
-        googleMap?.apply { // Use apply scope function for null-safety
-            addMarker(MarkerOptions().position(coimbatore).title("Coimbatore"))
-            moveCamera(
-                CameraUpdateFactory.newLatLngZoom(
-                    coimbatore,
-                    12f
-                )
-            ) // Zoom level 12 is a good default
+        if (pickup_lat != 0.0 && pickup_lng != 0.0 && drop_lattitude != 0.0 && drop_longitude != 0.0) {
+            val pickupLatLng = LatLng(pickup_lat, pickup_lng)
+            val dropLatLng = LatLng(drop_lattitude, drop_longitude)
+            val pickupBitmap: Bitmap? = drawableToBitmap(this, R.drawable.ic_pick) // CHANGE THIS TO YOUR PICKUP VECTOR DRAWABLE ID
+            val dropBitmap: Bitmap? = drawableToBitmap(this, R.drawable.ic_drop)     // CHANGE THIS TO YOUR DROP VECTOR DRAWABLE ID
+
+            val pickupIconDescriptor = if (pickupBitmap != null) {
+                BitmapDescriptorFactory.fromBitmap(pickupBitmap)
+            } else {
+                Log.e("MapMarkers", "Failed to load pickup marker icon. Using default.")
+                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)
+            }
+
+            val dropIconDescriptor = if (dropBitmap != null) {
+                BitmapDescriptorFactory.fromBitmap(dropBitmap)
+            } else {
+                Log.e("MapMarkers", "Failed to load drop-off marker icon. Using default.")
+                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
+            }
+            // --- End Use ---
+
+            googleMap?.addMarker(
+                MarkerOptions()
+                    .position(pickupLatLng)
+                    .title("Pickup Location")
+                    .icon(pickupIconDescriptor)
+            )
+            googleMap?.addMarker(
+                MarkerOptions()
+                    .position(dropLatLng)
+                    .title("Drop-off Location")
+                    .icon(dropIconDescriptor)
+            )
+
+
+            // Start Ripple Animation
+            startPulseAnimation(pickupLatLng, true)
+            startPulseAnimation(dropLatLng, false)
+
+            LatlongValue(pickup_lat, pickup_lng, current_lattitude ?: 0.0, current_longitude ?: 0.0)
+
+            // Fetch and draw the route using Google Directions API, which will then trigger animation
+            fetchAndDrawRoute(pickupLatLng, dropLatLng)
+
+        } else {
+            val defaultLocation = LatLng(11.0045, 76.9616) // Coimbatore
+            googleMap?.addMarker(MarkerOptions().position(defaultLocation).title("Coimbatore (Default)"))
+            googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12f))
+            Toast.makeText(this, "Pickup or drop-off coordinates not available for route.", Toast.LENGTH_LONG).show()
         }
     }
 
+    private fun fetchAndDrawRoute(origin: LatLng, destination: LatLng) {
+        val apiKey = SessionSave.getSession(CommonData.GOOGLE_KEY, MainActivity.context)
+
+        val originStr = "${origin.latitude},${origin.longitude}"
+        val destinationStr = "${destination.latitude},${destination.longitude}"
+
+        lifecycleScope.launch {
+            try {
+                val response = directionsApiService.getDirections(originStr, destinationStr, apiKey = apiKey)
+
+                if (response.isSuccessful) {
+                    val directionsResponse = response.body()
+                    directionsResponse?.routes?.firstOrNull()?.overviewPolyline?.points?.let { encodedPolyline ->
+                        val polylinePoints = PolyUtil.decode(encodedPolyline)
+
+                        runOnUiThread {
+                            // Remove the previous polyline
+                            polyline?.remove()
+
+                            // Add the static polyline (optional, for visual reference)
+                            polyline = googleMap?.addPolyline(
+                                PolylineOptions()
+                                    .addAll(polylinePoints)
+                                    .width(10f)
+                                    .color(Color.parseColor("#054EE5"))
+                                    .zIndex(1f)
+                            )
+
+                            // Start the car marker animation
+                            startCarAnimation(polylinePoints)
+
+                            // Zoom to fit both markers and the route
+                            val builder = LatLngBounds.Builder()
+                            builder.include(origin)
+                            builder.include(destination)
+                            val bounds = builder.build()
+                            val padding = 150
+                            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding)
+                            googleMap?.animateCamera(cameraUpdate)
+                        }
+                    } ?: run {
+                        Log.w("DirectionsAPI", "No routes found or polyline missing.")
+                        Toast.makeText(this@TripNotificationActivity, "Could not find a route.", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Log.e("DirectionsAPI", "Error: ${response.code()} - ${response.message()}. Body: $errorBody")
+                    Toast.makeText(this@TripNotificationActivity, "Failed to get directions: ${response.code()}", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                Log.e("DirectionsAPI", "Exception fetching directions: ${e.message}", e)
+                Toast.makeText(this@TripNotificationActivity, "Error fetching directions.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun startCarAnimation(points: List<LatLng>) {
+        if (points.isEmpty()) return
+
+        // If a previous car marker exists, remove it before adding a new one
+        // This is good practice to prevent multiple markers if the animation is called again
+        // You might need a class-level variable for `animatedCarMarker` if you want to stop/remove it later.
+        // For this specific case, if called only once per notification, it might be less critical.
+        // Let's add a class-level variable for it for better management:
+        // private var animatedCarMarker: Marker? = null // Add this at the top with other map variables
+
+        animatedCarMarker?.remove() // Remove any previous animated car marker
+
+        val carMarker = googleMap?.addMarker(
+            MarkerOptions()
+                .position(points[0])
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.top)) // Replace with your car icon
+                .flat(true) // Make the icon flat on the map
+                .anchor(0.5f, 0.5f) // Center the icon
+        )
+        animatedCarMarker = carMarker // Assign to the class-level variable
+
+        // Calculate the duration based on time_out (which is in seconds)
+        // Ensure time_out is not zero or negative to prevent division by zero or infinite loop
+        val animationDuration = if (time_out > 0) time_out * 1000L else 5000L // Default to 5 seconds if time_out is invalid
+
+        val valueAnimator = ValueAnimator.ofInt(0, points.size - 1)
+        valueAnimator.duration = animationDuration // Use the calculated duration here
+        valueAnimator.interpolator = LinearInterpolator()
+        valueAnimator.addUpdateListener { animator ->
+            val index = animator.animatedValue as Int
+            if (index < points.size) {
+                carMarker?.position = points[index]
+                // Optionally, you can calculate bearing for smooth car rotation
+                if (index < points.size - 1) {
+                    val bearing = calculateBearing(points[index], points[index + 1])
+                    carMarker?.rotation = bearing
+                }
+            } else {
+                // Animation completed
+                // You might want to remove the car marker or make it static here
+                // For now, it will simply stop at the last point
+            }
+        }
+        valueAnimator.start()
+    }
+
+
+    // Helper function to calculate bearing between two LatLng points
+    private fun calculateBearing(from: LatLng, to: LatLng): Float {
+        val lat1 = Math.toRadians(from.latitude)
+        val lng1 = Math.toRadians(from.longitude)
+        val lat2 = Math.toRadians(to.latitude)
+        val lng2 = Math.toRadians(to.longitude)
+
+        val dLng = lng2 - lng1
+        val y = Math.sin(dLng) * Math.cos(lat2)
+        val x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng)
+        var bearing = Math.toDegrees(Math.atan2(y, x)).toFloat()
+
+        bearing = (bearing + 360) % 360
+        return bearing
+    }
+
+
+
+    // --- Polyline Drawing Animation Logic ---
+    private fun startPolylineDrawingAnimation(points: List<LatLng>) {
+        stopPolylineDrawingAnimation() // Stop any previous animation
+
+        if (points.isEmpty()) return
+
+        animatedPolyline?.remove()
+        animatedPolyline = googleMap?.addPolyline(
+            PolylineOptions()
+                .width(10f)
+                .color(Color.RED) // Color for the animated drawing
+                .zIndex(2f) // Ensure it draws over the base polyline
+        )
+
+        polylineIndex = 0
+        polylineDrawingHandler = Handler(Looper.getMainLooper())
+        polylineDrawingRunnable = object : Runnable {
+            override fun run() {
+                if (polylineIndex < points.size - 1) {
+                    val currentPoints = animatedPolyline?.points?.toMutableList() ?: mutableListOf()
+                    currentPoints.add(points[polylineIndex])
+                    currentPoints.add(points[polylineIndex + 1])
+                    animatedPolyline?.points = currentPoints
+
+                    polylineIndex++
+                    polylineDrawingHandler?.postDelayed(this, 50) // Adjust delay for animation speed
+                } else {
+                    // Animation finished
+                    // Optionally remove the base polyline if you only want the animated one to stay
+                    // polyline?.remove()
+                }
+            }
+        }
+        polylineDrawingHandler?.post(polylineDrawingRunnable!!)
+    }
+
+    private fun stopPolylineDrawingAnimation() {
+        polylineDrawingHandler?.removeCallbacks(polylineDrawingRunnable!!)
+        polylineDrawingHandler = null
+        polylineDrawingRunnable = null
+        animatedPolyline?.remove() // Remove the animated polyline
+        animatedPolyline = null
+        polylineIndex = 0
+    }
+    // --- End Polyline Drawing Animation Logic ---
+
+    // --- Ripple Animation Logic ---
+    private fun startPulseAnimation(latLng: LatLng, isOrigin: Boolean = true) {
+        val initialRadius = 1.0 // Small initial radius in meters
+        val maxRadius = 800.0 // Max radius for the pulse in meters (adjust as needed for map zoom)
+        val animationDuration = 2500L // 2.5 seconds per pulse
+        val pulseColor = if (isOrigin) Color.parseColor("#4CAF50") else Color.parseColor("#F44336")
+
+        if (isOrigin) originPulseCircle?.remove() else destinationPulseCircle?.remove()
+
+        val circleOptions = CircleOptions()
+            .center(latLng)
+            .radius(initialRadius)
+            .strokeWidth(5f)
+            .strokeColor(pulseColor)
+            .fillColor(Color.TRANSPARENT)
+            .zIndex(0f)
+
+        val circle = googleMap?.addCircle(circleOptions)
+
+        if (isOrigin) originPulseCircle = circle else destinationPulseCircle = circle
+
+        val radiusAnimator = ValueAnimator.ofFloat(initialRadius.toFloat(), maxRadius.toFloat()).apply {
+            duration = animationDuration
+            interpolator = AccelerateDecelerateInterpolator()
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.RESTART
+            addUpdateListener { animator ->
+                circle?.radius = (animator.animatedValue as Float).toDouble()
+            }
+        }
+
+        val alphaAnimator = ValueAnimator.ofInt(255, 0).apply {
+            duration = animationDuration
+            interpolator = AccelerateDecelerateInterpolator()
+            repeatCount = ValueAnimator.INFINITE
+            repeatMode = ValueAnimator.RESTART
+            addUpdateListener { animator ->
+                val alpha = animator.animatedValue as Int
+                val newColor = Color.argb(alpha, Color.red(pulseColor), Color.green(pulseColor), Color.blue(pulseColor))
+                circle?.strokeColor = newColor
+                circle?.fillColor = Color.argb(alpha / 4, Color.red(pulseColor), Color.green(pulseColor), Color.blue(pulseColor))
+            }
+        }
+
+        pulseAnimatorSet = AnimatorSet().apply {
+            playTogether(radiusAnimator, alphaAnimator)
+            start()
+        }
+    }
+
+    private fun stopPulseAnimation() {
+        pulseAnimatorSet?.cancel()
+        pulseAnimatorSet = null
+
+        originPulseCircle?.remove()
+        originPulseCircle = null
+        destinationPulseCircle?.remove()
+        destinationPulseCircle = null
+    }
+
+    private fun stopAllMapAnimations() {
+        stopPulseAnimation()
+        animatedCarMarker?.remove() // Remove the car marker
+        animatedCarMarker = null
+    }
+    // --- End Ripple Animation Logic ---
+
+
     // --- Activity Lifecycle Overrides ---
 
-    // Important: It's good practice to stop Handlers/Runnables in onStop or onDestroy
-    // to prevent memory leaks and unnecessary processing when the activity is not active.
     override fun onStop() {
         super.onStop()
-        stopProgressAnimation() // Stop the animation if the activity goes into the background
+        stopProgressAnimation()
+        stopAllMapAnimations() // Stop all animations when going to background
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Ensure all callbacks are removed and resources are cleaned up
         progressHandler?.removeCallbacks(progressRunnable!!)
         progressHandler = null
         progressRunnable = null
+        stopProgressAnimation()
+        stopAllMapAnimations() // Stop all animations on destroy
+        if (::fusedLocationClient.isInitialized && ::locationCallback.isInitialized) {
+            fusedLocationClient.removeLocationUpdates(locationCallback)
+        }
     }
+
+
+
 
     // Other lifecycle methods are fine as empty overrides or can be removed if not used.
     // The SupportMapFragment handles its own lifecycle within FragmentContainerView.
@@ -744,6 +1098,41 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun tone_play() {
+        // Stop and release any currently playing audio before starting a new one
+        if (mPlayer != null && mPlayer!!.isPlaying) {
+            mPlayer?.stop()
+            mPlayer?.release()
+            mPlayer = null // Set to null after releasing
+        }
+
+        try {
+            // Initialize MediaPlayer
+            // 'this' refers to the Context of the Activity
+            mPlayer = MediaPlayer.create(this, R.raw.newtone) // Use the resource ID for your raw file
+            mPlayer?.start() // Start playback
+
+            // Optional: Add a listener to release MediaPlayer when done playing
+            mPlayer?.setOnCompletionListener { mp ->
+                mp.release() // Release resources when playback completes
+                mPlayer = null // Prevent further operations on the released MediaPlayer
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e("MediaPlayer", "Error playing tone: ${e.message}")
+            // Consider showing a toast or logging more gracefully in a real app
+        }
+    }
+
+    private fun tone_stop() {
+        if (mPlayer != null) { // Check if mPlayer is initialized
+            if (mPlayer!!.isPlaying) { // Check if it's currently playing
+                mPlayer?.stop() // Stop playback
+            }
+            mPlayer?.release() // Release resources
+            mPlayer = null // Prevent memory leaks and ensure it's re-initialized if played again
+        }
+    }
 
 }
 
