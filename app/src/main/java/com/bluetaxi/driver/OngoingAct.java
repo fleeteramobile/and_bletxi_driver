@@ -2246,6 +2246,7 @@ Boolean enable_os_waiting_fare = false;
             bottom_action_buttons_container.setVisibility(View.GONE);
             toll_lay.setVisibility(View.VISIBLE);
             start_trip.setVisibility(View.GONE);
+            btn_call.setVisibility(View.GONE);
             trip_lay.setVisibility(View.GONE);
 
             passnameTxt.setText(MainActivity.mMyStatus.getOnpassengerName());
@@ -2798,6 +2799,7 @@ Boolean enable_os_waiting_fare = false;
                         toll_lay.setVisibility(View.VISIBLE);
 
                         start_trip.setVisibility(View.GONE);
+                        btn_call.setVisibility(View.GONE);
                         trip_lay.setVisibility(View.GONE);
                         speed_lay.setVisibility(View.GONE);
 

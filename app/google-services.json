@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "297943794955",
-    "project_id": "com.bluetaxidriver",
-    "storage_bucket": "com.onewaytripcalltaxidriver.firebasestorage.app"
+    "project_number": "485624368208",
+    "project_id": "bluetaxi-c9bac",
+    "storage_bucket": "bluetaxi-c9bac.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:297943794955:android:b1e0b96506505e4d668e0e",
+        "mobilesdk_app_id": "1:485624368208:android:87cc25ca084127544e1555",
         "android_client_info": {
-          "package_name": "com.bluetaxidriver"
+          "package_name": "com.bluetaxi"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDMWoMUT0pQmZPKCQB6UCkwlLKMLW9_YhM"
+          "current_key": "AIzaSyCG11uOqsjL12SsOPCQHSqCkVClZ2VRn_0"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:297943794955:android:20010dbd84fa59f6668e0e",
+        "mobilesdk_app_id": "1:485624368208:android:9ab29e6957a9fd3f4e1555",
         "android_client_info": {
           "package_name": "com.bluetaxidriver"
         }
@@ -34,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDMWoMUT0pQmZPKCQB6UCkwlLKMLW9_YhM"
+          "current_key": "AIzaSyCG11uOqsjL12SsOPCQHSqCkVClZ2VRn_0"
         }
       ],
       "services": {

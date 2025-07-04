@@ -6,7 +6,7 @@ class CommonSettings {
     companion object
     {
         const val isPointingLive = false
-        const val isPointingUAT = false
+        const val isPointingUAT = true
         const val isTestingPonited = false
          const val askDomain = false
          const val forclient = false
@@ -15,8 +15,8 @@ class CommonSettings {
         const val demo_url: String = "https://devbluetaxi.fleetera.io/driverapi201/index/"
         const val demo_key: String = "devbluetaxi"
 
-        const val uat_url: String = "https://uatonewaytriptaxi.fleetera.io/driverapi201/index/"
-        const val uat_key: String = "uatonewaytriptaxi"
+        const val uat_url: String = "https://uatbluetaxi.fleetera.io/driverapi201/index/"
+        const val uat_key: String = "uatbluetaxi"
 
         const val test_url: String = "https://testingonewaytriptaxi.ardhas.com/driverapi201/index/"
         const val test_key: String = "testingonewaytriptaxi"
