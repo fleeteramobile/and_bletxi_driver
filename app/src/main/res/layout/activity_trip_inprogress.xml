@@ -58,6 +58,8 @@ android:src="@drawable/user"
                 android:layout_marginStart="16dp"
                 android:text="Ravikumar"
                 android:textSize="18sp"
+                style="@style/edittext_style_bold"
+
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/profile_avatar"
                 app:layout_constraintEnd_toStartOf="@+id/payment_method_button"
@@ -95,13 +97,14 @@ android:src="@drawable/user"
                 app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
 
             <!-- Origin Name -->
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/origin_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Avinashi"
                 android:textStyle="bold"
+                style="@style/edittext_style_bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/origin_icon"
                 app:layout_constraintTop_toTopOf="@+id/origin_icon" />
@@ -148,6 +151,8 @@ android:src="@drawable/user"
                 android:layout_marginStart="16dp"
                 android:text="Thiruppur"
                 android:textStyle="bold"
+                style="@style/edittext_style_bold"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/destination_icon"
                 app:layout_constraintTop_toTopOf="@+id/destination_icon" />
@@ -242,7 +247,7 @@ android:src="@drawable/user"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_i_have_arrived"
+            android:id="@+id/btn_trip_update"
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_marginEnd="8dp"

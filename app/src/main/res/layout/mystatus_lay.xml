@@ -433,7 +433,7 @@
                                                                     android:src="@drawable/bell"
                                                                     android:visibility="gone" />
 
-                                                                <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                                                                <com.bluetaxi.driver.utils.RoundedImageView
                                                                     android:id="@+id/profile_img"
                                                                     android:layout_width="50dp"
                                                                     android:layout_height="50dp"
@@ -949,7 +949,7 @@
                                                                 android:orientation="horizontal">
 
 
-                                                                <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                                                                <com.bluetaxi.driver.utils.RoundedImageView
                                                                     android:id="@+id/imagefirsttrip"
                                                                     android:layout_width="40dp"
                                                                     android:layout_height="40dp"
@@ -1048,7 +1048,7 @@
                                                                 android:orientation="horizontal">
 
 
-                                                                <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                                                                <com.bluetaxi.driver.utils.RoundedImageView
                                                                     android:id="@+id/imagesecondtrip"
                                                                     android:layout_width="40dp"
                                                                     android:layout_height="40dp"
@@ -1264,7 +1264,7 @@
                                                                 android:orientation="horizontal">
 
 
-                                                                <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                                                                <com.bluetaxi.driver.utils.RoundedImageView
                                                                     android:id="@+id/imagethirdtrip"
                                                                     android:layout_width="40dp"
                                                                     android:layout_height="40dp"

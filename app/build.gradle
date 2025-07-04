@@ -18,7 +18,7 @@ android {
     }
     defaultConfig {
         applicationId "com.bluetaxidriver"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 34
         multiDexEnabled true
         signingConfig signingConfigs.release_config
@@ -151,7 +151,8 @@ dependencies {
 
     implementation 'com.android.volley:volley:1.2.1'
 
-
+    implementation("org.apache.poi:poi:5.2.3") // For Excel file reading
+    implementation("org.apache.poi:poi-ooxml:5.2.3") // For .xlsx format
     //  implementation project(path: ':sospluginmodlue')
 //    implementation "com.crashlytics.sdk.android:crashlytics:$rootProject.ext.crashlytics"
     /*implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho"*/

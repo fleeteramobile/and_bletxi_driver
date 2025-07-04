@@ -160,6 +160,10 @@
     <declare-styleable name="RoundedBarChart">
         <attr name="radius" format="dimension" />
     </declare-styleable>
-
+    <declare-styleable name="ZigzagDividerView">
+        <attr name="zigzagHeight" format="dimension" />
+        <attr name="zigzagWidth" format="dimension" />
+        <attr name="zigzagColor" format="color" />
+    </declare-styleable>
 
 </resources>

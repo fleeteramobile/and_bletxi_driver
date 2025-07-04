@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="left">
+    tools:openDrawer="start">
     <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -84,7 +84,7 @@
             app:layout_constraintTop_toBottomOf="@id/dashboardTextView" />
 
         <TextView
-            android:id="@+id/krishnavelName"
+            android:id="@+id/driver_name_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -104,9 +104,9 @@
             android:visibility="gone"
             android:thumb="@drawable/custom_switch_thumb"
             app:track="@drawable/custom_switch_track"
-            app:layout_constraintBottom_toBottomOf="@+id/krishnavelName"
+            app:layout_constraintBottom_toBottomOf="@+id/driver_name_home"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/krishnavelName"
+            app:layout_constraintTop_toTopOf="@+id/driver_name_home"
             tools:text="Offline Online" />
 
         <LinearLayout
@@ -117,7 +117,7 @@
             android:layout_marginTop="4dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/krishnavelName">
+            app:layout_constraintTop_toBottomOf="@+id/driver_name_home">
 
             <ImageView
                 android:layout_width="20dp"
@@ -196,6 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Rs 1,356.46"
+                    android:id="@+id/earning"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     style="@style/edittext_style_bold"
@@ -257,6 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="08 hrs 45 mins"
+                    android:id="@+id/hour_spend"
                     android:textColor="@android:color/black"
                     android:textSize="20sp"
                     style="@style/edittext_style_bold" />
@@ -383,7 +385,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cancelled"
+                    android:text="Today's Declined"
                     android:textColor="#757575"
                     android:textSize="14sp" />
             </LinearLayout>

@@ -666,7 +666,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content" />
 
-                        <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+                        <com.bluetaxi.driver.pdview.PickupDropView
                             android:id="@+id/pdview"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -970,7 +970,7 @@ android:layout_marginLeft="10dp"
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                            <com.bluetaxi.driver.utils.RoundedImageView
                                 android:id="@+id/proimg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"

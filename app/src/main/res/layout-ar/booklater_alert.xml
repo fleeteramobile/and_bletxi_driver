@@ -33,7 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.onewaytripcalltaxi.driver.utils.ListViewEX
+            <com.bluetaxi.driver.utils.ListViewEX
                 android:id="@+id/testLay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

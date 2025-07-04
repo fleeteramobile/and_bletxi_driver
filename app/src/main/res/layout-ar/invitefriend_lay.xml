@@ -176,7 +176,7 @@ android:visibility="visible"
 
             </RelativeLayout>
 
-            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+            <com.bluetaxi.driver.utils.RoundedImageView
                 android:id="@+id/profileImg"
                 android:layout_width="80dp"
                 android:layout_height="80dp"

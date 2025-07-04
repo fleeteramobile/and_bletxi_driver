@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/appbg"
     android:orientation="vertical"
-    tools:context="com.onewaytripcalltaxi.driver.WithDrawMenuAct">
+    tools:context="com.bluetaxi.driver.WithDrawMenuAct">
 
     <RelativeLayout
         android:id="@+id/slide_lay"

@@ -217,7 +217,7 @@
             android:layout_height="match_parent">
 
 
-            <com.onewaytripcalltaxi.driver.utils.StreetMapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <com.bluetaxi.driver.utils.StreetMapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/map_relative_layout"
                 android:layout_width="fill_parent"
 
@@ -230,7 +230,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" />
 
-            </com.onewaytripcalltaxi.driver.utils.StreetMapWrapperLayout>
+            </com.bluetaxi.driver.utils.StreetMapWrapperLayout>
 
             <ImageView
                 android:id="@+id/map_icon"

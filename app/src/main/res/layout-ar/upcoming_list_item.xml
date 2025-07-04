@@ -38,7 +38,7 @@
                     android:background="@color/white"
                     android:gravity="center_vertical">
 
-                    <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                    <com.bluetaxi.driver.utils.RoundedImageView
                         android:id="@+id/driver_image"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_5">
 
-            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+            <com.bluetaxi.driver.utils.RoundedImageView
                 android:id="@+id/passengerImg"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -149,7 +149,7 @@
                 card_view:layout_constraintStart_toEndOf="@+id/passengerImg"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
-            <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+            <com.bluetaxi.driver.pdview.PickupDropView
                 android:id="@+id/pd_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

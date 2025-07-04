@@ -177,7 +177,7 @@
             </LinearLayout>
 
 
-            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+            <com.bluetaxi.driver.utils.RoundedImageView
                 android:id="@+id/driverImg"
                 android:layout_width="80dp"
                 android:layout_height="80dp"

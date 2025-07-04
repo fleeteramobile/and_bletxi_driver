@@ -138,7 +138,7 @@
                     android:layout_marginBottom="-3dp"
                     android:orientation="vertical">
 
-                    <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                    <com.bluetaxi.driver.utils.RoundedImageView
                         android:id="@+id/profileimage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"

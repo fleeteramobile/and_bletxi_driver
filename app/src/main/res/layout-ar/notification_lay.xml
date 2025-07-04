@@ -233,7 +233,7 @@ android:textColor="#686868"
         </FrameLayout>
 
 
-        <com.onewaytripcalltaxi.driver.utils.CircleOverlayView
+        <com.bluetaxi.driver.utils.CircleOverlayView
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -944,7 +944,7 @@ android:layout_marginTop="5dp"
                     android:textColor="@color/black" />
             </LinearLayout>
 
-            <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+            <com.bluetaxi.driver.pdview.PickupDropView
                 android:id="@+id/pd_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

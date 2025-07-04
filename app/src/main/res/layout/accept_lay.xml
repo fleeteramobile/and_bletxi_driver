@@ -685,7 +685,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content" />
 
-                        <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+                        <com.bluetaxi.driver.pdview.PickupDropView
                             android:id="@+id/pdview"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -947,7 +947,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+android:visibility="gone"
                     card_view:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="10dp"
@@ -971,7 +971,7 @@ android:layout_marginLeft="10dp"
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                            <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                            <com.bluetaxi.driver.utils.RoundedImageView
                                 android:id="@+id/proimg"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
@@ -988,7 +988,7 @@ android:layout_marginLeft="10dp"
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/passnameTxt"
+
                                     style="@style/edittext_style"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -1174,7 +1174,6 @@ android:layout_marginLeft="10dp"
                                                 app:srcCompat="@drawable/ic_fleetera_pick_point" />
 
                                             <TextView
-                                                android:id="@+id/txt_pickup"
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="0.8"
@@ -1232,7 +1231,6 @@ android:layout_marginLeft="10dp"
 
 
                                             <TextView
-                                                android:id="@+id/txt_drop"
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="0.8"
@@ -1267,45 +1265,250 @@ android:layout_marginLeft="10dp"
 
 
                 </androidx.cardview.widget.CardView>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/endtrip"
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/bottom_sheet_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                   app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/bottom_action_buttons_container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
-                    android:visibility="gone"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/draw_curve_rect_accept_end"
+                    <!-- Inner ConstraintLayout for the card's content -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="16dp"> <!-- Padding at the bottom for content spacing -->
 
-                    android:layout_marginBottom="5dp"
+                        <!-- Profile Avatar (ShapeableImageView for circular shape) -->
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/profile_avatar"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/user"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearanceOverlay="@style/circularImageViewStyle" />
 
+                        <!-- Profile Name Text (aligned vertically with avatar) -->
+                        <TextView
+                            android:id="@+id/passnameTxt"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Ravikumar"
+                            android:textSize="18sp"
+                            style="@style/edittext_style_bold"
 
-                    android:text="End Trip"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white" />
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@+id/profile_avatar"
+                            app:layout_constraintEnd_toStartOf="@+id/payment_method_button"
+                            app:layout_constraintStart_toEndOf="@+id/profile_avatar"
+                            app:layout_constraintTop_toTopOf="@+id/profile_avatar" />
 
+                        <!-- Payment Method Button (aligned vertically with avatar) -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/payment_method_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:text="Cash"
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="#054EE5"
+                            app:cornerRadius="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/profile_avatar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/profile_avatar" />
+
+                        <!-- Origin Icon - positioned below the profile section -->
+                        <ImageView
+                            android:id="@+id/origin_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="16dp"
+                            android:contentDescription="Origin Location Icon"
+                            android:src="@drawable/ic_pickup_dot"
+                            app:layout_constraintStart_toStartOf="@+id/profile_avatar"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
+
+                        <!-- Origin Name -->
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/origin_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Avinashi"
+                            android:textStyle="bold"
+                            style="@style/edittext_style_bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/origin_icon"
+                            app:layout_constraintTop_toTopOf="@+id/origin_icon" />
+
+                        <!-- Origin Address -->
+                        <TextView
+                            android:id="@+id/txt_pickup"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Near Bus stand, Avinashi"
+                            android:textColor="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/origin_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/origin_name" />
+
+                        <!-- Dotted Line connecting origin and destination icons -->
+                        <View
+                            android:id="@+id/dotted_line"
+                            android:layout_width="1dp"
+                            android:layout_height="32dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="@+id/origin_icon"
+                            app:layout_constraintStart_toStartOf="@+id/origin_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/origin_icon" />
+
+                        <!-- Destination Icon -->
+                        <ImageView
+                            android:id="@+id/destination_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="4dp"
+                            android:contentDescription="Destination Location Icon"
+                            android:src="@drawable/ic_dropoff_pin"
+                            app:layout_constraintStart_toStartOf="@+id/profile_avatar"
+                            app:layout_constraintTop_toBottomOf="@+id/dotted_line" />
+
+                        <!-- Destination Name -->
+                        <TextView
+                            android:id="@+id/destination_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Thiruppur"
+                            android:textStyle="bold"
+                            style="@style/edittext_style_bold"
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/destination_icon"
+                            app:layout_constraintTop_toTopOf="@+id/destination_icon" />
+
+                        <!-- Destination Address -->
+                        <TextView
+                            android:id="@+id/txt_drop"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="No 3, Delux martin Apartment"
+                            android:textColor="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/destination_icon"
+                            app:layout_constraintTop_toBottomOf="@+id/destination_name" />
+
+                        <!-- Divider separating trip details from summary -->
+                        <View
+                            android:id="@+id/divider_trip_summary"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@android:color/darker_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_drop" />
+
+                        <!-- Trip Summary (Distance & Time) - uses LinearLayout for horizontal grouping -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/divider_trip_summary">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Distance Icon"
+                                android:src="@drawable/ic_distance" />
+
+                            <TextView
+                                android:id="@+id/distance_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="2.5 KM"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="@android:color/darker_gray" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:contentDescription="Time Icon"
+                                android:src="@drawable/ic_time" />
+
+                            <TextView
+                                android:id="@+id/time_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="20 Mins"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Bottom Action Buttons Container - "I've Arrived" and "Call" buttons -->
                 <LinearLayout
+                    android:id="@+id/bottom_action_buttons_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:id="@+id/trip_lay"
-                    android:layout_marginTop="5dp"
+                    android:background="@android:color/transparent"
                     android:orientation="horizontal"
-                    >
+                    android:padding="16dp"
 
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <LinearLayout
                         android:id="@+id/start_trip"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+
                         android:layout_weight="1"
                         android:background="@drawable/ic_fleetera_button_shadow"
                         android:elevation="10dp"
                         android:orientation="horizontal"
                         android:padding="5dp"
+                        android:layout_marginEnd="8dp"
+
                         android:stateListAnimator="@null">
 
 
@@ -1326,6 +1529,49 @@ android:layout_marginLeft="10dp"
 
                             />
                     </LinearLayout>
+
+
+
+                    <ImageButton
+                        android:id="@+id/btn_call"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/circle_button_yellow"
+                        android:contentDescription="Call Button"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_phone" />
+
+                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/endtrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:visibility="gone"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/draw_curve_rect_accept_end"
+
+                    android:layout_marginBottom="5dp"
+
+
+                    android:text="End Trip"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/trip_lay"
+                    android:visibility="gone"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    >
+
+
 
                     <LinearLayout
                         android:id="@+id/lay_call_cancel"
@@ -1381,8 +1627,8 @@ android:layout_marginLeft="10dp"
             android:id="@+id/btn_emergency_contact"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginLeft="@dimen/dp_3"
-            android:layout_marginTop="@dimen/dp_3"
+            android:layout_marginLeft="16dp"
+
 
             android:gravity="center"
             android:layout_above="@+id/bottomlay"
@@ -1393,14 +1639,18 @@ android:layout_marginLeft="10dp"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="12sp"
+            android:layout_marginBottom="10dp"
             android:visibility="visible" />
 
         <RelativeLayout
             android:id="@+id/botton_layout"
             android:layout_width="40dp"
+            android:layout_marginRight="16dp"
             android:layout_height="40dp"
+
             android:layout_above="@+id/bottomlay"
             android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
 
             android:gravity="center|end">
 
@@ -1423,6 +1673,7 @@ android:layout_marginLeft="10dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
 
             android:clickable="true"
             android:focusable="true"

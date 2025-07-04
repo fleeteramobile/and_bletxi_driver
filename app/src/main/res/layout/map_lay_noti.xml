@@ -11,7 +11,7 @@ android:background="@color/white"
 
 
 
-    <com.onewaytripcalltaxi.driver.data.MapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.bluetaxi.driver.data.MapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map_relative_layout"
         android:layout_width="fill_parent"
         android:visibility="invisible"
@@ -24,7 +24,7 @@ android:background="@color/white"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-    </com.onewaytripcalltaxi.driver.data.MapWrapperLayout>
+    </com.bluetaxi.driver.data.MapWrapperLayout>
 
 <RelativeLayout
     android:layout_width="match_parent"

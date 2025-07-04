@@ -12,12 +12,25 @@
             android:title="Profile" />
         <item
             android:id="@+id/nav_trips"
-
             android:title="My Trips" />
+
+        <item
+            android:id="@+id/nav_tarck"
+
+            android:title="Track Location" />
+
+
+        <item
+            android:id="@+id/goto_home"
+
+            android:title="Go Home" />
         <item
             android:id="@+id/nav_wallet"
+            android:title="Earnings" />
 
-            android:title="Wallet" />
+        <item
+            android:id="@+id/nav_duty"
+            android:title="Duty setting" />
     </group>
 
     <item android:title="Communicate">

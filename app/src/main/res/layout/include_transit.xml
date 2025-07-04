@@ -19,7 +19,7 @@
             app:cardElevation="3dp"
             app:cardUseCompatPadding="true">
 
-            <com.onewaytripcalltaxi.driver.pdview.PickupDropView
+            <com.bluetaxi.driver.pdview.PickupDropView
                 android:id="@+id/pd_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

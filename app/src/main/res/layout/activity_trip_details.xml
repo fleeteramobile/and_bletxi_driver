@@ -84,7 +84,7 @@ android:layout_margin="5dp"
                     android:orientation="horizontal"
                     android:padding="5dp">
 
-                    <com.onewaytripcalltaxi.driver.utils.RoundedImageView
+                    <com.bluetaxi.driver.utils.RoundedImageView
                         android:id="@+id/proimg"
                         android:layout_width="60dp"
                         android:layout_height="60dp"

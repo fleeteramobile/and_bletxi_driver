@@ -39,7 +39,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <com.onewaytripcalltaxi.driver.Login.countrycode.CountryCodePicker
+                <com.bluetaxi.driver.Login.countrycode.CountryCodePicker
                     android:id="@+id/ccp"
                     app:defaultNameCode="IN"
                     app:hideNameCode="true"
