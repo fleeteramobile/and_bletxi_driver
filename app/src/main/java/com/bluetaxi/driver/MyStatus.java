@@ -779,8 +779,8 @@ public class MyStatus extends MainActivity   {
         bookLaterDialog.setContentView(bookLaterView);
         bookLaterDialog.setCancelable(false);
         bookLaterDialog.show();
-        ListViewEX listViewEX = bookLaterView.findViewById(R.id.testLay);
-        listViewEX.setData(getStopArray(bookLaterDetails), "SCHEDULE", SessionSave.getSession("Lang", MyStatus.this));
+//        ListViewEX listViewEX = bookLaterView.findViewById(R.id.testLay);
+//        listViewEX.setData(getStopArray(bookLaterDetails), "SCHEDULE", SessionSave.getSession("Lang", MyStatus.this));
         bookLaterView.findViewById(R.id.btnAccept).setOnClickListener(view -> {
             bookLaterDialog.dismiss();
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

@@ -862,9 +862,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:background="@drawable/ic_new_trip_background"
+                android:background="@color/white"
 
-                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
 
 
                 android:orientation="vertical">
@@ -963,7 +963,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Avinashi"
+                        android:text=""
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -976,7 +976,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Near Bus stand, Avinashi"
+                        android:text=""
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -1021,7 +1021,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="Thiruppur"
+                        android:text=""
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -1034,7 +1034,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="No 3, Delux martin Apartment"
+                        android:text=""
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"

@@ -218,6 +218,7 @@ public class FirebaseService extends FirebaseMessagingService {
                     cancelIntent.addCategory(Intent.CATEGORY_LAUNCHER);
                     cancelIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     // ComponentName cn = new ComponentName(getApplicationContext(), CanceltripAct.class);
+                    System.out.println("homeactivity"+" "+"1");
                     ComponentName cn = new ComponentName(getApplicationContext(), HomeScreenActivity.class);
 
                     cancelIntent.setComponent(cn);
@@ -361,7 +362,7 @@ public class FirebaseService extends FirebaseMessagingService {
                 showNotification(context, Message, message);
             }  else if (status.equals("14")) {
                 Message = message;
-                Intent i = new Intent(FirebaseService.this, MyStatus.class);
+                Intent i = new Intent(FirebaseService.this, HomeScreenActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_TASK_ON_HOME| Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 i.putExtra("alert_message",message);
                 i.putExtra("alert_trip_id",tripId);

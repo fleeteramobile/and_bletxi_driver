@@ -307,6 +307,7 @@ android:visibility="gone"
 android:layout_gravity="center"
                 android:id="@+id/new_recharge_lay"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <ImageView
@@ -331,6 +332,7 @@ android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:visibility="visible"
                 android:id="@+id/new_withdraw_lay"
                 android:orientation="vertical">
 
@@ -356,6 +358,7 @@ android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:visibility="gone"
                 android:id="@+id/new_statement_lay"
                 android:orientation="vertical">
 
@@ -381,6 +384,7 @@ android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:visibility="gone"
                 android:id="@+id/new_settlement_lay"
 
                 android:orientation="vertical">

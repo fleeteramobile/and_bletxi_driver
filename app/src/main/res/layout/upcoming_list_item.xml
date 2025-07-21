@@ -185,21 +185,13 @@
                         >
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:paddingStart="8dp"
-
-                            android:visibility="visible"
-                            android:src="@drawable/ic_fleetera_pick_point" />
-
-                        <ImageView
                             android:layout_width="30dp"
-                            android:layout_height="60dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:paddingStart="8dp"
+
                             android:visibility="visible"
-                            android:src="@drawable/ic_fleetera_line" />
+                            android:src="@drawable/ic_pickup_dot" />
 
                         <ImageView
                             android:layout_width="30dp"
@@ -207,7 +199,15 @@
                             android:layout_gravity="center"
                             android:paddingStart="8dp"
                             android:visibility="visible"
-                            android:src="@drawable/ic_fleetera_drop"
+                            android:src="@drawable/ic_fleetera_line" />
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:visibility="visible"
+                            android:src="@drawable/ic_dropoff_pin"
                             />
 
                     </LinearLayout>
@@ -235,7 +235,7 @@
                             android:id="@+id/drop_location"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="35dp"
+                            android:layout_marginTop="45dp"
                             android:maxLines="2"
                             android:text="10:50"
                             style="@style/edittext_style"

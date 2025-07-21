@@ -6,7 +6,7 @@ class CommonSettings {
     companion object
     {
         const val isPointingLive = false
-        const val isPointingUAT = true
+        const val isPointingUAT = false
         const val isTestingPonited = false
          const val askDomain = false
          const val forclient = false

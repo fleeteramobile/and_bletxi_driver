@@ -113,35 +113,37 @@ EditText with_amount;
 
 
             withdraw_btn1.setOnClickListener(v -> {
-
-                if (Double.parseDouble(SessionSave.getSession("driver_wallet_amount", WithDrawMenuAct.this).trim()) > 0) {
-                    withDraw(1);
-                } else {
-
-                    dialog1 = Utils.alert_view(WithDrawMenuAct.this, "", NC.getResources().getString(R.string.no_sufficient_amount), NC.getResources().getString(R.string.ok),
-                            "", true, WithDrawMenuAct.this, "");
-                }
+                withDraw(1);
+//                if (Double.parseDouble(SessionSave.getSession("driver_wallet_amount", WithDrawMenuAct.this).trim()) > 0) {
+//                    withDraw(1);
+//                } else {
+//
+//                    dialog1 = Utils.alert_view(WithDrawMenuAct.this, "", NC.getResources().getString(R.string.no_sufficient_amount), NC.getResources().getString(R.string.ok),
+//                            "", true, WithDrawMenuAct.this, "");
+//                }
 
             });
 
             withdraw_btn2.setOnClickListener(v -> {
-                if (Double.parseDouble(SessionSave.getSession("trip_amount", WithDrawMenuAct.this).trim()) > Double.parseDouble(SessionSave.getSession("min_wallet_amount", WithDrawMenuAct.this))) {
-                    withDraw(2);
-                } else {
-
-                    dialog1 = Utils.alert_view(WithDrawMenuAct.this, "", NC.getResources().getString(R.string.no_sufficient_amount), NC.getResources().getString(R.string.ok),
-                            "", true, WithDrawMenuAct.this, "");
-                }
+//                if (Double.parseDouble(SessionSave.getSession("trip_amount", WithDrawMenuAct.this).trim()) > Double.parseDouble(SessionSave.getSession("min_wallet_amount", WithDrawMenuAct.this))) {
+//                    withDraw(2);
+//                } else {
+//
+//                    dialog1 = Utils.alert_view(WithDrawMenuAct.this, "", NC.getResources().getString(R.string.no_sufficient_amount), NC.getResources().getString(R.string.ok),
+//                            "", true, WithDrawMenuAct.this, "");
+//                }
+                withDraw(2);
             });
 
             withdraw_btn3.setOnClickListener(v -> {
-                if (Double.parseDouble(SessionSave.getSession("incentive_amount", WithDrawMenuAct.this).trim()) >0) {
-                    withDraw(3);
-                } else {
-
-                    dialog1 = Utils.alert_view(WithDrawMenuAct.this, "", NC.getResources().getString(R.string.no_sufficient_amount), NC.getResources().getString(R.string.ok),
-                            "", true, WithDrawMenuAct.this, "");
-                }
+//                if (Double.parseDouble(SessionSave.getSession("incentive_amount", WithDrawMenuAct.this).trim()) >0) {
+//                    withDraw(3);
+//                } else {
+//
+//                    dialog1 = Utils.alert_view(WithDrawMenuAct.this, "", NC.getResources().getString(R.string.no_sufficient_amount), NC.getResources().getString(R.string.ok),
+//                            "", true, WithDrawMenuAct.this, "");
+//                }
+                withDraw(3);
             });
 
 
@@ -243,7 +245,7 @@ EditText with_amount;
                                 }
 
                                 final String withdrawUrl = "type=driver_wallet_request";
-//                                new WithDraw(withdrawUrl, j);
+                                new WithDraw(withdrawUrl, j);
 //                            } else {
 //                                CToast.ShowToast(WithDrawMenuAct.this, NC.getString(R.string.insufficent_amout));
 //                            }
