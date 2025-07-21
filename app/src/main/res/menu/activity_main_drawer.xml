@@ -20,13 +20,13 @@
 
         <item
             android:id="@+id/nav_tarck"
-
             android:title="Track Location" />
 
-
+        <item
+            android:id="@+id/nav_toll"
+            android:title="Toll Request" />
         <item
             android:id="@+id/goto_home"
-
             android:title="Go Home" />
         <item
             android:id="@+id/nav_wallet"

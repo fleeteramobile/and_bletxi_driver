@@ -41,7 +41,7 @@
         android:required="true" />
 
     <application
-        android:name="com.bluetaxi.driver.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="false"
         android:exported="true"
         android:hardwareAccelerated="true"
@@ -55,58 +55,64 @@
         tools:replace="android:allowBackup,icon,theme,label"
         tools:targetApi="m">
         <activity
-            android:name="com.bluetaxi.driver.dutysetting.DutySettingActivity"
+            android:name=".triplist.TollRequestActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.gotohome.GotoHomeActivity"
+            android:name=".triplist.OutstationUpcomingActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.tripinprogress.TripInprogressActivity"
+            android:name=".dutysetting.DutySettingActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.tripnotification.TripNotificationActivity"
+            android:name=".gotohome.GotoHomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.homescreen.HomeScreenActivity"
+            android:name=".tripinprogress.TripInprogressActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.triplist.CommonTripHistory"
+            android:name=".tripnotification.TripNotificationActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.driverlogs.DriverLogssActivity"
+            android:name=".homescreen.HomeScreenActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.DriverWalletLogsActivity"
+            android:name=".triplist.CommonTripHistory"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.profile.ProfileActivity"
+            android:name=".driverlogs.DriverLogssActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.support.SupportActivity"
+            android:name=".DriverWalletLogsActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.SettlementLists"
+            android:name=".profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".support.SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettlementLists"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".SettlementLists" -->
         <!-- android:exported="false" /> -->
         <activity
-            android:name="com.bluetaxi.driver.driverdashboard.DriverDashboardActivity"
+            android:name=".driverdashboard.DriverDashboardActivity"
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".splash.SplashActivity" -->
         <!-- android:exported="true"> -->
         <!--  -->
         <!-- </activity> -->
         <activity
-            android:name="com.bluetaxi.driver.triphistory.TripDetailsActivity"
+            android:name=".triphistory.TripDetailsActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.documentlist.DocumentListActivity"
+            android:name=".documentlist.DocumentListActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.fleetdetails.FleetDetailsActivity"
+            android:name=".fleetdetails.FleetDetailsActivity"
             android:exported="false" />
         <activity
-            android:name="com.bluetaxi.driver.more.MoreActivity"
+            android:name=".more.MoreActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -128,12 +134,12 @@
             android:required="false" />
 
         <activity
-            android:name="com.bluetaxi.driver.DummyActivity"
+            android:name=".DummyActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <receiver
-            android:name="com.bluetaxi.driver.CallReceiver"
+            android:name=".CallReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -142,71 +148,71 @@
         </receiver>
 
         <activity
-            android:name="com.bluetaxi.driver.utils.SignUpWebviewAct"
+            android:name=".utils.SignUpWebviewAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.DriverRegisterActStepOne"
+            android:name=".DriverRegisterActStepOne"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.bluetaxi.driver.AddFleetAct"
+            android:name=".AddFleetAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.OnmywayActivity"
+            android:name=".OnmywayActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.SearchMapLocation"
+            android:name=".SearchMapLocation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.StatementofHistory"
+            android:name=".StatementofHistory"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.MessageDetailActivity"
+            android:name=".MessageDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.InboxActivity"
+            android:name=".InboxActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.MapActivity"
+            android:name=".MapActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.VideoActivity"
+            android:name=".VideoActivity"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.IncentiveActivity"
+            android:name=".IncentiveActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.IncentiveDetailActivity"
+            android:name=".IncentiveDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.PaymentGatewayWebView"
+            android:name=".PaymentGatewayWebView"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.Login.LoginActivity"
+            android:name=".Login.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.bluetaxi.driver.Login.VerificationActivity"
+            android:name=".Login.VerificationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.bluetaxi.driver.OnmywayNextAct"
+            android:name=".OnmywayNextAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.SplashAct"
+            android:name=".SplashAct"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent">
@@ -218,115 +224,115 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bluetaxi.driver.permission.DevicePermissionActivity"
+            android:name=".permission.DevicePermissionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.permission.StoreAndSecureActivity"
+            android:name=".permission.StoreAndSecureActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.WebviewAct"
+            android:name=".WebviewAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.StreetPickUpAct"
+            android:name=".StreetPickUpAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.locationSearch.LocationSearchActivity"
+            android:name=".locationSearch.LocationSearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
-            android:name="com.bluetaxi.driver.TripHistoryAct"
+            android:name=".TripHistoryAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.TripDetails"
+            android:name=".TripDetails"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.UserLoginAct"
+            android:name=".UserLoginAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.bluetaxi.driver.JobdoneAct"
+            android:name=".JobdoneAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.InviteFriendAct"
+            android:name=".InviteFriendAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.OngoingAct"
+            android:name=".OngoingAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.MeAct"
+            android:name=".MeAct"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|layoutDirection|fontScale"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.NotificationAct"
+            android:name=".NotificationAct"
             android:configChanges="locale"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.FarecalcAct"
+            android:name=".FarecalcAct"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.PayuncardAct"
+            android:name=".PayuncardAct"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.CanceltripAct"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Transparent"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity
-            android:name="com.bluetaxi.driver.ShowAlertAct"
+            android:name=".CanceltripAct"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.MyStatus"
+            android:name=".ShowAlertAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".MyStatus"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.WithdrawHistoryAct"
+            android:name=".WithdrawHistoryAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.WithDrawMenuAct"
+            android:name=".WithDrawMenuAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.WithdrawReqAct"
+            android:name=".WithdrawReqAct"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.fragments.TripHistoryNew"
+            android:name=".fragments.TripHistoryNew"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.bluetaxi.driver.tracklocation.TrackLocationActivity"
+            android:name=".tracklocation.TrackLocationActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.bluetaxi.driver.SelectDropLocationAct" />
+        <activity android:name=".SelectDropLocationAct" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -339,14 +345,14 @@
         </provider>
 
         <receiver
-            android:name="com.bluetaxi.driver.utils.NetworkStatus"
+            android:name=".utils.NetworkStatus"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.bluetaxi.driver.utils.GpsStatus"
+            android:name=".utils.GpsStatus"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.location.PROVIDERS_CHANGED" />
@@ -355,10 +361,10 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.bluetaxi.driver.service.BackgroundCoreConfig" />
+        <service android:name=".service.BackgroundCoreConfig" />
 
         <receiver
-            android:name="com.bluetaxi.driver.utils.BootCompletedIntentReceiver"
+            android:name=".utils.BootCompletedIntentReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -370,7 +376,7 @@
               android:stopWithTask="false" />
         -->
         <service
-            android:name="com.bluetaxi.driver.service.LocationUpdate"
+            android:name=".service.LocationUpdate"
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location" /> <!-- <service android:name=".service.UpdateLocation" /> -->
@@ -382,10 +388,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name="com.bluetaxi.driver.earningchart.EarningsAct" />
+        <activity android:name=".earningchart.EarningsAct" />
 
         <service
-            android:name="com.bluetaxi.driver.service.ForegroundEnablingService"
+            android:name=".service.ForegroundEnablingService"
             android:enabled="true"
             android:exported="false" />
         <!--
@@ -396,24 +402,24 @@
         </service>
         -->
         <service
-            android:name="com.bluetaxi.driver.service.FirebaseService"
+            android:name=".service.FirebaseService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name="com.bluetaxi.driver.DeleteAccountActivity" />
+        <activity android:name=".DeleteAccountActivity" />
         <activity
-            android:name="com.bluetaxi.driver.TermsAndConditions"
+            android:name=".TermsAndConditions"
             android:launchMode="singleTask" />
-        <activity android:name="com.bluetaxi.driver.SettlementDetail" />
+        <activity android:name=".SettlementDetail" />
         <activity
-            android:name="com.bluetaxi.driver.SettlementHistoryActivity"
+            android:name=".SettlementHistoryActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name="com.bluetaxi.driver.MapZoomAct" />
+        <activity android:name=".MapZoomAct" />
         <activity
-            android:name="com.bluetaxi.driver.WalletHistory"
+            android:name=".WalletHistory"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <meta-data

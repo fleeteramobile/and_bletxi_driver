@@ -54,6 +54,8 @@ import com.bluetaxi.driver.service.NonActivity
 import com.bluetaxi.driver.tracklocation.TrackLocationActivity
 import com.bluetaxi.driver.tripinprogress.TripInprogressActivity
 import com.bluetaxi.driver.triplist.CommonTripHistory
+import com.bluetaxi.driver.triplist.OutstationUpcomingActivity
+import com.bluetaxi.driver.triplist.TollRequestActivity
 import com.bluetaxi.driver.utils.CToast
 import com.bluetaxi.driver.utils.ListViewEX
 import com.bluetaxi.driver.utils.NC
@@ -819,6 +821,13 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                     EarningsAct::class.java
                 )
                 startActivity(intent)
+            }R.id.nav_toll -> { // Assuming you add this to your menu XML
+                // Handle profile menu item click
+                val intent = Intent(
+                    this@HomeScreenActivity,
+                    TollRequestActivity::class.java
+                )
+                startActivity(intent)
             }
 
 
@@ -839,6 +848,16 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                 )
                 startActivity(intent)
             }
+
+            R.id.nav_upcoming -> { // Assuming you add this to your menu XML
+                // Handle profile menu item click
+                val intent = Intent(
+                    this@HomeScreenActivity,
+                    OutstationUpcomingActivity::class.java
+                )
+                startActivity(intent)
+            }
+
   R.id.nav_duty -> { // Assuming you add this to your menu XML
                 // Handle profile menu item click
                 val intent = Intent(

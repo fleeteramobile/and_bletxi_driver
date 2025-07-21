@@ -13,7 +13,9 @@ import com.bluetaxi.driver.data.apiData.StreetPickUpResponse;
 import com.bluetaxi.driver.data.apiData.TripDetailResponse;
 import com.bluetaxi.driver.data.apiData.UpcomingResponse;
 import com.bluetaxi.driver.earningchart.Earningresponse;
+import com.bluetaxi.driver.toll.ResponseTollList;
 import com.bluetaxi.driver.tracklocation.NearestDriverDatas;
+import com.bluetaxi.driver.triplist.model.ResponseTollTripList;
 import com.google.gson.JsonObject;
 
 import okhttp3.RequestBody;
@@ -43,6 +45,12 @@ public interface CoreClient {
 
     @POST("{owner}" + "?type=driver_booking_list")
     Call<UpcomingResponse> callData(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
+
+    @POST("{owner}" + "?type=outstation_upcoming_booking_list")
+    Call<UpcomingResponse> callDataOutstationUpcoming(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
+
+    @POST("{owner}" + "?type=passenger_tollfree_booking_list")
+    Call<ResponseTollTripList> tollTripList(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
 
     @POST("{owner}" + "?type=driver_booking_list")
     Call<UpcomingResponse> callData_(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
