@@ -5,23 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bluetaxi.driver.R
-import com.bluetaxi.driver.triplist.model.ResponseOutstationTripList
-import com.bluetaxi.driver.triplist.model.ResponseTollTripList
+import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking
 import com.bluetaxi.driver.utils.SessionSave
-import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
 
-class UpcomingTripListAdapter(
-    val outstationStartTrip: OutstationStartTrip,
-    upComingList: List<ResponseOutstationTripList.Detail.PendingBooking>,
+class OngoingTripListAdapter(
+    val ongoingTrip: OngoingTrip,
+    upComingList: List<ResponseOngoingBooking.Detail.PendingBooking>,
     mContext: Context
 ) :
-    RecyclerView.Adapter<UpcomingTripListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<OngoingTripListAdapter.ViewHolder>() {
 
     val upComingList = upComingList
     var mContext = mContext
@@ -83,22 +79,42 @@ class UpcomingTripListAdapter(
 //            .load(upComingList[position].map_image) // Your drawable resource
 //            .into(holder.iv_profile_pic)
 
+        if (upComingList[position].schedule == 1) {
+            holder.btn_start.visibility = View.VISIBLE
+            holder.btn_decline.setText("Decline")
+            holder.btn_start.visibility = View.INVISIBLE
+        }
+        else{
+            if (upComingList[position].travel_status != 0) {
+                holder.btn_start.visibility = View.INVISIBLE
+                holder.btn_decline.setText("Track Trip")
 
+            }
+        }
         holder.btn_get_in_contact.setOnClickListener {
 
-            outstationStartTrip.contactPassenger(upComingList[position])
+            ongoingTrip.contactPassenger(upComingList[position])
 
         }
         holder.btn_start.setOnClickListener {
 
-            outstationStartTrip.startTrip(upComingList[position])
+            ongoingTrip.startTrip(upComingList[position])
 
         }
         holder.btn_decline.setOnClickListener {
+            if (upComingList[position].schedule == 1) {
+                ongoingTrip.cancelTrip(upComingList[position])
+            }
+            else
+            {
+                if (upComingList[position].travel_status != 0) {
+                    ongoingTrip.trackTrip(upComingList[position])
 
-            outstationStartTrip.cancelTrip(upComingList[position])
+                }
+            }
 
         }
+
 
 
 

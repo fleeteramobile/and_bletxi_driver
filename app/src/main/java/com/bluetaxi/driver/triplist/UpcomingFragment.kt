@@ -21,17 +21,20 @@ import com.bluetaxi.driver.data.apiData.UpcomingResponse
 import com.bluetaxi.driver.interfaces.UpcomingAdapterInterface
 import com.bluetaxi.driver.service.RetrofitCallbackClass
 import com.bluetaxi.driver.service.ServiceGenerator
+import com.bluetaxi.driver.triplist.adapter.OngoingTrip
+import com.bluetaxi.driver.triplist.adapter.OngoingTripListAdapter
+import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking
 import com.bluetaxi.driver.utils.SessionSave
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UpcomingFragment : Fragment(), UpcomingAdapterInterface {
+class UpcomingFragment : Fragment(),OngoingTrip {
 
     lateinit var upcoming_trip_list: RecyclerView
     var mshowDialog: Dialog? = null
-    private var upComingData: ArrayList<UpcomingResponse.PastBooking> = ArrayList()
-    private lateinit var newBookingAdapter: UpcomingAdapter
+    private var upComingData: ArrayList<ResponseOngoingBooking.Detail.PendingBooking> = ArrayList()
+    private lateinit var newBookingAdapter: OngoingTripListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +55,8 @@ class UpcomingFragment : Fragment(), UpcomingAdapterInterface {
         upcoming_trip_list.layoutManager = LinearLayoutManager(context)
 
 
-        newBookingAdapter = UpcomingAdapter(context, upComingData,
-            this@UpcomingFragment)
+        newBookingAdapter = OngoingTripListAdapter(this@UpcomingFragment, upComingData,
+            requireContext())
 // Pass 'this' as the listener
         upcoming_trip_list.adapter = newBookingAdapter
 
@@ -73,18 +76,18 @@ class UpcomingFragment : Fragment(), UpcomingAdapterInterface {
         request.setLimit("10")
         request.setStart("0")
         request.setRequestType("1")
-        val LoginResponse = client.callData(
+        val LoginResponse = client.onGoing(
             ServiceGenerator.COMPANY_KEY,
             request,
             SessionSave.getSession("Lang", requireActivity())
         )
         LoginResponse.enqueue(
-            RetrofitCallbackClass<UpcomingResponse>(
+            RetrofitCallbackClass<ResponseOngoingBooking>(
                 requireActivity(),
-                object : Callback<UpcomingResponse?> {
+                object : Callback<ResponseOngoingBooking?> {
                     override fun onResponse(
-                        call: Call<UpcomingResponse?>,
-                        response: Response<UpcomingResponse?>
+                        call: Call<ResponseOngoingBooking?>,
+                        response: Response<ResponseOngoingBooking?>
                     ) {
                         if (response.isSuccessful) {
                             cancelLoadings()
@@ -135,7 +138,7 @@ class UpcomingFragment : Fragment(), UpcomingAdapterInterface {
                         }
                     }
 
-                    override fun onFailure(call: Call<UpcomingResponse?>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseOngoingBooking?>, t: Throwable) {
                         cancelLoadings()
                     }
                 })
@@ -174,11 +177,21 @@ class UpcomingFragment : Fragment(), UpcomingAdapterInterface {
 
     }
 
-    override fun updateUpcomingAdapter(
-        data: List<UpcomingResponse.PastBooking>,
-        clickedPosition: Int
-    ) {
-        TODO("Not yet implemented")
+
+    override fun startTrip(_category: ResponseOngoingBooking.Detail.PendingBooking) {
+
+    }
+
+    override fun contactPassenger(_category: ResponseOngoingBooking.Detail.PendingBooking) {
+
+    }
+
+    override fun cancelTrip(_category: ResponseOngoingBooking.Detail.PendingBooking) {
+
+    }
+
+    override fun trackTrip(_category: ResponseOngoingBooking.Detail.PendingBooking) {
+
     }
 
 

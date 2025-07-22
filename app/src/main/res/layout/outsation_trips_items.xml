@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="6dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,124 +13,192 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Title -->
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/tvdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="hsdjsdhg"
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginBottom="8dp"
-            android:textStyle="normal" />
+            android:layout_marginBottom="16dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <!-- Profile section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImage"
+
+            <RelativeLayout
                 android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_profile_pic"
+
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/login_logo"
+                    app:shapeAppearanceOverlay="@style/circularImageViewStyle" />
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_profile_pic"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_pick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:drawableLeft="@drawable/ic_pickup_dot"
+                    android:drawablePadding="5dp"
+
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black" />
+
+
+                <TextView
+                    android:id="@+id/tv_drop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_dropoff_pin"
+                    android:drawablePadding="5dp"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black" />
+
+
+                <TextView
+                    android:id="@+id/tv_remaining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:drawableLeft="@drawable/ic_trip_calcender"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black" />
+
+
+                <TextView
+                    android:id="@+id/tv_trip_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:drawableLeft="@drawable/ic_curreny_new"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_book_later"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/new_logo"
-                />
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_phone" />
+
+                <TextView
+                    android:id="@+id/btn_get_in_contact"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:drawableTint="#FF9800"
+                    android:gravity="center"
+                    android:text="Contact"
+                    android:textAllCaps="true"
+                    android:textColor="#FF9800"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+
+                    />
+
+            </LinearLayout>
+
 
             <TextView
-                android:id="@+id/driverName"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_start"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:textStyle="bold"
-                android:textColor="@color/black"
                 android:layout_gravity="center"
-                android:textSize="16sp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:gravity="center"
-                android:layout_marginTop="5dp" />
-            </LinearLayout>
+                android:padding="8dp"
+                android:visibility="invisible"
+                android:text="Start Trip"
+                android:textAllCaps="true"
 
+                android:textColor="#F44336"
+                android:textSize="12dp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/btn_decline"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="?attr/selectableItemBackgroundBorderless"
 
-                <TextView
-                    android:id="@+id/taskText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Task: Chemical Delivery"
-                    android:textColor="#555555"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/departedText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Departed: 20 Feb, 05:00 PM"
-                    android:textColor="#555555"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/locationText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Current Location: 123 Main Street, Anytown, IND 845103"
-                    android:textColor="#555555"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tripCostText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Trip Cost: Rs 10000"
-                    android:textColor="#555555"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Name -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginVertical="8dp" />
-
-        <!-- Buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/contactButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="📞 Get in Contact"
-                android:textColor="#FF6F00"
-                android:backgroundTint="@android:color/transparent"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/declineButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="Decline"
-                android:textColor="#D32F2F"
-                android:backgroundTint="@android:color/transparent"
-                android:textAllCaps="false" />
+                android:textAllCaps="true"
+                android:textColor="#F44336"
+                android:textSize="12dp" />
         </LinearLayout>
+
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
