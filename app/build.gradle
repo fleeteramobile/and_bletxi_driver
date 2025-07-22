@@ -150,6 +150,7 @@ dependencies {
     implementation 'com.razorpay:checkout:1.6.33'
 
     implementation 'com.android.volley:volley:1.2.1'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation("org.apache.poi:poi:5.2.3") // For Excel file reading
     implementation("org.apache.poi:poi-ooxml:5.2.3") // For .xlsx format
