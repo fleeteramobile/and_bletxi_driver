@@ -23,7 +23,7 @@
         <item name="android:windowIsTranslucent">true</item>
 
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@drawable/ic_login_new</item>
+        <item name="android:windowBackground">@drawable/new_logo</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
         <item name="android:windowFullscreen">true</item>

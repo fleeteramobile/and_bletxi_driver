@@ -45,7 +45,7 @@
         android:allowBackup="false"
         android:exported="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher_blue_taxi_new"
+        android:icon="@mipmap/ic_launcher_blue_taxi_new_final"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"

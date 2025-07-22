@@ -299,7 +299,7 @@
     <string name="old_password_and_newpassword_are_same">Old password and new password are Same</string>
 
     <!-- version update -->
-    <string name="version_up_message">There is a new version of Flytaxi driver available, this version is no longer supported.</string>
+    <string name="version_up_message">There is a new version of Blue Taxi driver available, this version is no longer supported.</string>
     <string name="version_up_title">Update</string>
     <string name="version_up_now">Update now</string>
     <string name="version_up_later">Later</string>
@@ -445,7 +445,7 @@
     <string name="have_promocode">HAVE A PROMO CODE?</string>
     <!-- card registration -->
     <string name="reg_promocode">Pay by Referral Code</string>
-    <string name="walletmsg">Cashless, hassle-free rides with Flytaxi driver wallet</string>
+    <string name="walletmsg">Cashless, hassle-free rides with Blue Taxi driver wallet</string>
 
     <string name="reg_enterprcode">Please enter your Promo code</string>
     <string name="minimum_fare">Minimum Fare</string>
@@ -569,11 +569,11 @@
 
     <string name="mob_settings">Mobile settings</string>
     <string name="huawei_title">Protected Apps</string>
-    <string name="huawei_msg">Flytaxi driver requires to be enabled in \'Protected Apps\' to Function Properly.</string>
+    <string name="huawei_msg">Blue Taxi driver requires to be enabled in \'Protected Apps\' to Function Properly.</string>
     <string name="auto_start">Auto start Enable</string>
-    <string name="auto_start_msg">Flytaxi driver requires to be enabled in \'Auto Start\' to Function Properly.</string>
+    <string name="auto_start_msg">Blue Taxi driver requires to be enabled in \'Auto Start\' to Function Properly.</string>
     <string name="power_saving">Power saving disable</string>
-    <string name="power_saving_msg">Flytaxi driver requires to be disabled in \'Power saving\' to Function Properly.</string>
+    <string name="power_saving_msg">Blue Taxi driver requires to be disabled in \'Power saving\' to Function Properly.</string>
     <string name="track_shift_status">Now you are in shift out.Kindly shift in to continue.</string>
     <string name="something">Something went wrong!</string>
     <string name="cancellation_fare">Cancellation Fare</string>
@@ -604,14 +604,14 @@
     <string name="change_permission_in_phone">You can change the above permissions from Phone Settings, at any time.</string>
     <string name="proceed">Proceed</string>
     <string name="store_data">See how we store, use and secure your data</string>
-    <string name="by_clicking_proceed">By clicking the check box, you agree to the Flytaxi driver</string>
-    <string name="package_name">ofFlytaxi driver</string>
+    <string name="by_clicking_proceed">By clicking the check box, you agree to the Blue Taxi driver</string>
+    <string name="package_name">Blue Taxi driver</string>
     <string name="see_how_we_use_your_data">See How We Use Your Data</string>
     <string name="how_do_we_use_your_data_description">We value your privacy and take all the measures necessary to protect your data at all times. The below important points are meant to help you understand how we collect and use your personal information. </string>
     <string name="brief_privacy_policy">Brief Privacy Policy</string>
     <string name="brief_privacy_policy_description">To provide better user experience of our mobile application and ensure that you are able to access all our features, we may collect and maintain your personal and other information which is shared by you or collected by us. We may collect, use, store, import and export your information and you are solely responsible for the accuracy of the details. To understand our policy, we request you to read our Privacy Policy.</string>
     <string name="what_do_we_collect">What do we collect?</string>
-    <string name="what_do_we_collect_desctiption"><![CDATA[Flytaxi driver collects your personal information when you create, use and update your account. Using the information, we will be able to provide the complete experience of the application. The information we collect includes:
+    <string name="what_do_we_collect_desctiption"><![CDATA[Blue Taxi driver collects your personal information when you create, use and update your account. Using the information, we will be able to provide the complete experience of the application. The information we collect includes:
 \n(1)Personal data (e.g., name, location, and password) to create, update and maintain the account;
 \n(2)Contact data (e.g., email ID, address, and telephone or mobile number) to create, update and maintain the account and also send notifications;
 \n(3)Contract data (e.g., registration time and manner, and status) to review app usage;

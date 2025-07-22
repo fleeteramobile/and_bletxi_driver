@@ -57,7 +57,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                app:srcCompat="@drawable/ic_login_new" />
+                app:srcCompat="@drawable/new_logo" />
             <LinearLayout
                 android:padding="10dp"
                 android:layout_marginTop="15dp"

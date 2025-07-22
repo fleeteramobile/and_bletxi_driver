@@ -40,7 +40,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_login_new"></ImageView>
+            android:src="@drawable/new_logo"></ImageView>
 <!--        <ImageView-->
 <!--            android:id="@+id/rootlay"-->
 <!--            android:layout_width="match_parent"-->
