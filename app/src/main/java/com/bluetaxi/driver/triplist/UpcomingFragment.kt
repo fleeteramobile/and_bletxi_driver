@@ -15,13 +15,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.bluetaxi.driver.MyApplication
 import com.bluetaxi.driver.R
-import com.bluetaxi.driver.adapter.UpcomingAdapter
 import com.bluetaxi.driver.data.apiData.ApiRequestData
-import com.bluetaxi.driver.data.apiData.UpcomingResponse
-import com.bluetaxi.driver.interfaces.UpcomingAdapterInterface
 import com.bluetaxi.driver.service.RetrofitCallbackClass
 import com.bluetaxi.driver.service.ServiceGenerator
-import com.bluetaxi.driver.triplist.adapter.OngoingTrip
+import com.bluetaxi.driver.triplist.adapter.interfaces.OngoingTrip
 import com.bluetaxi.driver.triplist.adapter.OngoingTripListAdapter
 import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking
 import com.bluetaxi.driver.utils.SessionSave
@@ -29,7 +26,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UpcomingFragment : Fragment(),OngoingTrip {
+class UpcomingFragment : Fragment(), OngoingTrip {
 
     lateinit var upcoming_trip_list: RecyclerView
     var mshowDialog: Dialog? = null

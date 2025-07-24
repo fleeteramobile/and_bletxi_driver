@@ -14,19 +14,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bluetaxi.driver.MyApplication
 
 import com.bluetaxi.driver.R
-import com.bluetaxi.driver.adapter.PastBookingAdapter
 import com.bluetaxi.driver.data.apiData.ApiRequestData
-import com.bluetaxi.driver.data.apiData.UpcomingResponse
 import com.bluetaxi.driver.interfaces.APIResult
 import com.bluetaxi.driver.interfaces.ClickInterface
 import com.bluetaxi.driver.service.APIService_Retrofit_JSON
 import com.bluetaxi.driver.service.RetrofitCallbackClass
 import com.bluetaxi.driver.service.ServiceGenerator
-import com.bluetaxi.driver.toll.ResponseTollList
-import com.bluetaxi.driver.triplist.adapter.TollAmountRequest
+import com.bluetaxi.driver.triplist.adapter.interfaces.TollAmountRequest
 import com.bluetaxi.driver.triplist.adapter.TollTripListAdapter
 import com.bluetaxi.driver.triplist.model.ResponseTollTripList
-import com.bluetaxi.driver.utils.CToast
 import com.bluetaxi.driver.utils.NC
 import com.bluetaxi.driver.utils.NetworkStatus
 import com.bluetaxi.driver.utils.SessionSave
@@ -43,7 +39,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TollRequestActivity : AppCompatActivity(),TollAmountRequest, ClickInterface {
+class TollRequestActivity : AppCompatActivity(), TollAmountRequest, ClickInterface {
     lateinit var completed_trip_list: RecyclerView
     var mshowDialog: Dialog? = null
     private var pastData: ArrayList<ResponseTollTripList.Detail.PastBooking> = ArrayList()

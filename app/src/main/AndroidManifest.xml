@@ -55,6 +55,15 @@
         tools:replace="android:allowBackup,icon,theme,label"
         tools:targetApi="m">
         <activity
+            android:name=".triplist.pastbooking.PastBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".triplist.upcoming.UpcomingTripsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".triplist.BookingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".triplist.TollRequestActivity"
             android:exported="false" />
         <activity

@@ -33,6 +33,7 @@ import com.bluetaxi.driver.service.CoreClient;
 import com.bluetaxi.driver.service.LocationUpdate;
 import com.bluetaxi.driver.service.RetrofitCallbackClass;
 import com.bluetaxi.driver.service.ServiceGenerator;
+import com.bluetaxi.driver.triplist.upcoming.UpcomingTripsActivity;
 import com.bluetaxi.driver.utils.CL;
 import com.bluetaxi.driver.utils.CToast;
 import com.bluetaxi.driver.utils.CommonSettings;
@@ -521,7 +522,7 @@ public class SplashAct extends MainActivity {
                 finish();
             } else {
                 if (SessionSave.getSession("travel_status", SplashAct.this).equals("5")) {
-                    i = new Intent(SplashAct.this, TripHistoryAct.class);
+                    i = new Intent(SplashAct.this, UpcomingTripsActivity.class);
                     startActivity(i);
                     finish();
                 } else {
@@ -1083,7 +1084,7 @@ public class SplashAct extends MainActivity {
                                 finish();
                             } else {
                                 if (SessionSave.getSession("travel_status", SplashAct.this).equals("5")) {
-                                    i = new Intent(SplashAct.this, TripHistoryAct.class);
+                                    i = new Intent(SplashAct.this, UpcomingTripsActivity.class);
                                     startActivity(i);
                                     finish();
                                 } else {
@@ -1389,7 +1390,7 @@ public class SplashAct extends MainActivity {
                                         finish();
                                     } else {
                                         if (SessionSave.getSession("travel_status", SplashAct.this).equals("5")) {
-                                            i = new Intent(SplashAct.this, TripHistoryAct.class);
+                                            i = new Intent(SplashAct.this, UpcomingTripsActivity.class);
                                             startActivity(i);
                                             finish();
                                         } else {

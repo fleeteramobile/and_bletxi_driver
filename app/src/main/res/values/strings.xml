@@ -860,4 +860,24 @@ with different owner name</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+
+    <string name="profile_picture_description">User profile picture</string>
+    <string name="user_name_placeholder">John Dav</string>
+    <string name="user_email_placeholder">johndav123@gmail.com</string>
+
+    <string name="my_booking_description">My Booking icon</string>
+    <string name="my_booking_text">My Booking</string>
+    <string name="my_card_description">My Card icon</string>
+    <string name="my_card_text">My Card</string>
+    <string name="saved_places_description">Saved Places icon</string>
+    <string name="saved_places_text">Saved Places</string>
+    <string name="settings_description">Settings icon</string>
+    <string name="setting_text">Setting</string>
+    <string name="help_center_description">Help Center icon</string>
+    <string name="help_center_text">Help Center</string>
+    <string name="about_description">About icon</string>
+    <string name="about_text">About</string>
+    <string name="logout_description">Logout icon</string>
+    <string name="logout_text">Logout</string>
+    <string name="go_to_next_screen">Go to next screen</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.bluetaxi.driver.triplist
+package com.bluetaxi.driver.triplist.upcoming
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -31,13 +31,12 @@ import com.bluetaxi.driver.service.APIService_Retrofit_JSON
 import com.bluetaxi.driver.service.NonActivity
 import com.bluetaxi.driver.service.RetrofitCallbackClass
 import com.bluetaxi.driver.service.ServiceGenerator
-import com.bluetaxi.driver.triplist.adapter.interfaces.OutstationStartTrip
-import com.bluetaxi.driver.triplist.adapter.UpcomingTripListAdapter
-import com.bluetaxi.driver.triplist.model.ResponseOutstationTripList
+import com.bluetaxi.driver.triplist.adapter.interfaces.OngoingTrip
+import com.bluetaxi.driver.triplist.adapter.OngoingTripListAdapter
+import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking
 import com.bluetaxi.driver.utils.CToast
 import com.bluetaxi.driver.utils.NC
 import com.bluetaxi.driver.utils.NetworkStatus
-import com.bluetaxi.driver.utils.NetworkStatus.isOnline
 import com.bluetaxi.driver.utils.SessionSave
 import com.bluetaxi.driver.utils.Utils
 import com.bumptech.glide.Glide
@@ -50,14 +49,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class OutstationUpcomingActivity : AppCompatActivity(), OutstationStartTrip, ClickInterface {
+class UpcomingTripsActivity : AppCompatActivity(), OngoingTrip, ClickInterface {
     lateinit var upcoming_trip_list: RecyclerView
     lateinit var no_data_image: ImageView
     var mshowDialog: Dialog? = null
-  var myOtoMetter:Dialog? = null
-   
-    private var upComingData: ArrayList<ResponseOutstationTripList.Detail.PendingBooking> = ArrayList()
-    private lateinit var newBookingAdapter: UpcomingTripListAdapter
+    var myOtoMetter: Dialog? = null
+
+    private var upComingData: ArrayList<ResponseOngoingBooking.Detail.PendingBooking> = ArrayList()
+    private lateinit var newBookingAdapter: OngoingTripListAdapter
     private var trip_id: String? = null
     private var lat: String? = null
     private var langs: String? = null
@@ -65,67 +64,63 @@ class OutstationUpcomingActivity : AppCompatActivity(), OutstationStartTrip, Cli
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var lastKnownLocation: Location? = null
 
-    @SuppressLint("MissingInflatedId", "MissingPermission")
-
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      
-        setContentView(R.layout.activity_outstation_upcoming)
 
+        setContentView(R.layout.activity_upcoming_trips)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
 
         val locationResult = fusedLocationProviderClient.lastLocation
-        locationResult.addOnCompleteListener(this@OutstationUpcomingActivity) { task ->
+        locationResult.addOnCompleteListener(this@UpcomingTripsActivity) { task ->
             if (task.isSuccessful) {
                 // Set the map's camera position to the current location of the device.
                 lastKnownLocation = task.result
-lat = lastKnownLocation!!.latitude.toString()
+                lat = lastKnownLocation!!.latitude.toString()
                 langs = lastKnownLocation!!.longitude.toString()
 
             }
         }
-        upcoming_trip_list = findViewById(R.id.outupcoming_trip_list)
+        upcoming_trip_list = findViewById(R.id.upcoming_trip_list_new)
         no_data_image = findViewById(R.id.no_data_image)
-        upcoming_trip_list.layoutManager = LinearLayoutManager(this@OutstationUpcomingActivity)
+        upcoming_trip_list.layoutManager = LinearLayoutManager(this@UpcomingTripsActivity)
 
 
-        newBookingAdapter = UpcomingTripListAdapter(this@OutstationUpcomingActivity, upComingData,
-            this@OutstationUpcomingActivity)
+        newBookingAdapter = OngoingTripListAdapter(this@UpcomingTripsActivity, upComingData,
+            this@UpcomingTripsActivity)
 // Pass 'this' as the listener
         upcoming_trip_list.adapter = newBookingAdapter
 
         loadCancelledListApi()
+
     }
-
-
-
 
     private fun loadCancelledListApi() {
 
 
 
-        showLoadings(this@OutstationUpcomingActivity)
+        showLoadings(this@UpcomingTripsActivity)
         val client = MyApplication.getInstance().apiManagerWithEncryptBaseUrl
 
         val request = ApiRequestData.UpcomingRequest()
-        request.setId(SessionSave.getSession("Id", this@OutstationUpcomingActivity))
+        request.setId(SessionSave.getSession("Id", this@UpcomingTripsActivity))
         request.setDeviceType("2")
         request.setLimit("10")
         request.setStart("0")
         request.setRequestType("1")
-        val LoginResponse = client.callDataOutstationUpcoming(
+        val LoginResponse = client.onGoing(
             ServiceGenerator.COMPANY_KEY,
             request,
-            SessionSave.getSession("Lang",this@OutstationUpcomingActivity)
+            SessionSave.getSession("Lang",this@UpcomingTripsActivity)
         )
         LoginResponse.enqueue(
-            RetrofitCallbackClass<ResponseOutstationTripList>(
-               this@OutstationUpcomingActivity,
-                object : Callback<ResponseOutstationTripList?> {
+            RetrofitCallbackClass<ResponseOngoingBooking>(
+                this@UpcomingTripsActivity,
+                object : Callback<ResponseOngoingBooking?> {
                     override fun onResponse(
-                        call: Call<ResponseOutstationTripList?>,
-                        response: Response<ResponseOutstationTripList?>
+                        call: Call<ResponseOngoingBooking?>,
+                        response: Response<ResponseOngoingBooking?>
                     ) {
                         if (response.isSuccessful) {
                             cancelLoadings()
@@ -166,7 +161,7 @@ lat = lastKnownLocation!!.latitude.toString()
                                     upcoming_trip_list.visibility = View.GONE
                                     no_data_image .visibility = View.VISIBLE
                                     Toast.makeText(
-                                      this@OutstationUpcomingActivity,
+                                        this@UpcomingTripsActivity,
                                         data?.message ?: "No bookings found", // Use data.message if available
                                         Toast.LENGTH_SHORT
                                     ).show()
@@ -175,7 +170,7 @@ lat = lastKnownLocation!!.latitude.toString()
                                 // Handle HTTP errors (e.g., 404, 500)
                                 // cancelLoadings() // Uncomment if you have this function
                                 Toast.makeText(
-                                   this@OutstationUpcomingActivity,
+                                    this@UpcomingTripsActivity,
                                     "API Error: ${response.code()}",
                                     Toast.LENGTH_SHORT
                                 ).show()
@@ -191,14 +186,12 @@ lat = lastKnownLocation!!.latitude.toString()
                         }
                     }
 
-                    override fun onFailure(call: Call<ResponseOutstationTripList?>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseOngoingBooking?>, t: Throwable) {
                         cancelLoadings()
                     }
                 })
         )
     }
-
-
     fun showLoadings(context: Context) {
         try {
             if (mshowDialog != null) if (mshowDialog!!.isShowing) mshowDialog!!.dismiss()
@@ -223,24 +216,25 @@ lat = lastKnownLocation!!.latitude.toString()
     private fun cancelLoadings() {
 
         try {
-            if (mshowDialog != null) if (mshowDialog!!.isShowing && this@OutstationUpcomingActivity != null) mshowDialog!!.dismiss()
+            if (mshowDialog != null) if (mshowDialog!!.isShowing && this@UpcomingTripsActivity != null) mshowDialog!!.dismiss()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
 
     }
 
-    override fun startTrip(_category: ResponseOutstationTripList.Detail.PendingBooking) {
-        
+    override fun startTrip(_category: ResponseOngoingBooking.Detail.PendingBooking) {
         trip_id = _category.passengers_log_id
-        showOtp(this@OutstationUpcomingActivity)
+        showOtp(this@UpcomingTripsActivity)
     }
 
-    override fun contactPassenger(_category: ResponseOutstationTripList.Detail.PendingBooking) {
+    override fun contactPassenger(_category: ResponseOngoingBooking.Detail.PendingBooking) {
         openDialer(_category.passenger_phone)
     }
 
-    override fun cancelTrip(_category: ResponseOutstationTripList.Detail.PendingBooking) {
+    override fun cancelTrip(_category: ResponseOngoingBooking.Detail.PendingBooking) {
+        trip_id = _category.passengers_log_id
+
         try {
             val j = JSONObject()
             j.put("pass_logid", _category.passengers_log_id)
@@ -257,9 +251,25 @@ lat = lastKnownLocation!!.latitude.toString()
             ) j.put("driver_arrived", 1) else j.put("driver_arrived", 0)
             j.put("schedule", "1")
             val canceltrip_url = "type=driver_reply"
-      CancelTrip(canceltrip_url, j)
+            CancelTrip(canceltrip_url, j)
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
+        }
+    }
+
+    override fun trackTrip(_category: ResponseOngoingBooking.Detail.PendingBooking) {
+
+        trip_id = _category.passengers_log_id
+        if (SessionSave.getSession("shift_status", this@UpcomingTripsActivity).equals("IN", ignoreCase = true)) {
+            SessionSave.saveSession(
+                "trip_id",
+                trip_id,
+                this@UpcomingTripsActivity
+            )
+            val intent = Intent(this@UpcomingTripsActivity, OngoingAct::class.java)
+            startActivity(intent)
+        } else {
+            CToast.ShowToast(this@UpcomingTripsActivity, NC.getString(R.string.track_shift_status))
         }
     }
 
@@ -282,22 +292,22 @@ lat = lastKnownLocation!!.latitude.toString()
         APIResult {
         init {
             try {
-                if (NetworkStatus.isOnline(this@OutstationUpcomingActivity)) {
+                if (NetworkStatus.isOnline(this@UpcomingTripsActivity)) {
                     APIService_Retrofit_JSON(
-                        this@OutstationUpcomingActivity,
+                        this@UpcomingTripsActivity,
                         this,
                         data,
                         false
                     ).execute(url)
                 } else {
                     Utils.alert_view(
-                        this@OutstationUpcomingActivity,
+                        this@UpcomingTripsActivity,
                         NC.getString(R.string.message),
                         NC.getString(R.string.check_net_connection),
                         NC.getString(R.string.ok),
                         "",
                         true,
-                        this@OutstationUpcomingActivity,
+                        this@UpcomingTripsActivity,
                         "4"
                     )
                 }
@@ -311,9 +321,9 @@ lat = lastKnownLocation!!.latitude.toString()
                 try {
                     val json = JSONObject(result)
                     if (json.getInt("status") == 1) {
-                        CToast.ShowToast(this@OutstationUpcomingActivity, json.getString("message"))
+                        CToast.ShowToast(this@UpcomingTripsActivity, json.getString("message"))
                     } else {
-                        CToast.ShowToast(this@OutstationUpcomingActivity, json.getString("message"))
+                        CToast.ShowToast(this@UpcomingTripsActivity, json.getString("message"))
                     }
 
                 } catch (e: JSONException) {
@@ -436,7 +446,7 @@ lat = lastKnownLocation!!.latitude.toString()
                     .toString() + verifyno3Txt.getText().toString() + verifyno4Txt.getText()
                     .toString()
                 val url = "type=booking_otp_verify"
-         updateOTP(url, "3", otpnumber)
+                updateOTP(url, "3", otpnumber)
             }
         }
     }
@@ -453,7 +463,7 @@ lat = lastKnownLocation!!.latitude.toString()
                 val j = JSONObject()
                 j.put("trip_id", trip_id)
                 j.put("otp", odometer_number)
-                APIService_Retrofit_JSON(this@OutstationUpcomingActivity, this, j, false).execute(url)
+                APIService_Retrofit_JSON(this@UpcomingTripsActivity, this, j, false).execute(url)
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
             }
@@ -468,28 +478,28 @@ lat = lastKnownLocation!!.latitude.toString()
                             SessionSave.saveSession(
                                 "otp_enter",
                                 "no",
-                                this@OutstationUpcomingActivity
+                                this@UpcomingTripsActivity
                             )
                             SessionSave.saveSession(
                                 "odameter_status",
                                 "2",
-                                this@OutstationUpcomingActivity
+                                this@UpcomingTripsActivity
                             )
                             //showodometer();
 
-                                showodometer()
+                            showodometer()
 
                         }
                     } else {
                         // dialog1 = Utils.alert_view(mContext, NC.getResources().getString(R.string.message),json.getString("message") , NC.getResources().getString(R.string.ok), "", true, mContext, "4");
                         Utils.alert_view(
-                            this@OutstationUpcomingActivity,
+                            this@UpcomingTripsActivity,
                             NC.getString(R.string.message),
                             json.getString("message"),
                             NC.getString(R.string.ok),
                             "",
                             true,
-                            this@OutstationUpcomingActivity,
+                            this@UpcomingTripsActivity,
                             "4"
                         )
                     }
@@ -501,9 +511,9 @@ lat = lastKnownLocation!!.latitude.toString()
     }
 
     fun showodometer() {
-        val view1 = View.inflate(this@OutstationUpcomingActivity, R.layout.odometer_input, null)
+        val view1 = View.inflate(this@UpcomingTripsActivity, R.layout.odometer_input, null)
         if (myOtoMetter != null && myOtoMetter!!.isShowing()) myOtoMetter!!.cancel()
-        myOtoMetter = Dialog(this@OutstationUpcomingActivity, R.style.NewDialog)
+        myOtoMetter = Dialog(this@UpcomingTripsActivity, R.style.NewDialog)
         myOtoMetter!!.setContentView(view1)
         myOtoMetter!!.setCancelable(false)
         myOtoMetter!!.setCanceledOnTouchOutside(false)
@@ -525,11 +535,11 @@ lat = lastKnownLocation!!.latitude.toString()
         val verifyno5Txt: EditText = myOtoMetter!!.findViewById<EditText>(R.id.verifyno5Txt)
         val verifyno6Txt: EditText = myOtoMetter!!.findViewById<EditText>(R.id.verifyno6Txt)
         //   EditText verifyno7Txt = myOtoMetter!!.findViewById(R.id.verifyno7Txt);
-        if (SessionSave.getSession("odameter_status", this@OutstationUpcomingActivity) == "2") {
+        if (SessionSave.getSession("odameter_status", this@UpcomingTripsActivity) == "2") {
             odameter_heading.text = "Start  Reading"
-        } else if (SessionSave.getSession("odameter_status", this@OutstationUpcomingActivity) == "3") {
+        } else if (SessionSave.getSession("odameter_status", this@UpcomingTripsActivity) == "3") {
             odameter_heading.text = "End Reading"
-        } else if (SessionSave.getSession("odameter_status", this@OutstationUpcomingActivity) == "3") {
+        } else if (SessionSave.getSession("odameter_status", this@UpcomingTripsActivity) == "3") {
             odameter_heading.text = "Accept Reading"
         }
         verifyno1Txt.addTextChangedListener(object : TextWatcher {
@@ -622,37 +632,37 @@ lat = lastKnownLocation!!.latitude.toString()
         btn_confirm.setOnClickListener {
             if (verifyno1Txt.getText().toString() == "") {
                 Toast.makeText(
-                    this@OutstationUpcomingActivity,
+                    this@UpcomingTripsActivity,
                     "Enter first number",
                     Toast.LENGTH_LONG
                 ).show()
             } else if (verifyno2Txt.getText().toString() == "") {
                 Toast.makeText(
-                    this@OutstationUpcomingActivity,
+                    this@UpcomingTripsActivity,
                     "Enter second number",
                     Toast.LENGTH_LONG
                 ).show()
             } else if (verifyno3Txt.getText().toString() == "") {
                 Toast.makeText(
-                    this@OutstationUpcomingActivity,
+                    this@UpcomingTripsActivity,
                     "Enter third number",
                     Toast.LENGTH_LONG
                 ).show()
             } else if (verifyno4Txt.getText().toString() == "") {
                 Toast.makeText(
-                    this@OutstationUpcomingActivity,
+                    this@UpcomingTripsActivity,
                     "Enter fourth number",
                     Toast.LENGTH_LONG
                 ).show()
             } else if (verifyno5Txt.getText().toString() == "") {
                 Toast.makeText(
-                    this@OutstationUpcomingActivity,
+                    this@UpcomingTripsActivity,
                     "Enter fifth number",
                     Toast.LENGTH_LONG
                 ).show()
             } else if (verifyno6Txt.getText().toString() == "") {
                 Toast.makeText(
-                    this@OutstationUpcomingActivity,
+                    this@UpcomingTripsActivity,
                     "Enter sixth number",
                     Toast.LENGTH_LONG
                 ).show()
@@ -678,11 +688,11 @@ lat = lastKnownLocation!!.latitude.toString()
         init {
             try {
                 val j = JSONObject()
-                j.put("driver_id", SessionSave.getSession("Id", this@OutstationUpcomingActivity))
+                j.put("driver_id", SessionSave.getSession("Id", this@UpcomingTripsActivity))
                 j.put("trip_id", trip_id)
                 j.put("odometer_number", odometer_number)
                 j.put("level", type)
-                APIService_Retrofit_JSON(this@OutstationUpcomingActivity, this, j, false).execute(url)
+                APIService_Retrofit_JSON(this@UpcomingTripsActivity, this, j, false).execute(url)
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()
             }
@@ -703,19 +713,19 @@ lat = lastKnownLocation!!.latitude.toString()
                                 j.put("trip_id", trip_id)
                                 j.put(
                                     "driver_id",
-                                    SessionSave.getSession("Id", this@OutstationUpcomingActivity)
+                                    SessionSave.getSession("Id", this@UpcomingTripsActivity)
                                 )
                                 j.put(
                                     "pickup_latitude",
-                                   lat
+                                    lat
 
                                 )
                                 j.put(
                                     "pickup_longitude",
-                                  langs
+                                    langs
                                 )
                                 val scheduleTripUrl = "type=schedule_start_trip"
-                                NonActivity().stopServicefromNonActivity(this@OutstationUpcomingActivity)
+                                NonActivity().stopServicefromNonActivity(this@UpcomingTripsActivity)
                                 ScheduleStartTrip(scheduleTripUrl, j)
                             } catch (e: java.lang.Exception) {
                                 e.printStackTrace()
@@ -723,13 +733,13 @@ lat = lastKnownLocation!!.latitude.toString()
                         }
                     } else {
                         Utils.alert_view(
-                            this@OutstationUpcomingActivity,
+                            this@UpcomingTripsActivity,
                             NC.getString(R.string.message),
                             json.getString("message"),
                             NC.getString(R.string.ok),
                             "",
                             true,
-                            this@OutstationUpcomingActivity,
+                            this@UpcomingTripsActivity,
                             "4"
                         )
                     }
@@ -749,17 +759,17 @@ lat = lastKnownLocation!!.latitude.toString()
         APIResult {
         init {
             try {
-                if (isOnline(this@OutstationUpcomingActivity)) {
-                    APIService_Retrofit_JSON(this@OutstationUpcomingActivity, this, data, false).execute(url)
+                if (NetworkStatus.isOnline(this@UpcomingTripsActivity)) {
+                    APIService_Retrofit_JSON(this@UpcomingTripsActivity, this, data, false).execute(url)
                 } else {
                     Utils.alert_view(
-                        this@OutstationUpcomingActivity,
+                        this@UpcomingTripsActivity,
                         NC.getString(R.string.message),
                         NC.getString(R.string.check_net_connection),
                         NC.getString(R.string.ok),
                         "",
                         true,
-                        this@OutstationUpcomingActivity,
+                        this@UpcomingTripsActivity,
                         "4"
                     )
                 }
@@ -770,47 +780,46 @@ lat = lastKnownLocation!!.latitude.toString()
 
         override fun getResult(isSuccess: Boolean, result: String) {
             if (isSuccess) {
-                NonActivity().startServicefromNonActivity(this@OutstationUpcomingActivity)
+                NonActivity().startServicefromNonActivity(this@UpcomingTripsActivity)
                 try {
                     val json = JSONObject(result)
                     if (json.getInt("status") == 1) {
-                        SessionSave.saveSession("trip_id", json.getString("trip_id"), this@OutstationUpcomingActivity)
-                        SessionSave.saveSession("status", json.getString("driver_status"), this@OutstationUpcomingActivity)
+                        SessionSave.saveSession("trip_id", json.getString("trip_id"), this@UpcomingTripsActivity)
+                        SessionSave.saveSession("status", json.getString("driver_status"), this@UpcomingTripsActivity)
                         SessionSave.saveSession(
                             "travel_status",
                             json.getString("travel_status"),
-                            this@OutstationUpcomingActivity
+                            this@UpcomingTripsActivity
                         )
-                        if (SessionSave.getSession("shift_status", this@OutstationUpcomingActivity)
+                        if (SessionSave.getSession("shift_status", this@UpcomingTripsActivity)
                                 .equals("IN", ignoreCase = true)
                         ) {
                             SessionSave.saveSession(
                                 "trip_id",
                                 trip_id,
-                                this@OutstationUpcomingActivity
+                                this@UpcomingTripsActivity
                             )
                             val `in` = Intent(
-                                this@OutstationUpcomingActivity,
+                                this@UpcomingTripsActivity,
                                 OngoingAct::class.java
                             )
-                          startActivity(`in`)
+                            startActivity(`in`)
                         } else {
-                            CToast.ShowToast(this@OutstationUpcomingActivity, NC.getString(R.string.track_shift_status))
+                            CToast.ShowToast(this@UpcomingTripsActivity, NC.getString(R.string.track_shift_status))
                         }
                     } else if (json.getInt("status") == -2) {
 
-                      loadCancelledListApi()
+                        loadCancelledListApi()
                     } else {
-                        CToast.ShowToast(this@OutstationUpcomingActivity, json.getString("message"))
+                        CToast.ShowToast(this@UpcomingTripsActivity, json.getString("message"))
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
             } else {
                 // CToast.ShowToast(mContext, NC.getString(R.string.server_error));
-                NonActivity().startServicefromNonActivity(this@OutstationUpcomingActivity)
+                NonActivity().startServicefromNonActivity(this@UpcomingTripsActivity)
             }
         }
     }
-
 }

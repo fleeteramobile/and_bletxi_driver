@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/app_theme_color"
+        android:paddingTop="40dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back"
+
+            android:layout_alignParentStart="true"
+            />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outstation Upcoming Trips"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+
+            android:textSize="18sp"
+            android:layout_toEndOf="@id/ivBack"
+            android:layout_marginStart="16dp"
+            />
+
+        <!-- Date Dropdown -->
+
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/no_data_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_no_data_new"/>
+
+
+    <!-- RecyclerView overlaid below the header -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/upcoming_trip_list_new"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+
+        android:background="@color/white"
+        android:layout_marginTop="140dp"
+        android:padding="8dp" />
+</FrameLayout>
+

@@ -1230,7 +1230,7 @@ else {
                     String paymentModeDefault = ary.getJSONObject(i).getString("pay_mod_default");
                     String paymentMode_Id = ary.getJSONObject(i).getString("pay_mod_id");
                     if (paymentMode_Id.equalsIgnoreCase("5")) {
-                        radiowalletButton.setVisibility(View.GONE);
+                        radiowalletButton.setVisibility(View.VISIBLE);
                         if (paymentModeDefault.equals("1")) {
                            // radiowalletButton.setTextColor(Color.DKGRAY);
                         }

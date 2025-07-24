@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bluetaxi.driver.R
+import com.bluetaxi.driver.triplist.adapter.interfaces.TollAmountRequest
 import com.bluetaxi.driver.triplist.model.ResponseTollTripList
 import com.bluetaxi.driver.utils.SessionSave
 

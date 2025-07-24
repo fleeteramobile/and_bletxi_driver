@@ -114,6 +114,10 @@
     <color name="fleetera_text_color">#3E4958</color>
     <color name="app_text_color">#3E4958</color>
     <color name="sucess_txt">#50AF65</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="text_color_primary">#212121</color>
+    <color name="icon_color">#424242</color>
+    <color name="icon_color_secondary">#757575</color>
 
 
 </resources>

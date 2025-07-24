@@ -17,6 +17,7 @@ import com.bluetaxi.driver.toll.ResponseTollList;
 import com.bluetaxi.driver.tracklocation.NearestDriverDatas;
 import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking;
 import com.bluetaxi.driver.triplist.model.ResponseOutstationTripList;
+import com.bluetaxi.driver.triplist.model.ResponsePastBooking;
 import com.bluetaxi.driver.triplist.model.ResponseTollTripList;
 import com.google.gson.JsonObject;
 
@@ -52,6 +53,9 @@ public interface CoreClient {
 
     @POST("{owner}" + "?type=driver_booking_list")
     Call<ResponseOngoingBooking> onGoing(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
+
+    @POST("{owner}" + "?type=driver_booking_list")
+    Call<ResponsePastBooking> completedTrips(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
     @POST("{owner}" + "?type=outstation_upcoming_booking_list")
     Call<ResponseOutstationTripList> callDataOutstationUpcoming(@Path(value = "owner", encoded = true) String owner, @Body ApiRequestData.UpcomingRequest body, @Query("lang") String lang);
 

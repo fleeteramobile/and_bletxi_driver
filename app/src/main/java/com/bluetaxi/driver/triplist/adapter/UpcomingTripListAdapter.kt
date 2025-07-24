@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bluetaxi.driver.R
+import com.bluetaxi.driver.triplist.adapter.interfaces.OutstationStartTrip
 import com.bluetaxi.driver.triplist.model.ResponseOutstationTripList
-import com.bluetaxi.driver.triplist.model.ResponseTollTripList
 import com.bluetaxi.driver.utils.SessionSave
-import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
 
@@ -39,6 +37,9 @@ class UpcomingTripListAdapter(
         var btn_decline: TextView
         var tv_trip_cost: TextView
         var tv_remaining: TextView
+        var tv_mobile: TextView
+        var tv_date_value: TextView
+        var date_lay: ConstraintLayout
         init {
 
 
@@ -52,6 +53,9 @@ class UpcomingTripListAdapter(
             btn_get_in_contact = itemView.findViewById(R.id.btn_get_in_contact) as TextView
             btn_start = itemView.findViewById(R.id.btn_start) as TextView
             btn_decline = itemView.findViewById(R.id.btn_decline) as TextView
+            tv_mobile = itemView.findViewById(R.id.tv_mobile) as TextView
+            tv_date_value = itemView.findViewById(R.id.tv_date_value) as TextView
+            date_lay = itemView.findViewById(R.id.date_lay) as ConstraintLayout
 
         }
 
@@ -75,10 +79,14 @@ class UpcomingTripListAdapter(
         holder.tv_pick.setText("${upComingList[position].pickup_location } ")
         holder.tv_drop.setText("${upComingList[position].drop_location } ")
         holder.tv_remaining.setText("${upComingList[position].time } ")
+        holder.tv_date_value.setText("${upComingList[position].pickup_time } ")
+        holder.tv_mobile.setText("${upComingList[position].passenger_country_code } ${upComingList[position].passenger_phone } ")
 
         val currencySymbol = SessionSave.getSession("site_currency", mContext) ?: "₹" // Provide a default if null
         holder.tv_trip_cost.setText("${currencySymbol} ${upComingList[position].approx_fare } ")
 
+        holder.btn_start.visibility = View.VISIBLE
+        holder.date_lay.visibility = View.VISIBLE
 //        Glide.with(mContext)
 //            .load(upComingList[position].map_image) // Your drawable resource
 //            .into(holder.iv_profile_pic)

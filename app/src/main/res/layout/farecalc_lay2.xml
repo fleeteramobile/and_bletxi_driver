@@ -862,9 +862,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:background="@color/white"
+                android:background="@drawable/ic_fleetera_button_shadow_black"
 
                 android:layout_margin="20dp"
+                android:padding="10dp"
 
 
                 android:orientation="vertical">
@@ -938,11 +939,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/profile_section">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/pickup_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10:14"
+                        style="@style/edittext_style"
                         android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -958,30 +960,22 @@
                         app:layout_constraintTop_toTopOf="@id/pickup_time"
                         app:tint="#007BFF" />
 
-                    <TextView
-                        android:id="@+id/address_start"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text=""
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/icon_start"
-                        app:layout_constraintTop_toTopOf="@id/pickup_time" />
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/pickuplocTxt"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text=""
-                        android:textColor="@android:color/darker_gray"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"
+                        android:textStyle="bold"
+                        style="@style/edittext_style"
+                        android:maxLines="2"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/icon_start"
-                        app:layout_constraintTop_toBottomOf="@id/address_start" />
+                        app:layout_constraintTop_toTopOf="@id/pickup_time" />
+
 
 
 
@@ -991,43 +985,33 @@
                         android:layout_height="25dp"
                         android:layout_marginTop="4dp"
                         android:layout_marginStart="8dp"
+                        android:visibility="gone"
                         android:background="@android:color/darker_gray"
                         app:layout_constraintStart_toStartOf="@+id/icon_start"
                         app:layout_constraintTop_toBottomOf="@+id/icon_start" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/drop_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="10:23"
+                        style="@style/edittext_style"
                         android:textColor="@android:color/black"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/pickuplocTxt" />
 
                     <ImageView
                         android:id="@+id/icon_end"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginStart="8dp"
                         android:src="@drawable/ic_dropoff_pin"
                         app:layout_constraintBottom_toBottomOf="@id/drop_time"
                         app:layout_constraintStart_toEndOf="@id/drop_time"
+
                         app:layout_constraintTop_toTopOf="@id/drop_time"
                         app:tint="#FF0000" />
-
-                    <TextView
-                        android:id="@+id/location_end"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text=""
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/icon_end"
-                        app:layout_constraintTop_toTopOf="@id/drop_time" />
 
                     <TextView
                         android:id="@+id/droplocTxt"
@@ -1035,11 +1019,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text=""
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"
+                        android:maxLines="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/icon_end"
-                        app:layout_constraintTop_toBottomOf="@id/location_end" />
+                        app:layout_constraintTop_toTopOf="@id/drop_time" />
+
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1139,7 +1127,7 @@
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1183,7 +1171,7 @@
                                     android:text="@string/f_currsymbol"
                                     android:visibility="gone" />
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/distance"
                                     style="@style/edittext_style"
                                     android:layout_width="wrap_content"
@@ -1479,7 +1467,7 @@
                             android:padding="5dp"
                             android:visibility="visible">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1488,7 +1476,7 @@
                                 android:padding="@dimen/dp_5"
                                 android:text="Convenience Fee" />
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1508,7 +1496,7 @@
                                 android:gravity="center_vertical">
 
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/convenience_fee_txt_currency"
 
                                     style="@style/edittext_style"
@@ -1521,7 +1509,7 @@
 
                                     android:text="@string/f_currsymbol" />
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/convenience_fee_fare_txt"
                                     style="@style/edittext_style"
                                     android:layout_width="wrap_content"
@@ -1557,7 +1545,7 @@
                                 android:padding="@dimen/dp_5"
                                 android:text="Hills Fare" />
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1616,7 +1604,7 @@
                             android:padding="5dp"
                             android:visibility="visible">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1625,7 +1613,7 @@
                                 android:padding="@dimen/dp_5"
                                 android:text="Trip Amount" />
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1644,7 +1632,7 @@
                                 android:layout_marginRight="10dp"
                                 android:gravity="center_vertical">
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/amountpayCurrency"
                                     style="@style/edittext_style"
                                     android:layout_width="wrap_content"
@@ -1655,7 +1643,7 @@
                                     android:gravity="center"
                                     android:text="@string/f_currsymbol" />
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/amountpayTxt"
                                     style="@style/edittext_style"
                                     android:layout_width="wrap_content"
@@ -1752,7 +1740,7 @@
                             android:orientation="horizontal"
                             android:padding="5dp">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 style="@style/edittext_style"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1764,7 +1752,7 @@
                                 android:padding="5dp"
                                 android:text="Coupon Saving" />
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
@@ -1784,7 +1772,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center_vertical">
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/couponcurrency"
                                     style="@style/edittext_style"
                                     android:layout_width="wrap_content"
@@ -1795,7 +1783,7 @@
                                     android:gravity="center"
                                     android:text="@string/f_currsymbol" />
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/couponamountTxt"
                                     style="@style/edittext_style"
                                     android:layout_width="wrap_content"
@@ -1842,8 +1830,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
                                 android:layout_gravity="center_vertical"
+                                style="@style/edittext_style_bold"
 
-                                android:fontFamily="@font/inter_semibold"
                                 android:gravity="center_vertical"
                                 android:padding="5dp"
                                 android:text="Total Amount"
@@ -1879,11 +1867,11 @@
                                     android:hint="@string/zero"
                                     android:inputType="numberDecimal"
                                     android:maxLength="8"
-
+                                    style="@style/edittext_style_bold"
                                     android:text="@string/zero"
                                     android:textColor="@color/black" />
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/totalamt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -1891,6 +1879,7 @@
                                     android:background="@android:color/transparent"
                                     android:gravity="right"
                                     android:hint="@string/zero"
+                                    style="@style/edittext_style_bold"
                                     android:inputType="numberDecimal"
                                     android:maxLength="8"
                                     android:paddingRight="5dp"
@@ -2043,7 +2032,7 @@
                     android:layout_margin="5dp"
                     android:padding="10dp"
 
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp"
 
@@ -2145,7 +2134,7 @@
                             android:layoutDirection="rtl"
                             android:padding="10dp"
 
-                            android:text="@string/card"
+                            android:text="Online"
 
                             android:textAlignment="textStart"
                             android:visibility="visible" />

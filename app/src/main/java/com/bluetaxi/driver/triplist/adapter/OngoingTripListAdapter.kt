@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bluetaxi.driver.R
+import com.bluetaxi.driver.triplist.adapter.interfaces.OngoingTrip
 import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking
 import com.bluetaxi.driver.utils.SessionSave
 import com.google.android.material.imageview.ShapeableImageView
@@ -35,6 +36,9 @@ class OngoingTripListAdapter(
         var btn_decline: TextView
         var tv_trip_cost: TextView
         var tv_remaining: TextView
+        var tv_mobile: TextView
+        var tv_id: TextView
+
         init {
 
 
@@ -48,6 +52,8 @@ class OngoingTripListAdapter(
             btn_get_in_contact = itemView.findViewById(R.id.btn_get_in_contact) as TextView
             btn_start = itemView.findViewById(R.id.btn_start) as TextView
             btn_decline = itemView.findViewById(R.id.btn_decline) as TextView
+            tv_mobile = itemView.findViewById(R.id.tv_mobile) as TextView
+            tv_id = itemView.findViewById(R.id.tv_id) as TextView
 
         }
 
@@ -70,10 +76,13 @@ class OngoingTripListAdapter(
         holder.tv_name.setText("${upComingList[position].passenger_name } ")
         holder.tv_pick.setText("${upComingList[position].pickup_location } ")
         holder.tv_drop.setText("${upComingList[position].drop_location } ")
-        holder.tv_remaining.setText("${upComingList[position].time } ")
+        holder.tv_remaining.setText("${upComingList[position].pickup_time_text } ")
+        holder.tv_id.setText(" ${upComingList[position].passengers_log_id } ")
+        holder.tv_mobile.setText("${upComingList[position].passenger_country_code } ${upComingList[position].passenger_phone } ")
 
         val currencySymbol = SessionSave.getSession("site_currency", mContext) ?: "₹" // Provide a default if null
         holder.tv_trip_cost.setText("${currencySymbol} ${upComingList[position].approx_fare } ")
+        //
 
 //        Glide.with(mContext)
 //            .load(upComingList[position].map_image) // Your drawable resource

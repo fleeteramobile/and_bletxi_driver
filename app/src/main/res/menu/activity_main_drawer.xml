@@ -10,31 +10,24 @@
         <item
             android:id="@+id/nav_profile"
             android:title="Profile" />
-        <item
-            android:id="@+id/nav_trips"
-            android:title="My Trips" />
+
 
         <item
-            android:id="@+id/nav_upcoming"
-            android:title="Outstation Upcoming Rides " />
+            android:id="@+id/nav_book"
+            android:title="Bookings" />
+
+
 
         <item
             android:id="@+id/nav_tarck"
             android:title="Track Location" />
 
-        <item
-            android:id="@+id/nav_toll"
-            android:title="Toll Request" />
-        <item
-            android:id="@+id/goto_home"
-            android:title="Go Home" />
+
+
         <item
             android:id="@+id/nav_wallet"
             android:title="Earnings" />
 
-        <item
-            android:id="@+id/nav_duty"
-            android:title="Duty setting" />
 
 
         <item

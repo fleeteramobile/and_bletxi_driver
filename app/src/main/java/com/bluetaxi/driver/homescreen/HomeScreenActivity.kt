@@ -53,9 +53,12 @@ import com.bluetaxi.driver.service.LocationUpdate
 import com.bluetaxi.driver.service.NonActivity
 import com.bluetaxi.driver.tracklocation.TrackLocationActivity
 import com.bluetaxi.driver.tripinprogress.TripInprogressActivity
+import com.bluetaxi.driver.triplist.BookingsActivity
 import com.bluetaxi.driver.triplist.CommonTripHistory
 import com.bluetaxi.driver.triplist.OutstationUpcomingActivity
 import com.bluetaxi.driver.triplist.TollRequestActivity
+import com.bluetaxi.driver.triplist.pastbooking.PastBookingActivity
+import com.bluetaxi.driver.triplist.upcoming.UpcomingTripsActivity
 import com.bluetaxi.driver.utils.CToast
 import com.bluetaxi.driver.utils.ListViewEX
 import com.bluetaxi.driver.utils.NC
@@ -585,6 +588,7 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                     val name = driver_name.toString()
                     val capitalized = name.replaceFirstChar { it.uppercase() }
                     driver_name_txt.setText(capitalized)
+                    SessionSave.saveSession("driver_name",capitalized,this@HomeScreenActivity)
 
                     //driver_name_txt.setText(driver_name.toString())
                     hour_spend.setText(totalShiftHrs.toString())
@@ -805,27 +809,13 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                 startActivity(intent)
             }
 
-            R.id.nav_trips -> { // Assuming you add this to your menu XML
-                // Handle profile menu item click
-                val intent = Intent(
-                    this@HomeScreenActivity,
-                    CommonTripHistory::class.java
-                )
-                startActivity(intent)
-            }
+
 
             R.id.nav_wallet -> { // Assuming you add this to your menu XML
                 // Handle profile menu item click
                 val intent = Intent(
                     this@HomeScreenActivity,
                     EarningsAct::class.java
-                )
-                startActivity(intent)
-            }R.id.nav_toll -> { // Assuming you add this to your menu XML
-                // Handle profile menu item click
-                val intent = Intent(
-                    this@HomeScreenActivity,
-                    TollRequestActivity::class.java
                 )
                 startActivity(intent)
             }
@@ -840,32 +830,18 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                 startActivity(intent)
             }
 
-            R.id.goto_home -> { // Assuming you add this to your menu XML
+            R.id.nav_book -> { // Assuming you add this to your menu XML
                 // Handle profile menu item click
                 val intent = Intent(
                     this@HomeScreenActivity,
-                    GotoHomeActivity::class.java
+                    BookingsActivity::class.java
                 )
                 startActivity(intent)
             }
 
-            R.id.nav_upcoming -> { // Assuming you add this to your menu XML
-                // Handle profile menu item click
-                val intent = Intent(
-                    this@HomeScreenActivity,
-                    OutstationUpcomingActivity::class.java
-                )
-                startActivity(intent)
-            }
 
-  R.id.nav_duty -> { // Assuming you add this to your menu XML
-                // Handle profile menu item click
-                val intent = Intent(
-                    this@HomeScreenActivity,
-                    DutySettingActivity::class.java
-                )
-                startActivity(intent)
-            }
+
+
 
 
             R.id.nav_statement -> { // Assuming you add this to your menu XML

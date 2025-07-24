@@ -1,4 +1,4 @@
-package com.bluetaxi.driver.triplist.adapter
+package com.bluetaxi.driver.triplist.adapter.interfaces
 
 import com.bluetaxi.driver.triplist.model.ResponseOngoingBooking
 import com.bluetaxi.driver.triplist.model.ResponseOutstationTripList
