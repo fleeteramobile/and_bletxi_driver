@@ -24,6 +24,22 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.bluetaxi.driver.MainActivity
+import com.bluetaxi.driver.OngoingAct
+import com.bluetaxi.driver.R
+import com.bluetaxi.driver.data.CommonData
+import com.bluetaxi.driver.errorLog.ApiErrorModel
+import com.bluetaxi.driver.errorLog.ErrorLogRepository.Companion.getRepository
+import com.bluetaxi.driver.homescreen.HomeScreenActivity
+import com.bluetaxi.driver.interfaces.APIResult
+import com.bluetaxi.driver.service.APIService_Retrofit_JSON
+import com.bluetaxi.driver.utils.CToast
+import com.bluetaxi.driver.utils.DriverUtils.driverInfo
+import com.bluetaxi.driver.utils.ExceptionConverter.buildStackTraceString
+import com.bluetaxi.driver.utils.NC
+import com.bluetaxi.driver.utils.NetworkStatus
+import com.bluetaxi.driver.utils.SessionSave
+import com.bluetaxi.driver.utils.Systems
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationAvailability
 import com.google.android.gms.location.LocationCallback
@@ -43,22 +59,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.PolyUtil
-import com.bluetaxi.driver.MainActivity
-import com.bluetaxi.driver.OngoingAct
-import com.bluetaxi.driver.R
-import com.bluetaxi.driver.data.CommonData
-import com.bluetaxi.driver.errorLog.ApiErrorModel
-import com.bluetaxi.driver.errorLog.ErrorLogRepository.Companion.getRepository
-import com.bluetaxi.driver.homescreen.HomeScreenActivity
-import com.bluetaxi.driver.interfaces.APIResult
-import com.bluetaxi.driver.service.APIService_Retrofit_JSON
-import com.bluetaxi.driver.utils.CToast
-import com.bluetaxi.driver.utils.DriverUtils.driverInfo
-import com.bluetaxi.driver.utils.ExceptionConverter.buildStackTraceString
-import com.bluetaxi.driver.utils.NC
-import com.bluetaxi.driver.utils.NetworkStatus
-import com.bluetaxi.driver.utils.SessionSave
-import com.bluetaxi.driver.utils.Systems
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -76,6 +76,7 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var pickupLocationTXt: TextView
     private lateinit var dropLocationTxt: TextView
     private lateinit var priceTextView: TextView
+    private lateinit var trip_type_txt: TextView
     private lateinit var distanceTextView: TextView
     private lateinit var progressBar: ProgressBar // This is the spinner for the accept button
     private lateinit var closeButton: ImageButton
@@ -195,6 +196,7 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
         pickupLocationTXt = findViewById(R.id.pickup_location)
         dropLocationTxt = findViewById(R.id.drop_location)
         priceTextView = findViewById(R.id.priceTextView)
+        trip_type_txt = findViewById(R.id.trip_type_txt)
         distanceTextView = findViewById(R.id.distanceTextView)
         progressBar = findViewById(R.id.progressBar) // For the accept button's loading state
         closeButton = findViewById(R.id.closeButton)
@@ -350,9 +352,9 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
                 val drop_notes = tripdetails.optString("dropoff_notes", "")
                 est_distance = tripdetails.optString("approx_distance", "")
                 eta_time = tripdetails.optString("approx_distance", "")
+                trip_type = tripdetails.optString("trip_type", "")
 
-
-
+                updateLayoutStates(trip_type!!.toInt())
                 stops_count = tripdetails.optString("stops", "0")
 
                 if (tripdetails.has(CommonData.SHOW_CANCEL_BUTTON)) {
@@ -429,7 +431,32 @@ class TripNotificationActivity : AppCompatActivity(), OnMapReadyCallback {
             Toast.makeText(this, "Error processing trip details.", Toast.LENGTH_LONG).show()
         }
     }
+    private fun updateLayoutStates(bookingType: Int) {
+        // Reset all layouts to disabled
 
+        println("bookingType_test $bookingType")
+        when (bookingType) {
+            0 -> {
+               trip_type_txt.setText("Local")
+            }
+
+            2 -> {
+                trip_type_txt.setText("Rental")
+
+            }
+
+            3 -> {
+                trip_type_txt.setText("Out Station")
+
+            }
+
+
+
+            else -> {
+                trip_type_txt.setText("Local")
+            }
+        }
+    }
 
     fun LatlongValue(
         pickup_lat: Double?,    // Renamed parameters to avoid confusion with member variables

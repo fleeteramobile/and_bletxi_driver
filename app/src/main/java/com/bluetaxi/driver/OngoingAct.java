@@ -256,6 +256,7 @@ public class OngoingAct extends MainActivity implements ClickInterface, OnMapRea
     private String trip_type = "1";
     private String booking_Type = "1";
     private String model_id = "";
+    private String minimum_outstation_kms = "";
     private String promo_type;
     private String existing_wallet_amount = "";
     private String distanceFare = "";
@@ -1647,15 +1648,31 @@ Boolean enable_os_waiting_fare = false;
         }
     }
 
+//    public void getCurrentLocation(int locationRequestType) {
+//
+//        fusedLocationClient.getLastLocation()
+//                .addOnSuccessListener(this, location -> {
+//                    if (location != null) {
+//                        handleLastLocation(location, locationRequestType);
+//                    }
+//                });
+//        startLocationUpdates();
+//    }
+
     public void getCurrentLocation(int locationRequestType) {
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, location -> {
                     if (location != null) {
-                        handleLastLocation(location, locationRequestType);
+                       // lastKnownLocation = location;  // Cache the latest location
+                        handleLastLocation(location, locationRequestType);  // Safely handled below
+                    } else {
+                        Log.e("Location", "Location is null");
                     }
                 });
-        startLocationUpdates();
+
+        startLocationUpdates();  // Continue listening for updates
     }
+
 
     private void handleLastLocation(Location location, int locationRequestType) {
         switch (locationRequestType) {
@@ -3662,6 +3679,9 @@ Boolean enable_os_waiting_fare = false;
                             if (json.getJSONObject("detail").has("manual_waiting_time")) {
                                 SessionSave.saveSession(CommonData.WAITING_TIME_MANUAL, json.getJSONObject("detail").getString("manual_waiting_time").equals("1"), OngoingAct.this);
                             }
+                            if (json.getJSONObject("detail").has("minimum_outstation_kms")) {
+                                minimum_outstation_kms =  detail.getString("minimum_outstation_kms");
+                            }
                             if (SessionSave.getSession(CommonData.WAITING_TIME_MANUAL, OngoingAct.this, false)) {
                                 ssWaitingTime_img.setVisibility(View.VISIBLE);
                             } else {
@@ -4488,6 +4508,47 @@ Boolean enable_os_waiting_fare = false;
     }
 
     public void completeTripApi() {
+
+        if (booking_Type.equals("2") || booking_Type.equals("3")) {
+            funComplteTrip();  // Direct complete for outstation or rental
+        } else {
+
+            double minimumOutstationKmsDouble = Double.parseDouble(minimum_outstation_kms);
+
+            // Get actual distance
+            double actualDistance = 0.0;
+            try {
+                actualDistance = Double.parseDouble(String.valueOf(SessionSave.getDistance(OngoingAct.this)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                double googleDistance = Double.parseDouble(String.valueOf(SessionSave.getGoogleDistance(OngoingAct.this)));
+                actualDistance = Math.max(actualDistance, googleDistance); // Use the greater one
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Minimum_km: " + minimumOutstationKmsDouble);
+            System.out.println("Actual Distance Travelled: " + actualDistance);
+
+            // Show dialog if exceeded
+            if (actualDistance > minimumOutstationKmsDouble) {
+
+
+                abovekm();
+            } else {
+                funComplteTrip(); // Distance is within range, proceed normally
+            }
+        }
+
+        System.out.println("Minimum_km"+ minimum_outstation_kms);
+
+    }
+
+    void funComplteTrip()
+    {
         try {
             MainActivity.mMyStatus.setOnstatus("Complete");
 //            stopService(new Intent(OngoingAct.this, WaitingTimerRun.class));
@@ -4562,7 +4623,50 @@ Boolean enable_os_waiting_fare = false;
         });
     }
 
+    private void abovekm() {
 
+        View view = View.inflate(this, R.layout.custom_msg_popup_yn, null);
+        Dialog mDialog = new Dialog(this, R.style.dialogwinddow_trans);
+        mDialog.setContentView(view);
+        mDialog.setCancelable(true);
+        mDialog.show();
+        Window window = mDialog.getWindow();
+        if (window != null) {
+            window.setLayout(
+                    LinearLayoutCompat.LayoutParams.MATCH_PARENT,
+                    LinearLayoutCompat.LayoutParams.WRAP_CONTENT
+            );
+        }
+
+        AppCompatTextView mail = mDialog.findViewById(R.id.msg_txt);
+        mail.setText("You have travelled more than " + minimum_outstation_kms +
+                " km range.\nSo fare is calculated based on outstation trip.");
+
+        LinearLayout yesBtn = mDialog.findViewById(R.id.yesbtn);
+        LinearLayout noBtn = mDialog.findViewById(R.id.nobtn);
+
+        AppCompatTextView txtyes = mDialog.findViewById(R.id.txtyes);
+        AppCompatTextView txtno = mDialog.findViewById(R.id.txtno);
+
+        txtyes.setText("Complete Trip");
+        txtno.setText(NC.getString(R.string.cancel));
+        noBtn.setVisibility(View.GONE );
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mDialog.dismiss();
+               funComplteTrip();
+            }
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                mDialog.dismiss();
+            }
+        });
+    }
 
     private class showServiceList implements APIResult {
         private String msg;

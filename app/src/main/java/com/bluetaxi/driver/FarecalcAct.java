@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +62,8 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 
 import retrofit2.Call;
@@ -1726,6 +1730,107 @@ else {
      */
     private void callurl() {
 
+        abovekm();
+    }
+
+    private void abovekm() {
+
+        View view = View.inflate(this, R.layout.custom_msg_popup_yn, null);
+        Dialog mDialog = new Dialog(this, R.style.dialogwinddow_trans);
+        mDialog.setContentView(view);
+        mDialog.setCancelable(true);
+        mDialog.show();
+        Window window = mDialog.getWindow();
+        if (window != null) {
+            window.setLayout(
+                    LinearLayoutCompat.LayoutParams.MATCH_PARENT,
+                    LinearLayoutCompat.LayoutParams.WRAP_CONTENT
+            );
+        }
+
+        AppCompatTextView mail = mDialog.findViewById(R.id.msg_txt);
+        mail.setText("Do you want to add any extra fare for billing?");
+
+        LinearLayout yesBtn = mDialog.findViewById(R.id.yesbtn);
+        LinearLayout noBtn = mDialog.findViewById(R.id.nobtn);
+
+        AppCompatTextView txtyes = mDialog.findViewById(R.id.txtyes);
+        AppCompatTextView txtno = mDialog.findViewById(R.id.txtno);
+        noBtn.setVisibility(View.VISIBLE);
+        txtyes.setText("Yes");
+        txtno.setText("NO");
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mDialog.dismiss();
+                extraFare();
+            }
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                funFareApi();
+                mDialog.dismiss();
+            }
+        });
+    }
+
+    private void extraFare() {
+
+        View view = View.inflate(this, R.layout.add_extra_fare, null);
+        Dialog mDialog = new Dialog(this, R.style.dialogwinddow_trans);
+        mDialog.setContentView(view);
+        mDialog.setCancelable(true);
+        mDialog.show();
+        Window window = mDialog.getWindow();
+        if (window != null) {
+            window.setLayout(
+                    LinearLayoutCompat.LayoutParams.MATCH_PARENT,
+                    LinearLayoutCompat.LayoutParams.WRAP_CONTENT
+            );
+        }
+
+        AppCompatTextView mail = mDialog.findViewById(R.id.msg_txt);
+        mail.setText("Do you want to add any extra fare for billing?");
+
+        LinearLayout yesBtn = mDialog.findViewById(R.id.yesbtn);
+        LinearLayout noBtn = mDialog.findViewById(R.id.nobtn);
+
+        AppCompatTextView txtyes = mDialog.findViewById(R.id.txtyes);
+        AppCompatTextView txtno = mDialog.findViewById(R.id.txtno);
+        EditText edt_extrafare = mDialog.findViewById(R.id.edt_extrafare);
+
+        txtyes.setText("Yes");
+        txtno.setText("NO");
+
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                mDialog.dismiss();
+                if (edt_extrafare.getText().toString().equals(""))
+                {
+                    Toast.makeText(FarecalcAct.this,"Kindly enter the value",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    funFareApiExtra(edt_extrafare.getText().toString());
+                }
+
+            }
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                funFareApi();
+                mDialog.dismiss();
+            }
+        });
+    }
+
+    void funFareApi()
+    {
         String url = "type=tripfare_update";
         try {
             JSONObject j = new JSONObject();
@@ -1789,6 +1894,79 @@ else {
 
 
             }
+            new FareUpdate(url, j);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    void funFareApiExtra(String extreaFare)
+    {
+        String url = "type=tripfare_update";
+        try {
+            JSONObject j = new JSONObject();
+
+            if (trip_type.equals("3")) {
+                j.put("os_distance", os_distance);
+                j.put("os_actual_amount", amountpayTxt.getText().toString());
+                j.put("os_trip_fare", df.format((os_fare)));
+                j.put("os_promodiscount_amount", b_discount.getText().toString());
+                j.put("os_minutes_traveled", (os_duration * 60));
+                j.put("os_minutes_fare", os_minute_fare);
+            }
+            j.put("distance", f_distance);
+            j.put("actual_amount", String.valueOf(f_total));
+            j.put("trip_fare", f_tripfare);
+            j.put("promodiscount_amount", f_farediscount);
+            j.put("fare", f_payamt);
+            j.put("amount_tobe_paid", amount_tobe_paid);
+            j.put("amount_used_from_wallet", amount_used_from_wallet);
+
+            j.put("trip_type", trip_type);
+            j.put("trip_id", f_tripid);
+
+            j.put("distance_fare", distanceFare);
+
+            j.put("actual_distance", f_distance);
+
+            j.put("base_fare", base_fare);
+
+            j.put("tips",extreaFare);
+            j.put("passenger_promo_discount", promotax);
+            j.put("tax_amount", f_taxamount);
+            j.put("remarks", "");
+            j.put("nightfare_applicable", f_nightfareapplicable);
+            j.put("nightfare", f_nightfare);
+            j.put("eveningfare_applicable", f_eveningfare_applicable);
+            j.put("eveningfare", f_eveningfare);
+            j.put("waiting_time", f_waitingtime);
+            j.put("waiting_cost", f_waitingcost);
+            j.put("creditcard_no", "");
+            j.put("creditcard_cvv", Cvv);
+            j.put("company_tax", cmpTax);
+            j.put("expmonth", "");
+            j.put("expyear", "");
+            j.put("pay_mod_id", f_paymodid);
+            j.put("passenger_discount", p_dis);
+            j.put("minutes_traveled", f_minutes_traveled);
+            j.put("minutes_fare", f_minutes_fare);
+            j.put("fare_calculation_type", fare_calculation_type);
+            j.put("model_fare_type", SessionSave.getSession("model_fare_type", FarecalcAct.this));
+            j.put("pending_cancel_amount", pending_cancel_amount);
+            j.put("collected_amount", amount_received);
+            j.put("partial_payment_status", partial_payment_status);
+            j.put("partial_payment_amount", partial_payment_amount);
+            j.put("toll_amount", tollFareTxt);
+            j.put("parking_amount", parkingFareTxt);
+            if(f_paymodid.equals("2"))
+            {
+                j.put("payment_type", "30");
+                j.put("order_id", SessionSave.getSession("razepay_orderId", FarecalcAct.this));
+
+
+            }
+
             new FareUpdate(url, j);
         } catch (Exception e) {
             // TODO: handle exception

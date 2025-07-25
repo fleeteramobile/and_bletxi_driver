@@ -13,6 +13,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -70,7 +71,9 @@ class UpcomingTripsActivity : AppCompatActivity(), OngoingTrip, ClickInterface {
 
         setContentView(R.layout.activity_upcoming_trips)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
+        findViewById<ImageButton>(R.id.backButton).setOnClickListener {
+            onBackPressed()
+        }
 
         val locationResult = fusedLocationProviderClient.lastLocation
         locationResult.addOnCompleteListener(this@UpcomingTripsActivity) { task ->
@@ -263,7 +266,7 @@ class UpcomingTripsActivity : AppCompatActivity(), OngoingTrip, ClickInterface {
         if (SessionSave.getSession("shift_status", this@UpcomingTripsActivity).equals("IN", ignoreCase = true)) {
             SessionSave.saveSession(
                 "trip_id",
-                trip_id,
+                trip_id!!.trim(),
                 this@UpcomingTripsActivity
             )
             val intent = Intent(this@UpcomingTripsActivity, OngoingAct::class.java)

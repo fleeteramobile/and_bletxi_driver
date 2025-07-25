@@ -94,6 +94,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
 
     private lateinit var earning: TextView
     private lateinit var driver_name_txt: TextView
+    private lateinit var driver_code_txt: TextView
     private lateinit var hour_spend: TextView
     private lateinit var totalRidesCount: TextView
     private lateinit var completedRidesCount: TextView
@@ -137,6 +138,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
 
         earning = findViewById(R.id.earning)
         driver_name_txt = findViewById(R.id.driver_name_home)
+        driver_code_txt = findViewById(R.id.driver_code)
         hour_spend = findViewById(R.id.hour_spend)
         totalRidesCount = findViewById(R.id.totalRidesCount)
         completedRidesCount = findViewById(R.id.completedRidesCount)
@@ -567,6 +569,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
                     val averageRating = json.getInt("average_rating") // Or getDouble if it can be fractional
                     val totalShiftHrs = json.getString("total_monthly_shift_hrs")
                     val driver_name = json.getString("driver_name")
+                    val driver_code = json.getString("driver_code")
                     val driver_email = json.getString("driver_email")
                     val driver_phone = json.getString("driver_phone")
                     val modelId = json.getInt("model_id")
@@ -589,6 +592,9 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                     val capitalized = name.replaceFirstChar { it.uppercase() }
                     driver_name_txt.setText(capitalized)
                     SessionSave.saveSession("driver_name",capitalized,this@HomeScreenActivity)
+                    //driver_code
+                    driver_code_txt.setText(driver_code)
+                    SessionSave.saveSession("driver_code",driver_code,this@HomeScreenActivity)
 
                     //driver_name_txt.setText(driver_name.toString())
                     hour_spend.setText(totalShiftHrs.toString())

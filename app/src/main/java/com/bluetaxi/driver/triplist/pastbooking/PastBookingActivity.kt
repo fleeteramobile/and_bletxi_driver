@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,7 +41,9 @@ class PastBookingActivity : AppCompatActivity(), CompletedTrip, ClickInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_past_booking)
-
+        findViewById<ImageButton>(R.id.backButton).setOnClickListener {
+            onBackPressed()
+        }
         upcoming_trip_list = findViewById(R.id.completed_trip_list_new)
         no_data_image = findViewById(R.id.no_data_image)
         upcoming_trip_list.layoutManager = LinearLayoutManager(this@PastBookingActivity)

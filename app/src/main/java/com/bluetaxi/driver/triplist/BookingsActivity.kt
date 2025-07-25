@@ -26,7 +26,7 @@ class BookingsActivity : AppCompatActivity() {
         userNameTextView = findViewById(R.id.user_name)
         userEmailTextView = findViewById(R.id.user_email)
         userNameTextView.setText(SessionSave.getSession("driver_name",this@BookingsActivity))
-        userEmailTextView.setText(SessionSave.getSession("driver_name",this@BookingsActivity))
+        userEmailTextView.setText(SessionSave.getSession("driver_code",this@BookingsActivity))
 
         findViewById<ImageButton>(R.id.backButton).setOnClickListener {
             onBackPressed()

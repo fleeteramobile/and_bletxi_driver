@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -44,11 +45,15 @@ class TollRequestActivity : AppCompatActivity(), TollAmountRequest, ClickInterfa
     var mshowDialog: Dialog? = null
     private var pastData: ArrayList<ResponseTollTripList.Detail.PastBooking> = ArrayList()
     private lateinit var past_booking_adapter: TollTripListAdapter
+    lateinit var no_data_image: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_toll_request)
+        findViewById<ImageButton>(R.id.backButton).setOnClickListener {
+            onBackPressed()
+        }
         completed_trip_list = findViewById(R.id.toll_trip_list)
         completed_trip_list.layoutManager = LinearLayoutManager(this@TollRequestActivity)
 
@@ -99,22 +104,37 @@ class TollRequestActivity : AppCompatActivity(), TollAmountRequest, ClickInterfa
                                 val data = response.body()
 
                                 if (data != null && data.status == 1) {
+
                                     pastData.clear() // Clear the old data
                                     // Add all new bookings to the mutable list
-                                    data.detail.past_booking?.let {
-                                        pastData.addAll(it)
-                                    }
-                                    println("pickup_location_newbooking_size" + " " + pastData.size)
 
-                                    // Notify the adapter that the data set has changed
-                                    past_booking_adapter.notifyDataSetChanged()
+
+                                    if (data.detail.past_booking?.size  !=0 )
+                                    {
+                                        data.detail.past_booking?.let {
+                                            pastData.addAll(it)
+                                        }
+                                        println("pickup_location_newbooking_size" + " " + pastData.size)
+
+                                        // Notify the adapter that the data set has changed
+                                        past_booking_adapter.notifyDataSetChanged()
+                                        completed_trip_list.visibility = View.VISIBLE
+                                        no_data_image .visibility = View.GONE
+                                    }
+                                    else
+                                    {
+                                        completed_trip_list.visibility = View.GONE
+                                        no_data_image .visibility = View.VISIBLE
+                                    }
+
 
                                     println("pickup_location_newbooking" + " " + "issettttttttttttttttttt")
 
                                 } else {
                                     pastData.clear() // Clear data if status is not 1 or data is null
                                     past_booking_adapter.notifyDataSetChanged() // Update UI to show empty list
-
+                                    completed_trip_list.visibility = View.GONE
+                                    no_data_image .visibility = View.VISIBLE
                                     Toast.makeText(
                                         this@TollRequestActivity,
                                         data?.message ?: "No bookings found", // Use data.message if available
@@ -129,16 +149,22 @@ class TollRequestActivity : AppCompatActivity(), TollAmountRequest, ClickInterfa
                                     "API Error: ${response.code()}",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                completed_trip_list.visibility = View.GONE
+                                no_data_image .visibility = View.VISIBLE
                             }
 
 
 
                         } else {
+                            completed_trip_list.visibility = View.GONE
+                            no_data_image .visibility = View.VISIBLE
                             cancelLoadings()
                         }
                     }
 
                     override fun onFailure(call: Call<ResponseTollTripList?>, t: Throwable) {
+                        completed_trip_list.visibility = View.GONE
+                        no_data_image .visibility = View.VISIBLE
                         cancelLoadings()
                     }
                 })

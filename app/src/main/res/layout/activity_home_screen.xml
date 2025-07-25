@@ -118,6 +118,18 @@
             app:layout_constraintTop_toTopOf="@+id/driver_name_home"
 
             />
+        <TextView
+            android:id="@+id/driver_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text=""
+            android:textColor="#757575"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/driver_name_home" />
+
 
 
         <LinearLayout
@@ -128,7 +140,7 @@
             android:layout_marginTop="4dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/driver_name_home">
+            app:layout_constraintTop_toBottomOf="@+id/driver_code">
 
             <ImageView
                 android:layout_width="20dp"
@@ -335,6 +347,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Rides"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:textColor="#757575"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -367,6 +381,8 @@
                     android:layout_height="wrap_content"
                     android:text="Average time spend"
                     android:textColor="#757575"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -397,6 +413,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Declines Left Today"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:textColor="#757575"
                     android:textSize="12sp" />
             </LinearLayout>

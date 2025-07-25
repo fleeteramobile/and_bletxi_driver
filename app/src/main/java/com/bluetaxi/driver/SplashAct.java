@@ -522,7 +522,7 @@ public class SplashAct extends MainActivity {
                 finish();
             } else {
                 if (SessionSave.getSession("travel_status", SplashAct.this).equals("5")) {
-                    i = new Intent(SplashAct.this, UpcomingTripsActivity.class);
+                    i = new Intent(SplashAct.this, OngoingAct.class);
                     startActivity(i);
                     finish();
                 } else {
@@ -1084,7 +1084,7 @@ public class SplashAct extends MainActivity {
                                 finish();
                             } else {
                                 if (SessionSave.getSession("travel_status", SplashAct.this).equals("5")) {
-                                    i = new Intent(SplashAct.this, UpcomingTripsActivity.class);
+                                    i = new Intent(SplashAct.this, OngoingAct.class);
                                     startActivity(i);
                                     finish();
                                 } else {
@@ -1390,7 +1390,7 @@ public class SplashAct extends MainActivity {
                                         finish();
                                     } else {
                                         if (SessionSave.getSession("travel_status", SplashAct.this).equals("5")) {
-                                            i = new Intent(SplashAct.this, UpcomingTripsActivity.class);
+                                            i = new Intent(SplashAct.this, OngoingAct.class);
                                             startActivity(i);
                                             finish();
                                         } else {
