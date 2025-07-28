@@ -295,7 +295,7 @@ public class Utils {
                     .setOngoing(true)
                     .setSmallIcon(getNotificationIcon())
                     .setContentIntent(pendingIntent)
-                    .setLargeIcon(((BitmapDrawable) ContextCompat.getDrawable(context, R.drawable.ic_launcher)).getBitmap())
+                    .setLargeIcon(((BitmapDrawable) ContextCompat.getDrawable(context, R.drawable.small_logo)).getBitmap())
                     .setStyle(new Notification.BigTextStyle()
                             .bigText(message))
                     .setWhen(System.currentTimeMillis());
@@ -310,7 +310,7 @@ public class Utils {
                     .setSmallIcon(getNotificationIcon())
                     .setStyle(new Notification.BigTextStyle()
                             .bigText(message))
-                    .setLargeIcon(((BitmapDrawable) context.getResources().getDrawable(R.drawable.ic_launcher)).getBitmap());
+                    .setLargeIcon(((BitmapDrawable) context.getResources().getDrawable(R.drawable.small_logo)).getBitmap());
 
         }
 
@@ -329,7 +329,7 @@ public class Utils {
 
     private static int getNotificationIcon() {
         boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP);
-        return useWhiteIcon ? R.drawable.small_logo : R.drawable.ic_launcher;
+        return useWhiteIcon ? R.drawable.small_logo : R.drawable.small_logo;
     }
 
     public static String convertToBase64(ImageView imgV) {

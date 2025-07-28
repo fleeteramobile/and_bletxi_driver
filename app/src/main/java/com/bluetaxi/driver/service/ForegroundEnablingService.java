@@ -62,7 +62,7 @@ public class ForegroundEnablingService extends Service {
         Notification.Builder builder = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Notification.Action action = new Notification.Action.Builder(Icon.createWithResource(this,R.drawable.ic_launcher), NC.getString(R.string.notiy_lanch_app), activityPendingIntent).build();
+            Notification.Action action = new Notification.Action.Builder(Icon.createWithResource(this,R.drawable.small_logo), NC.getString(R.string.notiy_lanch_app), activityPendingIntent).build();
             NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_MAX);
             // Configure the notification channel.
             notificationChannel.setDescription("Channel description");

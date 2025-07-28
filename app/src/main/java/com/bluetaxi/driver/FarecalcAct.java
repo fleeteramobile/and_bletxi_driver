@@ -125,7 +125,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
     private EditText farecalTxt;
     private EditText tipsTxt;
     private TextView HeadTitle;
-    private TextView tv_startTime;
+    private TextView tv_startTime,hills_fee_fare_txt;
     private TextView tv_dropTime;
     private TextView tv_tripFare;
     private TextView tv_total_disatnce,pickup_time,drop_time;
@@ -152,7 +152,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
     private Dialog mDialog;
     private LinearLayout lay_fare;
     private LinearLayout walletlay;
-    private RelativeLayout paylay,cancel_lay,city_limit_km_lay,city_limit_fare_lay,convenience_fee_lay;
+    private RelativeLayout paylay,cancel_lay,city_limit_km_lay,city_limit_fare_lay,convenience_fee_lay,hills_fee_lay;
     private String cmpTax = "";
     private LinearLayout promoLayout, tax_lay;
     private TextView txtCmp;
@@ -181,7 +181,8 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
     private ViewGroup rootLay;
     private boolean keyboardListenersAttached = false;
     private ViewTreeObserver.OnGlobalLayoutListener keyboardLayoutListener = null;
-    private TextView night_fare,payment;
+    private TextView night_fare,passenger_name_txt,total_trip_cost;
+    Button payment;
     private LinearLayout night_fare_lay;
     private LinearLayout totalamountTxt_lay;
     private AppCompatButton btn_emergency;
@@ -264,10 +265,11 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
             }
 
 
-            totalamountTxt.setText(String.format(Locale.ENGLISH, df.format((os_fare + tax))));
-            amountpayTxt.setText(String.format(String.valueOf(trip_fare)));
+            totalamountTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.format(Locale.ENGLISH, df.format((os_fare + tax))));
+            amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.format(String.valueOf(trip_fare)));
             System.out.println("total_amt_"+ " "+"1" + " "+String.format(Locale.ENGLISH, df.format(((os_fare + tax) - m_walletamt))));
-            totalamt.setText(f_payamt);
+            totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
+            total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
             et_tripFare.setText(FontHelper.convertfromArabic((df.format(Double.parseDouble(FontHelper.convertfromArabic(String.valueOf(os_fare))) + discount_amount))));
         }
     }
@@ -327,6 +329,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
         payment_layout = findViewById(R.id.payment_layout);
         // outstation initialization
         tv_startTime = findViewById(R.id.tv_startTime);
+        hills_fee_fare_txt = findViewById(R.id.hills_fee_fare_txt);
         tv_dropTime = findViewById(R.id.tv_dropTime);
         tv_tripFare = findViewById(R.id.tv_trip_fare);
         tv_total_disatnce = findViewById(R.id.tv_total_distance);
@@ -349,6 +352,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
         city_limit_km_lay = findViewById(R.id.city_limit_km_lay);
         city_limit_fare_lay = findViewById(R.id.city_limit_fare_lay);
         convenience_fee_lay = findViewById(R.id.convenience_fee_lay);
+        hills_fee_lay = findViewById(R.id.hills_fee_lay);
         layoutOutstation = findViewById(R.id.outstation_fare_layout);
 
         approxamountTxt=findViewById(R.id.approxamountTxt);
@@ -383,6 +387,8 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
         scrollview = findViewById(R.id.scrollview);
         eve_fare = findViewById(R.id.eve_fare);
         night_fare = findViewById(R.id.night_fare);
+        passenger_name_txt = findViewById(R.id.passenger_name_txt);
+        total_trip_cost = findViewById(R.id.total_trip_cost);
         payment = findViewById(R.id.payment);
         totalamountTxt = findViewById(R.id.totalamountTxt);
         promopercentTxt = findViewById(R.id.promopercentage);
@@ -419,7 +425,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
         radiocardButton = findViewById(R.id.rbtn_card);
         radiouncardButton = findViewById(R.id.rbtn_uncard);
 
-
+        passenger_name_txt.setText(SessionSave.getSession("p_name",FarecalcAct.this));
         radiocashButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -753,15 +759,17 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
                                 tax = os_fare * os_tax / 100;
                                 b_tax.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " + df.format(((tax))));
                             }
-                            totalamountTxt.setText(String.valueOf(os_fare + tax));
-                            amountpayTxt.setText(String.valueOf(trip_fare));
+                            totalamountTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(os_fare + tax));
+                            amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(trip_fare));
                             System.out.println("total_amt_"+ " "+"2" + " "+String.valueOf(os_fare + tax - m_walletamt));
-                            totalamt.setText(f_payamt);
+                            totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
+                            total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                             //                    calculateAndUpdateFare();}
                         } else {
-                            totalamountTxt.setText("0.00");
-                            amountpayTxt.setText("0.00");
-                            totalamt.setText("0.00");
+                            totalamountTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
+                            amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
+                            totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
+                            total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
 
                         }
                     }
@@ -942,8 +950,8 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
                 cmpTax = json.getString("company_tax");
                  trip_fare = os_fare + Double.parseDouble(f_waitingcost);
 
-                approxamountTxt.setText( json.getString("approx_fare"));
-                couponamountTxt.setText( json.getString("promodiscount_amount"));
+                approxamountTxt.setText( SessionSave.getSession("site_currency", FarecalcAct.this) + " " +json.getString("approx_fare"));
+                couponamountTxt.setText( SessionSave.getSession("site_currency", FarecalcAct.this) + " " +json.getString("promodiscount_amount"));
 
                 double distance = Double.parseDouble(json.getString("distance"));
                 double osPlanDistance = Double.parseDouble(json.getString("os_plan_distance"));
@@ -980,7 +988,7 @@ else {
                 {
                     convenience_fee_lay.setVisibility(View.VISIBLE);
                     convenience_fee_txt_currency.setText(SessionSave.getSession("site_currency", FarecalcAct.this));
-                    convenience_fee_fare_txt.setText(json.getString("booking_fare"));
+                    convenience_fee_fare_txt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +json.getString("booking_fare"));
                 }
                 else
                 {
@@ -1057,17 +1065,29 @@ else {
                 eveningfare = json.getString("eveningfare");
 
                 pickup_time_text = json.getString("pickup_time_text");
-                drop_time_text = json.getString("drop_time_text");
+                drop_time_text = json.getString("trip_end_time");
 //                trip_duration = json.getString("trip_duration");
+                if (json.has("hills_fare")) {
+                    String hills =json.getString("hills_fare");
+                    if ( hills.equals("0"))
+                    {
+                        hills_fee_lay.setVisibility(View.GONE);
+                    }
+                    else {
+                        hills_fee_lay.setVisibility(View.VISIBLE);
+                        hills_fee_fare_txt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +hills);
+                    }
 
-                if (json.has("pending_cancel_amount"))
+                }
+
+                    if (json.has("pending_cancel_amount"))
                 {
 
                     if (!json.getString("pending_cancel_amount").equals("0"))
                     {
                         cancel_lay.setVisibility(View.VISIBLE);
                         cancellation_fee = json.getString("pending_cancel_amount");
-                        cancel_fee.setText(cancellation_fee);
+                        cancel_fee.setText(SessionSave.getSession("site_currency", FarecalcAct.this)+ ""+cancellation_fee);
                         cancelcurrency.setText(SessionSave.getSession("site_currency", FarecalcAct.this));
 
                     }
@@ -1223,13 +1243,15 @@ else {
                     walletlay.setVisibility(View.VISIBLE);
                     walletamountTxt.setText(f_walletamt);
                     paylay.setVisibility(View.VISIBLE);
-                    amountpayTxt.setText(String.valueOf(trip_fare));
+                    amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(trip_fare));
                     System.out.println("total_amt_"+ " "+"3" + " "+f_payamt);
-                    totalamt.setText(f_payamt);
+                    totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
+                    total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                 }
-                amountpayTxt.setText(String.valueOf(trip_fare));
+                amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(trip_fare));
                 System.out.println("total_amt_"+ " "+"4" + " "+f_payamt);
-                totalamt.setText(f_payamt);
+                totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
+                total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                 for (int i = 0; i < length; i++) {
                     String paymentModeDefault = ary.getJSONObject(i).getString("pay_mod_default");
                     String paymentMode_Id = ary.getJSONObject(i).getString("pay_mod_id");
@@ -1735,7 +1757,7 @@ else {
 
     private void abovekm() {
 
-        View view = View.inflate(this, R.layout.custom_msg_popup_yn, null);
+        View view = View.inflate(this, R.layout.above_km, null);
         Dialog mDialog = new Dialog(this, R.style.dialogwinddow_trans);
         mDialog.setContentView(view);
         mDialog.setCancelable(true);

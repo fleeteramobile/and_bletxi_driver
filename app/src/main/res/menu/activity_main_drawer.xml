@@ -6,38 +6,49 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="Dashboard" />
+            android:title="Dashboard"
+            android:icon="@drawable/dashboard"
+            />
         <item
             android:id="@+id/nav_profile"
-            android:title="Profile" />
+            android:title="Profile"
+            android:icon="@drawable/menu_profile"
+            />
 
 
         <item
             android:id="@+id/nav_book"
-            android:title="Bookings" />
+            android:title="Bookings"
+            android:icon="@drawable/dashboard"/>
 
 
 
         <item
             android:id="@+id/nav_tarck"
-            android:title="Track Location" />
+            android:title="Track Location"
+            android:icon="@drawable/dashboard"/>
 
 
 
         <item
             android:id="@+id/nav_wallet"
-            android:title="Earnings" />
+            android:title="Earnings"
+            android:icon="@drawable/dashboard"/>
 
 
 
         <item
             android:id="@+id/nav_statement"
-            android:title="Statement" />
+            android:title="Statement"
+            android:icon="@drawable/dashboard"
+            />
 
 
         <item
             android:id="@+id/nav_settlement"
-            android:title="Settlement" />
+            android:title="Settlement"
+            android:icon="@drawable/dashboard"
+            />
     </group>
 
     <item android:title="Communicate">

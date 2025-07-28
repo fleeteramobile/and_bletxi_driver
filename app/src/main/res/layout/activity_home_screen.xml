@@ -126,7 +126,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text=""
             android:textColor="#757575"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/driver_name_home" />
 
@@ -210,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today's Earning"
+                    android:text="Total This Month"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
@@ -270,7 +270,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hour's Spend"
+                    android:text="Monthly Active Hours"
                     android:textColor="#A3B9FF"
                     android:layout_marginTop="5dp"
                     style="@style/edittext_style_bold"
@@ -340,7 +340,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textColor="@android:color/black"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -373,13 +373,13 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textColor="#4CAF50"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Average time spend"
+                    android:text="Average per hour"
                     android:textColor="#757575"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -406,7 +406,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textColor="#F44336"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView

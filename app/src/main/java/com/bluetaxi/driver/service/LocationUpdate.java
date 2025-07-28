@@ -1466,7 +1466,7 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
         Notification.Builder builder = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Notification.Action action = new Notification.Action.Builder(Icon.createWithResource(this, R.drawable.ic_launcher), NC.getString(R.string.notiy_lanch_app), activityPendingIntent).build();
+            Notification.Action action = new Notification.Action.Builder(Icon.createWithResource(this, R.drawable.small_logo), NC.getString(R.string.notiy_lanch_app), activityPendingIntent).build();
             NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_HIGH);
             // Configure the notification channel.
             notificationChannel.setDescription("Channel description");
@@ -1641,7 +1641,7 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
 
     private int getNotificationIcon() {
         boolean useWhiteIcon = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
-        return useWhiteIcon ? R.drawable.small_logo : R.drawable.ic_launcher;
+        return useWhiteIcon ? R.drawable.small_logo : R.drawable.small_logo;
     }
 
     private boolean GPSEnabled(Context mContext) {
@@ -1740,7 +1740,7 @@ public class LocationUpdate extends Service implements DistanceMatrixInterface {
         Notification.Builder builder = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Notification.Action action = new Notification.Action.Builder(Icon.createWithResource(this, R.drawable.ic_launcher), NC.getString(R.string.notiy_lanch_app), activityPendingIntent).build();
+            Notification.Action action = new Notification.Action.Builder(Icon.createWithResource(this, R.drawable.small_logo), NC.getString(R.string.notiy_lanch_app), activityPendingIntent).build();
             NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications", NotificationManager.IMPORTANCE_HIGH);
             // Configure the notification channel.
             notificationChannel.setDescription("Channel description");

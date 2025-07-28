@@ -3637,6 +3637,7 @@ Boolean enable_os_waiting_fare = false;
                             dropoff_notes = detail.getString("dropoff_notes");
                             booking_Type = detail.getString("trip_type");
                             model_id = detail.getString("model_id");
+                            SessionSave.saveSession("p_name", p_name, OngoingAct.this);
 
                             double pickupLat = Double.parseDouble(p_picklat);
                             double pickupLng = Double.parseDouble(p_picklng);
@@ -3834,6 +3835,7 @@ Boolean enable_os_waiting_fare = false;
                                 MainActivity.mMyStatus.setOnpassengerName(p_name);
                                 MainActivity.mMyStatus.settripId(p_logid);
                                 SessionSave.saveSession("trip_id", p_logid, OngoingAct.this);
+
                                 MainActivity.mMyStatus.setpickupLoc(p_pickloc);
                                 MainActivity.mMyStatus.setOndropLatitude(p_droplat);
                                 MainActivity.mMyStatus.setOndropLongitude(p_droplng);

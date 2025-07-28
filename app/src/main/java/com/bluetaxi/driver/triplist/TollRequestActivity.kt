@@ -51,6 +51,9 @@ class TollRequestActivity : AppCompatActivity(), TollAmountRequest, ClickInterfa
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_toll_request)
+        no_data_image = findViewById(R.id.no_data_image)
+
+
         findViewById<ImageButton>(R.id.backButton).setOnClickListener {
             onBackPressed()
         }

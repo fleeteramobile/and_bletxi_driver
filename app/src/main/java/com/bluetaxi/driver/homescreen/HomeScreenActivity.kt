@@ -16,6 +16,7 @@ import android.os.Bundle
 import android.text.Layout
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
 import android.text.style.AlignmentSpan
 import android.util.Log
 import android.view.MenuItem
@@ -156,6 +157,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
         }
 
         scheduleRideButton.setOnClickListener {
+            startActivity(Intent(this, OutstationUpcomingActivity::class.java))
 
         }
 
@@ -577,6 +579,28 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
                     val bookingLimit = json.getInt("booking_limit")
 
 
+
+                    val totalShiftHours = parseShiftHours(totalShiftHrs)
+                    val monthlyAmount = totalAmount.toDoubleOrNull() ?: 0.0
+                    val hourlyEarning = if (totalShiftHours > 0) monthlyAmount / totalShiftHours else 0.0
+
+// Round to 2 decimals
+
+
+
+
+
+
+                    val amount = String.format("%.2f", hourlyEarning)
+                    val hourlyFormatted = SpannableString("₹ $amount")
+                    hourlyFormatted.setSpan(AbsoluteSizeSpan(14, true), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE) // Smaller ₹ if needed
+                    completedRidesCount.text = hourlyFormatted
+
+
+
+
+
+
                     val remainingDeclines = maxDeclinedCount - declinedCount
                     cancelledRidesCount.setText(remainingDeclines.toString())
 
@@ -593,13 +617,12 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
                     driver_name_txt.setText(capitalized)
                     SessionSave.saveSession("driver_name",capitalized,this@HomeScreenActivity)
                     //driver_code
-                    driver_code_txt.setText(driver_code)
+                    driver_code_txt.setText("Cab Number : ${driver_code}")
                     SessionSave.saveSession("driver_code",driver_code,this@HomeScreenActivity)
 
                     //driver_name_txt.setText(driver_name.toString())
                     hour_spend.setText(totalShiftHrs.toString())
                     totalRidesCount.setText(totalTrips.toString())
-                    completedRidesCount.setText(completedTrip.toString())
                  //   cancelledRidesCount.setText(declinedCount.toString())
 
 
@@ -797,6 +820,16 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
 
     override fun negativeButtonClick(dialog: DialogInterface?, id: Int, s: String?) {
 
+    }
+    fun parseShiftHours(shift: String): Double {
+        val regex = Regex("(\\d+)\\s*hrs\\s*(\\d+)\\s*mins")
+        val match = regex.find(shift)
+        return if (match != null) {
+            val (hrsStr, minsStr) = match.destructured
+            hrsStr.toDouble() + (minsStr.toDouble() / 60)
+        } else {
+            0.0
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

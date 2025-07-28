@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/transparent"
 
 
@@ -36,7 +35,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="Add Extra Fare"
+                android:text=""
                 android:textColor="@color/fleetera_text_color"
                 android:textSize="16dp"
 
@@ -44,38 +43,7 @@
                 />
 
 
-
-
         </RelativeLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            style="@style/InputLayoutOuterbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="20dp"
-            android:background="#F5F9FE"
-            android:hint="Enter extra fare amount "
-            app:hintEnabled="false"
-            app:hintTextAppearance="@color/app_theme_color"
-            app:hintTextColor="@color/app_theme_color"
-            app:passwordToggleEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_extrafare"
-                style="@style/ProfileEditText"
-                android:layout_width="match_parent"
-
-                android:digits="0123456789"
-                android:hint="Enter extra fare amount"
-
-                android:imeOptions="actionGo"
-
-                android:inputType="number" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <View
             android:layout_width="match_parent"
@@ -106,16 +74,17 @@
                 android:paddingRight="10dp"
                 android:stateListAnimator="@null">
 
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtno"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
 
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:fontFamily="@font/inter_normal"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Cancel"
+                    android:text="No"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
 
@@ -148,7 +117,7 @@
                     android:gravity="center"
 
                     android:padding="8dp"
-                    android:text="Add"
+                    android:text="Ok"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
 
