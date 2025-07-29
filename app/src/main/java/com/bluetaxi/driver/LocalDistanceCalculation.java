@@ -66,7 +66,7 @@ public class LocalDistanceCalculation implements DistanceMatrixInterface {
                     String savingTripDetail = "";
                     savingTripDetail += SessionSave.getSession(SessionSave.getSession("trip_id", localcontext) + "data", localcontext) + "\n\n\n<br><br>" + "Distance**85#&nbsp;" + SessionSave.getDistance(localcontext) + "&nbsp;&nbsp;Trip&nbsp;" + SessionSave.getSession("trip_id", localcontext) + "&nbsp;&nbsp;Speed&nbsp;" + "&nbsp;&nbsp;Time&nbsp;" + DateFormat.getTimeInstance().format(new Date()) +
                             "&nbsp;&nbsp;old&nbsp;&nbsp;" + lat1 + "&nbsp;" + lon1 + "&nbsp;&nbsp;New&nbsp;&nbsp;" + lat2
-                            + "&nbsp;" + lon2
+                            + "&nbsp;" + lon2 
                             + "&nbsp;&nbsp;Read way&nbsp;&nbsp;" + SessionSave.ReadGoogleWaypoints(localcontext);
 
                     SessionSave.saveSession(SessionSave.getSession("trip_id", localcontext) + "data", savingTripDetail, localcontext);
