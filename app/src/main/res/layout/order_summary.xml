@@ -192,16 +192,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Payment Summary"
-                    android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                </RelativeLayout>
+            </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/convenience_fee_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/convenience_fee_lay"
                 android:layout_marginBottom="8dp">
 
                 <TextView
@@ -211,19 +211,19 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/convenience_fee_fare_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:id="@+id/convenience_fee_fare_txt"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/hills_fee_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/hills_fee_lay"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -233,19 +233,19 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/hills_fee_fare_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:id="@+id/hills_fee_fare_txt"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/paylay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/paylay"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -255,18 +255,19 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/amountpayTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:id="@+id/amountpayTxt"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </RelativeLayout>
+
             <RelativeLayout
+                android:id="@+id/cancel_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancel_lay"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -276,18 +277,19 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/cancel_fee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:id="@+id/cancel_fee"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </RelativeLayout>
+
             <RelativeLayout
+                android:id="@+id/coupon_lay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/coupon_lay"
                 android:layout_marginBottom="16dp">
 
                 <TextView
@@ -297,11 +299,11 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/couponamountTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:id="@+id/couponamountTxt"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
             </RelativeLayout>
@@ -309,8 +311,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#E0E0E0"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:background="#E0E0E0" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -321,18 +323,35 @@
                     android:layout_height="wrap_content"
                     android:text="Total Payment"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"
+>
+
 
                 <TextView
+                    android:id="@+id/totalamt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:id="@+id/totalamt"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/fabInfo"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="@dimen/dp_2"
+                        android:layout_weight="0.30"
+                        android:padding="@dimen/dp_2"
+                        android:visibility="visible"
+                        app:srcCompat="@drawable/ic_info" />
+                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -603,7 +622,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="$56,54"
+                    android:text=""
                     android:id="@+id/total_trip_cost"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"

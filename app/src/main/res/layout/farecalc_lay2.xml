@@ -1965,15 +1965,7 @@
                                     android:textColor="@color/black" />
 
 
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:id="@+id/fabInfo"
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginStart="@dimen/dp_2"
-                                    android:layout_weight="0.30"
-                                    android:padding="@dimen/dp_2"
-                                    android:visibility="visible"
-                                    app:srcCompat="@drawable/ic_info" />
+
                             </LinearLayout>
 
 

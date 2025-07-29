@@ -2,17 +2,24 @@ package com.bluetaxi.driver.homescreen
 
 
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.app.NotificationManager
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.IntentFilter
+import android.content.IntentSender
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.location.LocationManager
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.text.Layout
 import android.text.Spannable
 import android.text.SpannableString
@@ -27,10 +34,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
+import androidx.core.location.LocationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bluetaxi.driver.MainActivity
@@ -68,6 +79,15 @@ import com.bluetaxi.driver.utils.SessionSave
 import com.bluetaxi.driver.utils.Systems
 import com.bluetaxi.driver.utils.Utils
 import com.bumptech.glide.Glide
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.LocationSettingsResponse
+import com.google.android.gms.location.LocationSettingsStatusCodes
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.Task
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
@@ -109,6 +129,61 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
     var checked = "OUT"
     var mPlayer: MediaPlayer? = null
     var bookLaterDetails: String? = null
+
+
+    private val resolutionForResult = registerForActivityResult(
+        ActivityResultContracts.StartIntentSenderForResult()
+    ) {
+        // When user comes back from dialog, check again
+        checkDeviceLocationSettings()
+    }
+
+    // BroadcastReceiver to detect GPS toggles
+    private val locationReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == LocationManager.PROVIDERS_CHANGED_ACTION) {
+                checkDeviceLocationSettings()
+            }
+        }
+    }
+    private fun checkDeviceLocationSettings() {
+        val locationRequest = LocationRequest.Builder(
+            Priority.PRIORITY_HIGH_ACCURACY, 10000
+        ).setMinUpdateIntervalMillis(5000).build()
+
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+            .setAlwaysShow(true) // force dialog if needed
+
+        val client = LocationServices.getSettingsClient(this)
+        val task: Task<LocationSettingsResponse> = client.checkLocationSettings(builder.build())
+
+        task.addOnSuccessListener {
+            println("location_enabled"+ " "+"1")
+            checked = "IN"
+            RequestingCheckBox()
+            Toast.makeText(this, "✅ Location services are enabled.", Toast.LENGTH_SHORT).show()
+        }
+
+        task.addOnFailureListener { exception ->
+            if (exception is ResolvableApiException) {
+                try {
+                    val intentSenderRequest =
+                        IntentSenderRequest.Builder(exception.resolution).build()
+                    resolutionForResult.launch(intentSenderRequest)
+                    println("location_enabled"+ " "+"0")
+                    checked = "OUT"
+                    RequestingCheckBox()
+                } catch (sendEx: Exception) {
+                    sendEx.printStackTrace()
+                }
+            } else {
+                println("location_enabled"+ " "+"0")
+                Toast.makeText(this, "❌ Location settings are inadequate.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
@@ -163,7 +238,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
 
 
         earningCard.setOnClickListener {
-            startActivity(Intent(this, TripInprogressActivity::class.java))
+            //startActivity(Intent(this, TripInprogressActivity::class.java))
         }
 
 
@@ -250,6 +325,47 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
             Systems.out.println("nan---nOTyET Activated")
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(locationReceiver)
+
+    }
+    private fun checkLocationAndPermission() {
+        if (isLocationEnabled(this)) {
+            if (hasLocationPermission()) {
+                Toast.makeText(this, "Location is enabled and permission granted!", Toast.LENGTH_SHORT).show()
+                // You can now access location
+            } else {
+                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+        } else {
+            Toast.makeText(this, "Please enable location", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+        }
+    }
+
+    private fun isLocationEnabled(context: Context): Boolean {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return LocationManagerCompat.isLocationEnabled(locationManager)
+    }
+
+    private fun hasLocationPermission(): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    // New way of requesting permission
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     fun AccountNotActivated(Message: String?) {
 
@@ -477,9 +593,25 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
             }
         }
     }
+    private fun showLocationStatus() {
+        if (isLocationEnabled(this)) {
+            Toast.makeText(this, "✅ Location is Enabled", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "❌ Location is Disabled", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+//    private fun isLocationEnabled(context: Context): Boolean {
+//        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+//        return LocationManagerCompat.isLocationEnabled(locationManager)
+//    }
     override fun onResume() {
         super.onResume()
-        CoroutineScope(Dispatchers.IO).launch {
+        //checkLocationAndPermission()
+    registerReceiver(locationReceiver, IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION))
+
+
+    CoroutineScope(Dispatchers.IO).launch {
             delay(1000)
             if (this@HomeScreenActivity != null /*&& MyStatus.this.getCurrentFocus() != null*/) {
                 try {
@@ -564,6 +696,7 @@ class HomeScreenActivity : AppCompatActivity(), ClickInterface,
                     val driverThresholdSetting = json.getInt("driver_threshold_setting")
                     val driverThresholdAmount = json.getDouble("driver_threshold_amount")
                     val totalAmount = json.getString("total_monthly_amount")
+                    val totalDaily = json.getString("total_amount")
                     val totalTrips = json.getInt("total_trips")
                     val declinedCount = json.getInt("declined_count")
                     val maxDeclinedCount = json.getInt("max_declined_count")
@@ -622,7 +755,7 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
 
                     //driver_name_txt.setText(driver_name.toString())
                     hour_spend.setText(totalShiftHrs.toString())
-                    totalRidesCount.setText(totalTrips.toString())
+                    totalRidesCount.setText(totalDaily.toString())
                  //   cancelledRidesCount.setText(declinedCount.toString())
 
 
@@ -1053,7 +1186,7 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
 
                     if (checked == "IN") {
 
-
+                        mytrip!!.isChecked = true
                         SessionSave.saveSession("shift_status", "IN", this@HomeScreenActivity)
                         SessionSave.saveSession(CommonData.SHIFT_OUT, false, this@HomeScreenActivity)
                         SessionSave.saveSession(
@@ -1070,6 +1203,7 @@ SessionSave.saveSession("model_id",modelId.toString(),this@HomeScreenActivity)
 
 
                     }else{
+                        mytrip!!.isChecked = false
                         SessionSave.saveSession("shift_status", "OUT", this@HomeScreenActivity)
                         SessionSave.saveSession("trip_id", "", this@HomeScreenActivity)
                         SessionSave.setWaitingTime(0L, this@HomeScreenActivity)

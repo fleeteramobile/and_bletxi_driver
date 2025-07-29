@@ -164,6 +164,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
     private String base_fare = "";
     private boolean fromStreetPickUp;
     private String fare_calculation_type = "3";
+    private String finalAmount = "";
     private LinearLayout distance_lay, minutes_lay, waiting_lay;
     private TextView minutes_value;
     private TextView walletamountCurrency;
@@ -173,6 +174,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
 
 
     private double os_tax,trip_fare;
+
     private String trip_type = "1";
     private double os_minute_fare;
     private String promo_type;
@@ -267,6 +269,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
 
             totalamountTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.format(Locale.ENGLISH, df.format((os_fare + tax))));
             amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.format(String.valueOf(trip_fare)));
+            finalAmount = String.format(String.valueOf(trip_fare));
             System.out.println("total_amt_"+ " "+"1" + " "+String.format(Locale.ENGLISH, df.format(((os_fare + tax) - m_walletamt))));
             totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
             total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
@@ -761,6 +764,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
                             }
                             totalamountTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(os_fare + tax));
                             amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(trip_fare));
+                            finalAmount = String.format(String.valueOf(trip_fare));
                             System.out.println("total_amt_"+ " "+"2" + " "+String.valueOf(os_fare + tax - m_walletamt));
                             totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                             total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
@@ -768,6 +772,7 @@ public class FarecalcAct extends MainActivity implements ClickInterface, Payment
                         } else {
                             totalamountTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
                             amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
+                            finalAmount = "0.0";
                             totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
                             total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +"0.00");
 
@@ -1244,11 +1249,13 @@ else {
                     walletamountTxt.setText(f_walletamt);
                     paylay.setVisibility(View.VISIBLE);
                     amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(trip_fare));
+                    finalAmount = String.format(String.valueOf(trip_fare));
                     System.out.println("total_amt_"+ " "+"3" + " "+f_payamt);
                     totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                     total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                 }
                 amountpayTxt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +String.valueOf(trip_fare));
+                finalAmount = String.format(String.valueOf(trip_fare));
                 System.out.println("total_amt_"+ " "+"4" + " "+f_payamt);
                 totalamt.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
                 total_trip_cost.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " " +f_payamt);
@@ -1308,7 +1315,7 @@ else {
                         f_paymodid = "1";
                         //confirmCompleteTrip(FarecalcAct.this);
 
-                        amount_received=amountpayTxt.getText().toString();
+                        amount_received= finalAmount;
                         confirmCompleteTrip(FarecalcAct.this);
                       //  payment_handling_dialog();
                     }
@@ -1526,13 +1533,13 @@ else {
                             bun.putString("message", message);
                             if (trip_type.equals("3")) {
                                 if (!SessionSave.getSession("Lang", FarecalcAct.this).equals("en")) {
-                                    bun.putString("f_fare", amountpayTxt.getText().toString());
+                                    bun.putString("f_fare", finalAmount);
                                     bun.putString("f_tips", Double.toString(f_tips));
-                                    bun.putString("f_total", amountpayTxt.getText().toString());
+                                    bun.putString("f_total", finalAmount);
                                 } else {
-                                    bun.putString("f_fare", FontHelper.convertfromArabic(amountpayTxt.getText().toString()));
+                                    bun.putString("f_fare", FontHelper.convertfromArabic(finalAmount));
                                     bun.putString("f_tips", FontHelper.convertfromArabic(Double.toString(f_tips)));
-                                    bun.putString("f_total", FontHelper.convertfromArabic(amountpayTxt.getText().toString()));
+                                    bun.putString("f_total", FontHelper.convertfromArabic(finalAmount));
                                 }
                             } else {
                                 if (!SessionSave.getSession("Lang", FarecalcAct.this).equals("en")) {
@@ -1644,7 +1651,7 @@ else {
                 alertDialog.dismiss();
             }
         });
-        tv_actual_fare.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " "+amountpayTxt.getText().toString());
+        tv_actual_fare.setText(SessionSave.getSession("site_currency", FarecalcAct.this) + " "+finalAmount);
 
         amt_Edt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -1686,7 +1693,7 @@ else {
                     double trips_amt=0;
                     double receive_amt=0;
 
-                    trips_amt=Double.parseDouble(amountpayTxt.getText().toString());
+                    trips_amt=Double.parseDouble(finalAmount);
                     receive_amt=Double.parseDouble(amt_Edt.getText().toString());
 
                     if (trips_amt<=receive_amt) {
@@ -1859,7 +1866,7 @@ else {
 
             if (trip_type.equals("3")) {
                 j.put("os_distance", os_distance);
-                j.put("os_actual_amount", amountpayTxt.getText().toString());
+                j.put("os_actual_amount", finalAmount);
                 j.put("os_trip_fare", df.format((os_fare)));
                 j.put("os_promodiscount_amount", b_discount.getText().toString());
                 j.put("os_minutes_traveled", (os_duration * 60));
@@ -1931,7 +1938,7 @@ else {
 
             if (trip_type.equals("3")) {
                 j.put("os_distance", os_distance);
-                j.put("os_actual_amount", amountpayTxt.getText().toString());
+                j.put("os_actual_amount", finalAmount);
                 j.put("os_trip_fare", df.format((os_fare)));
                 j.put("os_promodiscount_amount", b_discount.getText().toString());
                 j.put("os_minutes_traveled", (os_duration * 60));
@@ -2005,7 +2012,7 @@ else {
 
             if (trip_type.equals("3")) {
                 j.put("os_distance", os_distance);
-                j.put("os_actual_amount", amountpayTxt.getText().toString());
+                j.put("os_actual_amount", finalAmount);
                 j.put("os_trip_fare", df.format((os_fare)));
                 j.put("os_promodiscount_amount", b_discount.getText().toString());
                 j.put("os_minutes_traveled", (os_duration * 60));

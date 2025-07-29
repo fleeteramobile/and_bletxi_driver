@@ -70,7 +70,7 @@
                     android:id="@+id/priceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="₹ 228.06"
+                    android:text=""
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -156,15 +156,17 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Avinashi"
-                        android:id="@+id/pickup_city"
+                        android:text=""
+                        android:maxLines="2"
+                        android:id="@+id/pickup_location"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/pickup_location"
+                        android:id="@+id/pickup_city"
+                        android:visibility="gone"
                         android:text="Near Bus stand, Avinashi"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp" />
@@ -198,17 +200,17 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Thiruppur"
-                            android:id="@+id/drop_city"
-
+                            android:text=""
+                            android:id="@+id/drop_location"
+                            android:maxLines="2"
                             android:textColor="@android:color/black"
                             android:textSize="16sp" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/drop_location"
-
+                            android:id="@+id/drop_city"
+android:visibility="gone"
                             android:text="No 3, Delux martin Apartment"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="14sp" />
@@ -237,7 +239,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="2.5 KM"
+                    android:text=""
                     android:id="@+id/distanceTextView"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />

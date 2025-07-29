@@ -102,10 +102,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.browser:browser:1.2.0'
     implementation "com.google.android.gms:play-services-maps:$rootProject.ext.maps"
-    implementation ("com.google.android.gms:play-services-location:$rootProject.ext.location")
-            {
-                exclude group: 'com.google.android.gms', module: 'play-services-ads'
-            }
+    implementation "com.google.android.gms:play-services-location:21.0.1"
 
     implementation "com.google.android.libraries.places:places:$rootProject.ext.places"
     implementation "com.google.firebase:firebase-messaging:$rootProject.ext.firebase_messaging"

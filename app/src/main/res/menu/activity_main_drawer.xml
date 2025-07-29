@@ -12,42 +12,42 @@
         <item
             android:id="@+id/nav_profile"
             android:title="Profile"
-            android:icon="@drawable/menu_profile"
+            android:icon="@drawable/ic_menu_profile"
             />
 
 
         <item
             android:id="@+id/nav_book"
             android:title="Bookings"
-            android:icon="@drawable/dashboard"/>
+            android:icon="@drawable/calender"/>
 
 
 
         <item
             android:id="@+id/nav_tarck"
             android:title="Track Location"
-            android:icon="@drawable/dashboard"/>
+            android:icon="@drawable/ic_menu_location"/>
 
 
 
         <item
             android:id="@+id/nav_wallet"
             android:title="Earnings"
-            android:icon="@drawable/dashboard"/>
+            android:icon="@drawable/ic_menu_chart"/>
 
 
 
         <item
             android:id="@+id/nav_statement"
             android:title="Statement"
-            android:icon="@drawable/dashboard"
+            android:icon="@drawable/ic_menu_notes"
             />
 
 
         <item
             android:id="@+id/nav_settlement"
             android:title="Settlement"
-            android:icon="@drawable/dashboard"
+            android:icon="@drawable/ic_menu_calc"
             />
     </group>
 

@@ -346,9 +346,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Rides"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:text="Today Earnings"
                     android:textColor="#757575"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -379,7 +379,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Average per hour"
+                    android:text="Average Per Hour"
                     android:textColor="#757575"
                     android:layout_gravity="center"
                     android:gravity="center"

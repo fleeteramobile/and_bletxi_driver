@@ -1065,8 +1065,8 @@ class TripInprogressActivity : AppCompatActivity(), OnMapReadyCallback, LocalDis
             )
         } else {
             fusedLocationClient!!.requestLocationUpdates(
-                mLocationRequest,
-                locationCallback,
+                mLocationRequest!!,
+                locationCallback!!,
                 Looper.getMainLooper()
             )
         }
